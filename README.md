@@ -11,8 +11,8 @@
  - Matheus Vosgnach
  - Pedro Noronha
  
- 08/10/2022 14:30 Criado diagrama de classes utilizando StarUML.
- Software que pode ser adquirido em: https://staruml.io/
+ 08/10/2022 14:30 Criado diagrama de classes utilizando StarUML.<br/>
+ Software que pode ser adquirido em: https://staruml.io/<br/>
  No projeto, o diagrama enconetra-se na pasta 'Diagramas'.
 
  ### STATUS DO PROJETO
