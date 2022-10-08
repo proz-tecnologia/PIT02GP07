@@ -10,6 +10,10 @@
  - Mateus Rossi
  - Matheus Vosgnach
  - Pedro Noronha
+ 
+ 08/10/2022 14:30 Criado diagrama de classes utilizando StarUML.
+ Software que pode ser adquirido em: https://staruml.io/
+ No projeto, o diagrama enconetra-se na pasta 'Diagramas'.
 
  ### STATUS DO PROJETO
 - SPRINT 0: **finalizada em 12/09/2022**
