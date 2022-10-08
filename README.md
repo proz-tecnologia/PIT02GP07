@@ -13,7 +13,7 @@
  
  08/10/2022 14:30 Criado diagrama de classes utilizando StarUML.<br/>
  Software que pode ser adquirido em: https://staruml.io/<br/>
- No projeto, o diagrama enconetra-se na pasta 'Diagramas'.
+ No projeto, o diagrama encontra-se na pasta 'Diagramas'.
 
  ### STATUS DO PROJETO
 - SPRINT 0: **finalizada em 12/09/2022**
