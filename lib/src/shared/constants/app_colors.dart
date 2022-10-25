@@ -12,4 +12,5 @@ class AppColors {
   static const Color lightGold = Color(0xFFFFD185);
   static const Color iceWhite = Color(0xFFEEEEEE);
   static const Color lightRed = Color(0xFFFF5E5F);
+  
 }
