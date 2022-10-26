@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'pages/home.dart';
+import 'pages/home/home_page.dart';
+import 'shared/constants/custon_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -8,13 +8,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-       
-        primarySwatch: Colors.blue,
-      ),
-      home: const Home(title: 'Flutter Demo Home Page'),
+      title: 'AcCount',
+      theme: CustomTheme.lightTheme,
+      home: const HomePage(),
     );
   }
 }
-
