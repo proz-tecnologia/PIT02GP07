@@ -11,14 +11,13 @@ class ModelHomeScreenCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String text = title;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 20.0),
           child: Text(
-            text,
+            title,
             style: const TextStyle(
               fontSize: 20.0,
             ),
