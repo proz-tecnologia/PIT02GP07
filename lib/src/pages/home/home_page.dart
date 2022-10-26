@@ -28,7 +28,8 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [],
+        children: const [
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
