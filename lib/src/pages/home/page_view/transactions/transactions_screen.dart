@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Accounts extends StatelessWidget {
-  const Accounts({
+class TransactionsScreen extends StatelessWidget {
+  const TransactionsScreen({
     super.key,
   });
 
   static const BottomNavigationBarItem item = BottomNavigationBarItem(
-    icon: Icon(Icons.credit_card_outlined),
-    label: 'Cartões',
-    tooltip: 'Ir para Cartões',
+    icon: Icon(Icons.compare_arrows_outlined),
+    label: 'Transações',
+    tooltip: 'Ir para Transações',
   );
 
   @override

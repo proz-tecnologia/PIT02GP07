@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../shared/constants/app_colors.dart';
-import 'pages/account/account.dart';
-import 'pages/initial/initial.dart';
-import 'pages/movements/movements.dart';
+import 'page_view/user_card/user_card_screen.dart';
+import 'page_view/home/home_screen.dart';
+import 'page_view/transactions/transactions_screen.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   int currentPage = 0;
   late final PageController pageController;
 
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
+      body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: const [],
@@ -55,9 +55,9 @@ class _HomeState extends State<Home> {
             },
             currentIndex: currentPage,
             items: const [
-              Initial.item, 
-              Moviments.item,
-              Accounts.item,
+              HomeScreen.item,
+              TransactionsScreen.item,
+              UserCardScreen.item,
             ],
           );
         }),
