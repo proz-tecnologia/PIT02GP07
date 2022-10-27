@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/model/model_page_view.dart';
 import '../../shared/constants/app_colors.dart';
 import 'page_view/user_card/user_card_screen.dart';
 import 'page_view/home/home_screen.dart';
@@ -29,6 +30,15 @@ class _HomePageState extends State<HomePage> {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
+          ModelPageView(
+            page: HomeScreen(),
+          ),
+          ModelPageView(
+            page: TransactionsScreen(),
+          ),
+          ModelPageView(
+            page: UserCardScreen(),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -39,9 +49,6 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: StatefulBuilder(
         builder: ((context, setState) {
           return BottomNavigationBar(
-            backgroundColor: AppColors.darkGray,
-            unselectedItemColor: AppColors.iceWhite,
-            selectedItemColor: AppColors.darkGold,
             onTap: (page) {
               setState(
                 () {
