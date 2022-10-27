@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home/home_page.dart';
-import 'shared/constants/custon_theme.dart';
+import 'shared/constants/app_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AcCount',
-      theme: CustomTheme.lightTheme,
+      theme: AppTheme.lightTheme,
       home: const HomePage(),
     );
   }

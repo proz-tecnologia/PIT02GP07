@@ -49,9 +49,6 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: StatefulBuilder(
         builder: ((context, setState) {
           return BottomNavigationBar(
-            backgroundColor: AppColors.darkGray,
-            unselectedItemColor: AppColors.iceWhite,
-            selectedItemColor: AppColors.darkGold,
             onTap: (page) {
               setState(
                 () {
