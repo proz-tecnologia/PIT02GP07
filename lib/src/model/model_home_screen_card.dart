@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 
 class ModelHomeScreenCard extends StatelessWidget {
   final Widget card;
@@ -18,15 +19,10 @@ class ModelHomeScreenCard extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20.0),
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 20.0,
-            ),
+            style: AppTextStyle.f20w,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: card,
-        ),
+        card,
       ],
     );
   }
