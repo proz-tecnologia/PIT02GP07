@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
-import '../../../../shared/constants/app_colors.dart';
+import '../../../../../shared/constants/app_colors.dart';
 
 class WalletCard extends StatelessWidget {
   const WalletCard({
