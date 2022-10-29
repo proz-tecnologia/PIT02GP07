@@ -17,6 +17,10 @@ class AppTheme {
         unselectedItemColor: AppColors.iceWhite,
         selectedItemColor: AppColors.darkGold,
       ),
+      cardColor: AppColors.darkGray,
+      scaffoldBackgroundColor: AppColors.darkGreen,
     );
   }
 }
+
+
