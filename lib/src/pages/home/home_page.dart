@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/model/model_page_view.dart';
-import '../../shared/constants/app_colors.dart';
+import '../../shared/widget/app_floating_action_button.dart';
+import '../../shared/widget/app_top_bar.dart.dart';
+import '../../shared/widget/app_nav_bar.dart';
 import 'page_view/user_card/user_card_screen.dart';
 import 'page_view/home/home_screen.dart';
 import 'page_view/transactions/transactions_screen.dart';
@@ -13,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentPage = 0;
   late final PageController pageController;
 
   @override
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const AppTopBar(),
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
@@ -41,34 +42,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        //tooltip: 'Increment',
-        //child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: StatefulBuilder(
-        builder: ((context, setState) {
-          return BottomNavigationBar(
-            onTap: (page) {
-              setState(
-                () {
-                  currentPage = page;
-                  pageController.animateToPage(
-                    page,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.linear,
-                  );
-                },
-              );
-            },
-            currentIndex: currentPage,
-            items: const [
-              HomeScreen.item,
-              TransactionsScreen.item,
-              UserCardScreen.item,
-            ],
-          );
-        }),
+      floatingActionButton: const AppFloatingActionButton(),
+      bottomNavigationBar: AppNavBar(
+        pageController: pageController,
       ),
     );
   }
