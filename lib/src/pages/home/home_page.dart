@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/model/model_page_view.dart';
+import 'package:pit02gp07/src/shared/widget/app_top_bar.dart.dart';
 import '../../shared/constants/app_colors.dart';
 import 'page_view/user_card/user_card_screen.dart';
 import 'page_view/home/home_screen.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const AppTopBar(),
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
