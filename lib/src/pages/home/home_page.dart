@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/model/model_page_view.dart';
 import 'package:pit02gp07/src/shared/widget/app_top_bar.dart.dart';
 import '../../shared/constants/app_colors.dart';
+import '../../shared/widget/app_floating_action_button.dart';
 import 'page_view/user_card/user_card_screen.dart';
 import 'page_view/home/home_screen.dart';
 import 'page_view/transactions/transactions_screen.dart';
@@ -42,11 +43,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        //tooltip: 'Increment',
-        //child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const AppFloatingActionButton(),
       bottomNavigationBar: StatefulBuilder(
         builder: ((context, setState) {
           return BottomNavigationBar(
