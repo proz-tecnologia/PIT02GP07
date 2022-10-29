@@ -4,7 +4,7 @@ import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 class ModelHomeScreenCard extends StatelessWidget {
   final String title;
   final Widget card;
-  
+
   const ModelHomeScreenCard({
     Key? key,
     required this.card,
@@ -17,10 +17,10 @@ class ModelHomeScreenCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.only(top: 24.0),
           child: Text(
             title,
-            style: AppTextStyle.f20w,
+            style: AppTextStyle.largeWhite,
           ),
         ),
         card,

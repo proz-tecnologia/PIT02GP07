@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
+import '../../../../../model/model_wallet_balance.dart';
+import '../../../../../model/model_wallet_type.dart';
 import '../../../../../shared/constants/app_colors.dart';
 
 class WalletCard extends StatelessWidget {
@@ -10,93 +13,44 @@ class WalletCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      //margin: const EdgeInsets.symmetric(vertical: 8.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
       elevation: 8.0,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(28.0),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12.0),
-              child: Column(
-                children: const [
-                  Text(
-                    'R\$: 246,58',
-                    style: AppTextStyle.f24w,
-                  ),
-                  Text('Saldo', style: AppTextStyle.f12w)
-                ],
-              ),
+            const ModelWalletBalance(
+              value: '246,58',
+              type: 'Saldo',
+              style: AppTextStyle.extraLargeWhite,
+              alignment: MainAxisAlignment.center,
+            ),
+            const SizedBox(
+              height: 12.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: AppColors.mediumGreen,
-                        borderRadius: BorderRadius.circular(100.0),
-                      ),
-                      child: const Icon(
-                        size: 40,
-                        Icons.arrow_circle_up_outlined,
-                        color: AppColors.iceWhite,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'R\$: 280,00',
-                            style: AppTextStyle.f18w,
-                          ),
-                          Text(
-                            'Receitas',
-                            style: AppTextStyle.f12w,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+              children: const [
+                ModelWalletType(
+                  icon: Icons.arrow_circle_up_outlined,
+                  colorIcon: AppColors.iceWhite,
+                  backgroundColor: AppColors.mediumGreen,
+                  value: '280,00',
+                  type: 'Receitas',
+                  style: AppTextStyle.mediumWhite,
+                  alignment: MainAxisAlignment.start,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: AppColors.lightRed,
-                        borderRadius: BorderRadius.circular(100.0),
-                      ),
-                      child: const Icon(
-                        size: 40,
-                        Icons.arrow_circle_down_outlined,
-                        color: AppColors.iceWhite,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'R\$: 33,42',
-                            style: AppTextStyle.f18w,
-                          ),
-                          Text(
-                            'Despesas',
-                            style: AppTextStyle.f12w,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                ModelWalletType(
+                  icon: Icons.arrow_circle_down_outlined,
+                  colorIcon: AppColors.iceWhite,
+                  backgroundColor: AppColors.lightRed,
+                  value: '33,42',
+                  type: 'Despesas',
+                  style: AppTextStyle.mediumWhite,
+                  alignment: MainAxisAlignment.start,
                 ),
               ],
             ),

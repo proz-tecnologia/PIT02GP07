@@ -2,20 +2,32 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextStyle {
-  static const TextStyle f12w = TextStyle(
+  static const TextStyle smallWhite = TextStyle(
     fontSize: 12.0,
     color: AppColors.iceWhite,
   );
-  static const TextStyle f18w = TextStyle(
+  static const TextStyle f14w = TextStyle(
+    fontSize: 14.0,
+    color: AppColors.iceWhite,
+  );
+  static const TextStyle mediumWhite = TextStyle(
     fontSize: 18.0,
     color: AppColors.iceWhite,
   );
-  static const TextStyle f20w = TextStyle(
+  static const TextStyle largeWhite = TextStyle(
     fontSize: 20.0,
     color: AppColors.iceWhite,
   );
-  static const TextStyle f24w = TextStyle(
-    fontSize: 24.0,
+  static const TextStyle extraLargeWhite = TextStyle(
+    fontSize: 36.0,
     color: AppColors.iceWhite,
+  );
+  static const TextStyle f14r = TextStyle(
+    fontSize: 14.0,
+    color: AppColors.lightRed,
+  );
+  static const TextStyle mediumRed = TextStyle(
+    fontSize: 18.0,
+    color: AppColors.lightRed,
   );
 }
