@@ -14,7 +14,7 @@ class WalletCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
-      elevation: 2.0,
+      elevation: 8.0,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -32,17 +32,18 @@ class WalletCard extends StatelessWidget {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     Container(
-                      height: 24,
+                      height: 40,
                       decoration: BoxDecoration(
                         color: AppColors.mediumGreen,
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       child: const Icon(
+                        size: 40,
                         Icons.arrow_circle_up_outlined,
                         color: AppColors.iceWhite,
                       ),
@@ -68,12 +69,13 @@ class WalletCard extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      height: 24,
+                      height: 40,
                       decoration: BoxDecoration(
                         color: AppColors.lightRed,
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       child: const Icon(
+                        size: 40,
                         Icons.arrow_circle_down_outlined,
                         color: AppColors.iceWhite,
                       ),

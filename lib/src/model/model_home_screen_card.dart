@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 
 class ModelHomeScreenCard extends StatelessWidget {
-  final Widget card;
   final String title;
+  final Widget card;
+  
   const ModelHomeScreenCard({
     Key? key,
     required this.card,
