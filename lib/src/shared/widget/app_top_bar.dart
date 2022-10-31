@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  
+
   const AppTopBar({
     Key? key,
     required this.title,
@@ -16,9 +16,19 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: const Icon(
-        size: 40.0,
+        size: 55.0,
         Icons.account_circle_rounded,
       ),
+      // ignore: todo
+      // Container( //TODO asset com erro
+      //   decoration: BoxDecoration(
+      //     color: AppColors.iceWhite,
+      //     borderRadius: BorderRadius.circular(30.0),
+      //   ),
+      //   child: Image.asset(  // ERRO!!!
+      //   'assets/images/account_circle_outline.png',
+      //   ),
+      // ),
       title: Text('Olá, $title'),
       actions: const [
         Icon(Icons.more_vert_outlined),
