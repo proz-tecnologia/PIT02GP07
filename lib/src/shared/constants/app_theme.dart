@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/shared/constants/app_colors.dart';
+import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
@@ -23,8 +24,10 @@ class AppTheme {
         backgroundColor: AppColors.lightGold,
         foregroundColor: AppColors.darkGray
       ),
+      appBarTheme: const AppBarTheme(
+        color: AppColors.darkGray,
+        titleTextStyle: AppTextStyle.largeWhite,
+      ),
     );
   }
 }
-
-

@@ -10,7 +10,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'AcCount',
       theme: AppTheme.lightTheme,
-      home: const HomePage(),
+      home: const HomePage(
+        title: 'Carlos',
+      ),
     );
   }
 }
