@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: const AppFloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: AppNavBar(
         pageController: pageController,
       ),

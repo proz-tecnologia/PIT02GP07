@@ -20,6 +20,10 @@ class AppTheme {
       ),
       cardColor: AppColors.darkGray,
       scaffoldBackgroundColor: AppColors.darkGreen,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: AppColors.lightGold,
+        foregroundColor: AppColors.darkGray
+      ),
       appBarTheme: const AppBarTheme(
         color: AppColors.darkGray,
         titleTextStyle: AppTextStyle.largeWhite,
