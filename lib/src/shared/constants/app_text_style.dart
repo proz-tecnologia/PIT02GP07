@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextStyle {
-  static const TextStyle smallWhite = TextStyle(
+  static const TextStyle extraSmallWhite = TextStyle(
     fontSize: 12.0,
     color: AppColors.iceWhite,
   );
-  static const TextStyle f14w = TextStyle(
+  static const TextStyle smallWhite = TextStyle(
     fontSize: 14.0,
     color: AppColors.iceWhite,
   );
@@ -22,7 +22,7 @@ class AppTextStyle {
     fontSize: 36.0,
     color: AppColors.iceWhite,
   );
-  static const TextStyle f14r = TextStyle(
+  static const TextStyle smallRed = TextStyle(
     fontSize: 14.0,
     color: AppColors.lightRed,
   );
