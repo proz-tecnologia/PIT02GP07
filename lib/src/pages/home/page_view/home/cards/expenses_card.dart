@@ -27,7 +27,7 @@ class ExpensesCard extends StatelessWidget {
               value: '11,45',
             ),
             ModelExpensesByCategory(
-              category: 'EVestuário',
+              category: 'Vestuário',
               value: '4,74',
             ),
             ModelExpensesByCategory(
