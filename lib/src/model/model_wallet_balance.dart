@@ -25,7 +25,7 @@ class ModelWalletBalance extends StatelessWidget {
           children: [
             const Text(
               'R\$: ',
-              style: AppTextStyle.f14w,
+              style: AppTextStyle.smallWhite,
             ),
             Text(
               value,
@@ -38,7 +38,7 @@ class ModelWalletBalance extends StatelessWidget {
           children: [
             Text(
               type,
-              style: AppTextStyle.smallWhite,
+              style: AppTextStyle.extraSmallWhite,
             ),
           ],
         ),

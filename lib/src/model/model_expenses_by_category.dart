@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../shared/constants/app_text_style.dart';
+import 'model_value.dart';
 
-class ModelExpensesCategory extends StatelessWidget {
+class ModelExpensesByCategory extends StatelessWidget {
   final String category;
   final String value;
-  const ModelExpensesCategory({
+  const ModelExpensesByCategory({
     Key? key,
     required this.category,
     required this.value,
@@ -24,18 +25,7 @@ class ModelExpensesCategory extends StatelessWidget {
             category,
             style: AppTextStyle.mediumWhite,
           ),
-          Row(
-            children: [
-              const Text(
-                'R\$: ',
-                style: AppTextStyle.f14r,
-              ),
-              Text(
-                value,
-                style: AppTextStyle.mediumRed,
-              ),
-            ],
-          ),
+          ModelValue(value: value),
         ],
       ),
     );
