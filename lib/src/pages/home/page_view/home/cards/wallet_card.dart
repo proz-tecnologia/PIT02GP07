@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 import '../../../../../model/model_wallet_balance.dart';
@@ -26,7 +25,7 @@ class WalletCard extends StatelessWidget {
               value: '246,58',
               type: 'Saldo',
               style: AppTextStyle.extraLargeWhite,
-              alignment: MainAxisAlignment.center,
+              rowAlignment: MainAxisAlignment.center,
             ),
             const SizedBox(
               height: 12.0,
@@ -41,7 +40,7 @@ class WalletCard extends StatelessWidget {
                   value: '280,00',
                   type: 'Receitas',
                   style: AppTextStyle.mediumWhite,
-                  alignment: MainAxisAlignment.start,
+                  columnAlignment: CrossAxisAlignment.start,
                 ),
                 ModelWalletType(
                   icon: Icons.arrow_circle_down_outlined,
@@ -50,7 +49,7 @@ class WalletCard extends StatelessWidget {
                   value: '33,42',
                   type: 'Despesas',
                   style: AppTextStyle.mediumWhite,
-                  alignment: MainAxisAlignment.start,
+                  columnAlignment: CrossAxisAlignment.start,
                 ),
               ],
             ),

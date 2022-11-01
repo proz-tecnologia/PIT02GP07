@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'model_wallet_balance.dart';
 
 class ModelWalletType extends StatelessWidget {
@@ -9,7 +8,8 @@ class ModelWalletType extends StatelessWidget {
   final String value;
   final String type;
   final TextStyle style;
-  final MainAxisAlignment alignment;
+  final CrossAxisAlignment columnAlignment;
+  final MainAxisAlignment rowAlignment;
 
   const ModelWalletType({
     Key? key,
@@ -19,7 +19,8 @@ class ModelWalletType extends StatelessWidget {
     required this.value,
     required this.type,
     required this.style,
-    required this.alignment,
+    this.columnAlignment = CrossAxisAlignment.center,
+    this.rowAlignment = MainAxisAlignment.start,
   }) : super(key: key);
 
   @override
@@ -38,16 +39,15 @@ class ModelWalletType extends StatelessWidget {
             color: colorIcon,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 12.0,
-          ),
-          child: ModelWalletBalance(
-            value: value,
-            type: type,
-            style: style,
-            alignment: alignment,
-          ),
+        const SizedBox(
+          width: 12.0,
+        ),
+        ModelWalletBalance(
+          value: value,
+          type: type,
+          style: style,
+          columnAlignment: columnAlignment,
+          rowAlignment: rowAlignment,
         ),
       ],
     );
