@@ -11,7 +11,7 @@ https://marvelapp.com/prototype/e2ciid3
 ### INTEGRANTES DO GRUPO:
  - Paula Franco
  - Mateus Rossi
- - Carlos Mizzael
+ - Carlos Misael
 
  ### STATUS DO PROJETO
 - SPRINT 0: **finalizada em 12/09/2022**
