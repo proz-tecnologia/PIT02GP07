@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/home/cards/card_credit_card.dart';
-import 'package:pit02gp07/src/pages/home/cards/expenses_card.dart';
-import 'package:pit02gp07/src/pages/home/cards/wallet_card.dart';
-import '../../shared/model/model_home_screen_card.dart';
+
+import 'cards/card_credit_card.dart';
+import 'cards/expenses_card.dart';
+import 'cards/wallet_card.dart';
+import 'components/home_screen_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -24,17 +24,17 @@ class HomeScreen extends StatelessWidget {
         left: 8.0,
       ),
       children: const [
-        ModelHomeScreenCard(
+        HomeScreenCardWidget(
           title: 'Carteira',
           card: WalletCard(),
         ),
-        ModelHomeScreenCard(
+        HomeScreenCardWidget(
           title: 'Despesas por categoria',
           card: ExpensesCard(),
         ),
-        ModelHomeScreenCard(
+        HomeScreenCardWidget(
           title: 'Cartões cadastrados',
-          card: CardCredit(),
+          card: CreditCard(),
         ),
       ],
     );

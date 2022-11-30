@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:pit02gp07/src/shared/model/model_page_view.dart';
 
 import '../../shared/widget/app_floating_action_button.dart';
 import '../../shared/widget/app_nav_bar.dart';
 import '../../shared/widget/app_top_bar.dart';
+import 'components/page_view_widget.dart';
 import 'home_screen.dart';
 import '../transaction/transactions_screen.dart';
 import 'cards/user_card/user_card_screen.dart';
@@ -41,22 +41,20 @@ class _HomePageState extends State<HomePage> {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
-          ModelPageView(
+          PageViewWidget(
             page: HomeScreen(),
           ),
-          ModelPageView(
+          PageViewWidget(
             page: TransactionsScreen(),
           ),
-          ModelPageView(
+          PageViewWidget(
             page: UserCardScreen(),
           ),
         ],
       ),
-      floatingActionButton: const AppFloatingActionButton(),
+      floatingActionButton: const CustomFloatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: AppNavBar(
-        pageController: pageController,
-      ),
+      bottomNavigationBar: AppNavBar(pageController: pageController),
     );
   }
 }
