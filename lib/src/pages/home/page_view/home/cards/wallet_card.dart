@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
-import '../../../../../model/model_wallet_balance.dart';
-import '../../../../../model/model_wallet_type.dart';
-import '../../../../../shared/constants/app_colors.dart';
+import 'package:pit02gp07/src/core/theme/app_text_style.dart';
+import '../../../../../shared/model/model_wallet_balance.dart';
+import '../../../../../shared/model/model_wallet_type.dart';
+import '../../../../../core/theme/app_colors.dart';
 
 class WalletCard extends StatelessWidget {
   const WalletCard({

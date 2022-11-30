@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../shared/constants/app_text_style.dart';
+import '../../core/theme/app_text_style.dart';
 
 class ModelValue extends StatelessWidget {
   const ModelValue({

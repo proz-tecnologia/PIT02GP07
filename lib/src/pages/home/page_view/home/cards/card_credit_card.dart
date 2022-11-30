@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import '../../../../../model/model_card_credit.dart';
+import '../../../../../shared/model/model_card_credit.dart';
 
 class CardCredit extends StatelessWidget {
   const CardCredit({
@@ -35,4 +35,3 @@ class CardCredit extends StatelessWidget {
     );
   }
 }
-

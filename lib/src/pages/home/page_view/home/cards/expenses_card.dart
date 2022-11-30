@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../model/model_expenses_by_category.dart';
+import '../../../../../shared/model/model_expenses_by_category.dart';
 
 class ExpensesCard extends StatelessWidget {
   const ExpensesCard({
