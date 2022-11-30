@@ -24,11 +24,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: const AppTopBar(title: 'AcCount'),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Form(
+      body: SizedBox(
+        height: height,
+         child: Form(
           key: _formKey,
           onChanged: () => setState(() {}),
           child: ListView(
