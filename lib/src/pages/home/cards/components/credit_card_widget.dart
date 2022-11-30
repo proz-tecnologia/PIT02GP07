@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_text_style.dart';
-import 'model_value.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_style.dart';
+import 'value_widget.dart';
 
-class ModelCardCredit extends StatelessWidget {
-  const ModelCardCredit({
+class CreditCarWidget extends StatelessWidget {
+  const CreditCarWidget({
     Key? key,
     required this.nameCard,
     required this.date,
@@ -51,7 +51,7 @@ class ModelCardCredit extends StatelessWidget {
               ),
             ],
           ),
-          ModelValue(
+          ValueWidget(
             value: value,
           ),
         ],

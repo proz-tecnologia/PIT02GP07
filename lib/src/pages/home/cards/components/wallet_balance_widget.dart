@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_text_style.dart';
+import '../../../../core/theme/app_text_style.dart';
 
-class ModelWalletBalance extends StatelessWidget {
+class WalletBalanceWidget extends StatelessWidget {
   final String value;
   final String type;
   final TextStyle style;
   final MainAxisAlignment alignment;
 
-  const ModelWalletBalance({
+  const WalletBalanceWidget({
     Key? key,
     required this.value,
     required this.type,

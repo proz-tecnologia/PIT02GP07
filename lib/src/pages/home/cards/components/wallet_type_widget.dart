@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'model_wallet_balance.dart';
+import 'wallet_balance_widget.dart';
 
-class ModelWalletType extends StatelessWidget {
+class WalletTypeWidget extends StatelessWidget {
   final IconData icon;
   final Color colorIcon;
   final Color backgroundColor;
@@ -11,7 +11,7 @@ class ModelWalletType extends StatelessWidget {
   final TextStyle style;
   final MainAxisAlignment alignment;
 
-  const ModelWalletType({
+  const WalletTypeWidget({
     Key? key,
     required this.icon,
     required this.colorIcon,
@@ -42,7 +42,7 @@ class ModelWalletType extends StatelessWidget {
           padding: const EdgeInsets.only(
             left: 12.0,
           ),
-          child: ModelWalletBalance(
+          child: WalletBalanceWidget(
             value: value,
             type: type,
             style: style,

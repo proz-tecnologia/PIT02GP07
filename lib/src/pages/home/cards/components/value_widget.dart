@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_text_style.dart';
 
-class ModelValue extends StatelessWidget {
-  const ModelValue({
+import '../../../../core/theme/app_text_style.dart';
+
+class ValueWidget extends StatelessWidget {
+  const ValueWidget({
     Key? key,
     required this.value,
   }) : super(key: key);

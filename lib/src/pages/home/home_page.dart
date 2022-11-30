@@ -6,9 +6,9 @@ import 'package:pit02gp07/src/shared/model/model_page_view.dart';
 import '../../shared/widget/app_floating_action_button.dart';
 import '../../shared/widget/app_nav_bar.dart';
 import '../../shared/widget/app_top_bar.dart';
-import 'page_view/home/home_screen.dart';
-import 'page_view/transactions/transactions_screen.dart';
-import 'page_view/user_card/user_card_screen.dart';
+import 'home_screen.dart';
+import '../transaction/transactions_screen.dart';
+import 'cards/user_card/user_card_screen.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
