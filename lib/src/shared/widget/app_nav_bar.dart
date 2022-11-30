@@ -20,29 +20,25 @@ class _AppNavBarState extends State<AppNavBar> {
   int currentPage = 0;
   @override
   Widget build(BuildContext context) {
-    return StatefulBuilder(
-      builder: ((context, setState) {
-        return BottomNavigationBar(
-          onTap: (page) {
-            setState(
-              () {
-                currentPage = page;
-                widget.pageController.animateToPage(
-                  page,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.linear,
-                );
-              },
+    return BottomNavigationBar(
+      onTap: (page) {
+        setState(
+          () {
+            currentPage = page;
+            widget.pageController.animateToPage(
+              page,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.linear,
             );
           },
-          currentIndex: currentPage,
-          items: const [
-            HomeScreen.item,
-            TransactionsScreen.item,
-            UserCardScreen.item,
-          ],
         );
-      }),
+      },
+      currentIndex: currentPage,
+      items: const [
+        HomeScreen.item,
+        TransactionsScreen.item,
+        UserCardScreen.item,
+      ],
     );
   }
 }
