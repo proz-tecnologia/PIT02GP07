@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
 
-class ModelHomeScreenCard extends StatelessWidget {
+import '../../../core/theme/app_text_style.dart';
+
+class HomeScreenCardWidget extends StatelessWidget {
   final String title;
   final Widget card;
 
-  const ModelHomeScreenCard({
+  const HomeScreenCardWidget({
     Key? key,
     required this.card,
     required this.title,

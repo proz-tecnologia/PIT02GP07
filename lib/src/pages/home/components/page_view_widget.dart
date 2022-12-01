@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ModelPageView extends StatelessWidget {
-  const ModelPageView({
+class PageViewWidget extends StatelessWidget {
+  const PageViewWidget({
     Key? key,
     required this.page,
   }) : super(key: key);
