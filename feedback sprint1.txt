@@ -1,0 +1,18 @@
+Seu trabalho para o curso Flutter [Turma 02] foi avaliado e você tirou 8.0.
+
+Boa tarde, Paula. 
+Obrigado pela entrega da Sprint I do projeto integrador. 
+Sua equipe atingiu parcialmente todos os objetivos. Segue sugestões de melhoria: 
+
+- Toda classe que herda de StatelessWidget ou StatefulWidget (por extensão ou implementação) deve ser considerada como widget e não model. 
+Os models são classes que representam objetos para simplificar o acesso às propriedades e métodos que atuam sobre essas propriedades. Por exemplo, no tratamento de dados que estão vindo de fora no formato JSON e precisam ser transformados em objetos Dart usam-se os models para representar esses dados. 
+
+- Os widgets que são componentizados com objetivo de separar responsabilidades ou reaproveitamento de código podem ser considerados widgets de acesso global ou local da aplicação. Exemplo: um widget CustomCard poderia servir para construir o mesmo tipo de Card que será usado por diferentes widgets por toda a aplicação. Logo, é um widget compartilhado. Já um widget especificamente tratado apenas na tela de perfil do usuário pode ser componetizado para acesso apenas daquele contexto com objetivo de reduzir complexidade e separar responsabilidades. 
+
+- Nesse sentido, poderia transformar todos os widgets na pasta model em classes model ou poderia transformar todos em widgets da feature home ou shared/widget 
+
+- A pasta assets poderia ficar a nível de projeto e não de subpasta de src. 
+
+- O AppNavBar já um StatefulWidget e por isso não precisa de um StatefulBuilder. Usar o setState já resolve a atualização de estado local daquele widget. 
+
+- Segue exemplos de implementação do BottomNavigationBar: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
