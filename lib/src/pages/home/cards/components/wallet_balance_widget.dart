@@ -6,22 +6,25 @@ class WalletBalanceWidget extends StatelessWidget {
   final String value;
   final String type;
   final TextStyle style;
-  final MainAxisAlignment alignment;
+  final CrossAxisAlignment columnAlignment;
+  final MainAxisAlignment rowAlignment;
 
   const WalletBalanceWidget({
     Key? key,
     required this.value,
     required this.type,
     required this.style,
-    required this.alignment,
+    this.columnAlignment = CrossAxisAlignment.center,
+    this.rowAlignment = MainAxisAlignment.start,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: columnAlignment,
       children: [
         Row(
-          mainAxisAlignment: alignment,
+          mainAxisAlignment: rowAlignment,
           children: [
             const Text(
               'R\$: ',
@@ -34,7 +37,7 @@ class WalletBalanceWidget extends StatelessWidget {
           ],
         ),
         Row(
-          mainAxisAlignment: alignment,
+          mainAxisAlignment: rowAlignment,
           children: [
             Text(
               type,

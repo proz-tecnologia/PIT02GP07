@@ -34,7 +34,7 @@ class WalletCard extends StatelessWidget {
                   value: '280,00',
                   type: 'Receitas',
                   style: AppTextStyle.mediumWhite,
-                  alignment: MainAxisAlignment.start,
+                  columnAlignment: CrossAxisAlignment.start,
                 ),
                 WalletTypeWidget(
                   icon: Icons.arrow_circle_down_outlined,
@@ -43,7 +43,7 @@ class WalletCard extends StatelessWidget {
                   value: '33,42',
                   type: 'Despesas',
                   style: AppTextStyle.mediumWhite,
-                  alignment: MainAxisAlignment.start,
+                  columnAlignment: CrossAxisAlignment.start,
                 ),
               ],
             ),

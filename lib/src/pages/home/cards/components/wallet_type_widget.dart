@@ -9,7 +9,8 @@ class WalletTypeWidget extends StatelessWidget {
   final String value;
   final String type;
   final TextStyle style;
-  final MainAxisAlignment alignment;
+  final CrossAxisAlignment columnAlignment;
+  final MainAxisAlignment rowAlignment;
 
   const WalletTypeWidget({
     Key? key,
@@ -19,7 +20,8 @@ class WalletTypeWidget extends StatelessWidget {
     required this.value,
     required this.type,
     required this.style,
-    required this.alignment,
+    this.columnAlignment = CrossAxisAlignment.center,
+    this.rowAlignment = MainAxisAlignment.start,
   }) : super(key: key);
 
   @override
@@ -46,7 +48,6 @@ class WalletTypeWidget extends StatelessWidget {
             value: value,
             type: type,
             style: style,
-            alignment: alignment,
           ),
         ),
       ],
