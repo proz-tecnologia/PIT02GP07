@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/login/login_page.dart';
-//import 'pages/home/home_page.dart';
-//import 'pages/login/login_screen.dart';
-import 'shared/constants/app_theme.dart';
+import 'src/core/theme/app_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

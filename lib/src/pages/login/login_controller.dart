@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../shared/constants/shared_preferences_keys.dart';
+import '../../shared/shared_preferences_keys.dart';
 import 'login_state.dart';
 
 class LoginController {
