@@ -2,8 +2,11 @@
 import 'package:flutter/material.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+
   const CustomFloatingActionButton({
     Key? key,
+    this.onPressed,
   }) : super(key: key);
 
   @override
