@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
+import 'package:pit02gp07/src/pages/home/cards/components/expenses_card_widget.dart';
 
 import 'package:pit02gp07/src/pages/home/cards/components/wallet_type_widget.dart';
 
@@ -54,7 +55,99 @@ class TransactionsScreen extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 16.0),
+          child: Text(
+            'Data',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: AppColors.iceWhite),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: const [
+                  ExpensesCardWidget(
+                    category: 'Nome da despesa 1',
+                    value: '0,11',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: const [
+                  ExpensesCardWidget(
+                    category: 'Nome da despesa 2',
+                    value: '0,12',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 16.0),
+          child: Text(
+            'Data',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: AppColors.iceWhite),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: const [
+                  ExpensesCardWidget(
+                    category: 'Nome da despesa 3',
+                    value: '0,13',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: const [
+                  ExpensesCardWidget(
+                    category: 'Nome da despesa 4',
+                    value: '0,14',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
