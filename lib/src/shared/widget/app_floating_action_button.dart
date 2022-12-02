@@ -14,7 +14,7 @@ class CustomFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       tooltip: 'Adicionar receita/despesa',
       elevation: 12.0,
-      onPressed: () {},
+      onPressed: onPressed,
       child: const Icon(
         size: 35.0,
         Icons.add,

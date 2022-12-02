@@ -1,17 +1,18 @@
-class HomeController {
-  final double balance;
-  final double expenses;
-  final double revenue;
-  final String categoriesList;
-  final String typeList;
-  final String accountType;
+import 'package:flutter/cupertino.dart';
+import 'package:pit02gp07/src/model/expenses_model.dart';
 
-  HomeController({
-    required this.balance,
-    required this.expenses,
-    required this.revenue,
-    required this.categoriesList,
-    required this.typeList,
-    required this.accountType,
-  });
+class HomeController {
+  
+  final typeList = <String>["Despesa", "Receita"];
+  final categoriesList = <String>["Alimentação", "Educação"];
+  final accountTypeList = <String>["Carteira", "Cartão"];
+
+  final expensesList = <ExpenseModel>[];
+  var expensesValue = ValueNotifier<double>(0.0);
+  var revenuesValue = ValueNotifier<double>(0.0);
+  var balanceValue = ValueNotifier<double>(0.0);
+
+  void addExpenseList(ExpenseModel newValue) {
+    expensesList.add(newValue);
+  }
 }
