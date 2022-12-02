@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/transaction/transaction_card.dart';
+
+import 'package:pit02gp07/src/pages/transaction/transactions_screen.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -19,7 +20,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const TransactionCard(),
+            builder: (context) => const TransactionsScreen(),
           ),
         );
       },
