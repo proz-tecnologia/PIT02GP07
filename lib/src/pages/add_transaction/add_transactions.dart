@@ -118,7 +118,7 @@ class _AddTransactionsState extends State<AddTransactions> {
                 onPressed: () {
                   Navigator.pop(
                     context,
-                    controller.adicionarEntrada(
+                    controller.addEntry(
                       name: nameController.text,
                       stringValue: valueController.text,
                       type: dropdownType,
