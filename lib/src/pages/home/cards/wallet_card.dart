@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/home/cards/components/wallet_balance_widget.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_style.dart';
@@ -21,6 +22,12 @@ class WalletCard extends StatelessWidget {
         padding: const EdgeInsets.all(28.0),
         child: Column(
           children: [
+            const WalletBalanceWidget(
+              value: '0,00',
+              type: 'Saldo',
+              style: AppTextStyle.extraLargeWhite,
+              rowAlignment: MainAxisAlignment.center,
+            ),
             const SizedBox(
               height: 12.0,
             ),
