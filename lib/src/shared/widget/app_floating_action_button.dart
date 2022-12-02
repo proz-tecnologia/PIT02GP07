@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/transaction/transaction_card.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -14,7 +15,14 @@ class CustomFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       tooltip: 'Adicionar receita/despesa',
       elevation: 12.0,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TransactionCard(),
+          ),
+        );
+      },
       child: const Icon(
         size: 35.0,
         Icons.add,
