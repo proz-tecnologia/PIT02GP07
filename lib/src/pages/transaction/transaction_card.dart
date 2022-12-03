@@ -19,24 +19,27 @@ class TransactionCard extends StatefulWidget {
 class _TransactionCardState extends State<TransactionCard> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.only(right: 8.0, left: 8.0),
-      children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
+    return SizedBox(
+      height: 400,
+      child: ListView(
+        padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+        children: [
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            elevation: 8.0,
+            child: Padding(
+              padding: const EdgeInsets.all(28.0),
+              child: Column(children: [
+                ExpensesCardWidget(
+                  category: widget.category,
+                  value: widget.value)
+              ]),
+            ),
           ),
-          elevation: 8.0,
-          child: Padding(
-            padding: const EdgeInsets.all(28.0),
-            child: Column(children: [
-              ExpensesCardWidget(
-                category: widget.category,
-                value: widget.value)
-            ]),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

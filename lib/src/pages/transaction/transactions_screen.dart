@@ -49,14 +49,17 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               ),
             ),
           ),
-          ListView.builder(
-            itemCount: 1,
-            itemBuilder: (BuildContext context, int index) {
-              return const TransactionCard(
-                category: '',
-                value: '',
-              );
-            },
+          SizedBox(
+            height: 400,
+            child: ListView.builder(
+              itemCount: 1,
+              itemBuilder: (BuildContext context, int index) {
+                return const TransactionCard(
+                  category: '',
+                  value: '',
+                );
+              },
+            ),
           ),
         ],
       ),
