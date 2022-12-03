@@ -5,18 +5,18 @@ import 'transaction_card.dart';
 import 'transaction_resume_card.dart';
 
 class TransactionsScreen extends StatefulWidget {
-   final String revenueValue;
+  final String revenueValue;
   final String expenseValue;
 
-   final int listExpensesLength;
-  final List<ExpenseModel> listExpenses;
+  final int entryListLength;
+  final List<ExpenseModel> entrylist;
 
   const TransactionsScreen({
     Key? key,
     required this.revenueValue,
     required this.expenseValue,
-    required this.listExpensesLength,
-    required this.listExpenses,
+    required this.entryListLength,
+    required this.entrylist,
   }) : super(key: key);
 
   static const BottomNavigationBarItem item = BottomNavigationBarItem(
@@ -43,16 +43,19 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             elevation: 8.0,
             child: Padding(
               padding: const EdgeInsets.all(28.0),
-              child:  TransactionResumeCard(
+              child: TransactionResumeCard(
                 revenueValue: widget.revenueValue,
                 expenseValue: widget.expenseValue,
-                ),
+              ),
             ),
           ),
           ListView.builder(
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
-              return const TransactionCard(category: '', value: '',);
+              return const TransactionCard(
+                category: '',
+                value: '',
+              );
             },
           ),
         ],

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'cards/card_credit_card.dart';
@@ -6,9 +7,16 @@ import 'cards/wallet_card.dart';
 import 'components/home_screen_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
+  final double revenueValue;
+  final double expenseValue;
+  final double balanceValue;
+
   const HomeScreen({
-    super.key,
-  });
+    Key? key,
+    required this.revenueValue,
+    required this.expenseValue,
+    required this.balanceValue,
+  }) : super(key: key);
 
   static const BottomNavigationBarItem item = BottomNavigationBarItem(
     icon: Icon(Icons.home),
@@ -23,16 +31,20 @@ class HomeScreen extends StatelessWidget {
         right: 8.0,
         left: 8.0,
       ),
-      children: const [
+      children: [
         HomeScreenCardWidget(
           title: 'Carteira',
-          card: WalletCard(),
+          card: WalletCard(
+            revenueValue: revenueValue,
+            expenseValue: expenseValue,
+            balanceValue: balanceValue,
+          ),
         ),
-        HomeScreenCardWidget(
+        const HomeScreenCardWidget(
           title: 'Despesas por categoria',
           card: ExpensesCard(),
         ),
-        HomeScreenCardWidget(
+        const HomeScreenCardWidget(
           title: 'Cartões cadastrados',
           card: CreditCard(),
         ),
