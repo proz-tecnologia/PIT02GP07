@@ -9,6 +9,8 @@ class HomeController {
   final accountTypeList = <String>["Carteira", "Cartão"];
 
   final entryList = <ExpenseModel>[];
+  int get entryListLength => entryList.length;
+
   var expensesValue = ValueNotifier<double>(0.0);
   var revenuesValue = ValueNotifier<double>(0.0);
   var balanceValue = ValueNotifier<double>(0.0);

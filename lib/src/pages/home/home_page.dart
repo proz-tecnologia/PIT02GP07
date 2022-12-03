@@ -59,8 +59,13 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-          const PageViewWidget(
-            page: TransactionsScreen(),
+          PageViewWidget(
+            page: TransactionsScreen(
+              expenseValue: '',
+              entrylist: controller.entryList,
+              entryListLength: controller.entryListLength,
+              revenueValue: '',
+            ),
           ),
           const PageViewWidget(
             page: UserCardScreen(),
