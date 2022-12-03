@@ -26,14 +26,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final PageController pageController;
+  final PageController pageController = PageController();
   final controller = HomeController();
 
-  @override
-  void initState() {
-    super.initState();
-    pageController = PageController();
-  }
+  // @override
+  // void initState() {
+  //   controller.balanceValue.addListener(() {
+  //     setState(() {});
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +46,23 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          PageViewWidget(
-            page: HomeScreen(),
+        children: [
+          ValueListenableBuilder<double>(
+            valueListenable: controller.balanceValue,
+            builder: (context, value, child) {
+              return PageViewWidget(
+                page: HomeScreen(
+                  revenueValue: controller.expensesValue.value,
+                  expenseValue: controller.revenuesValue.value,
+                  balanceValue: controller.balanceValue.value,
+                ),
+              );
+            },
           ),
-          PageViewWidget(
+          const PageViewWidget(
             page: TransactionsScreen(),
           ),
-          PageViewWidget(
+          const PageViewWidget(
             page: UserCardScreen(),
           ),
         ],
@@ -59,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: CustomFloatingActionButton(
         onPressed: (() async {
           log('Botão Adicionar');
-          controller.addExpenseList(
+          controller.addEntryIntoList(
             await Navigator.push(
               context,
               MaterialPageRoute(
