@@ -1,12 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/shared/constants/app_text_style.dart';
-import '../../../../../model/model_wallet_balance.dart';
-import '../../../../../model/model_wallet_type.dart';
-import '../../../../../shared/constants/app_colors.dart';
+
+import 'package:pit02gp07/src/pages/home/cards/components/wallet_balance_widget.dart';
+
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_text_style.dart';
+import 'components/wallet_type_widget.dart';
 
 class WalletCard extends StatelessWidget {
+  final double revenueValue;
+  final double expenseValue;
+  final double balanceValue;
+  
   const WalletCard({
     Key? key,
+    required this.revenueValue,
+    required this.expenseValue,
+    required this.balanceValue,
   }) : super(key: key);
 
   @override
@@ -21,8 +31,8 @@ class WalletCard extends StatelessWidget {
         padding: const EdgeInsets.all(28.0),
         child: Column(
           children: [
-            const ModelWalletBalance(
-              value: '246,58',
+             WalletBalanceWidget(
+              value: balanceValue.toStringAsFixed(2),
               type: 'Saldo',
               style: AppTextStyle.extraLargeWhite,
               rowAlignment: MainAxisAlignment.center,
@@ -32,21 +42,21 @@ class WalletCard extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                ModelWalletType(
+              children: [
+                WalletTypeWidget(
                   icon: Icons.arrow_circle_up_outlined,
                   colorIcon: AppColors.iceWhite,
                   backgroundColor: AppColors.mediumGreen,
-                  value: '280,00',
+                  value: revenueValue.toStringAsFixed(2),
                   type: 'Receitas',
                   style: AppTextStyle.mediumWhite,
                   columnAlignment: CrossAxisAlignment.start,
                 ),
-                ModelWalletType(
+                WalletTypeWidget(
                   icon: Icons.arrow_circle_down_outlined,
                   colorIcon: AppColors.iceWhite,
                   backgroundColor: AppColors.lightRed,
-                  value: '33,42',
+                  value: expenseValue.toStringAsFixed(2),
                   type: 'Despesas',
                   style: AppTextStyle.mediumWhite,
                   columnAlignment: CrossAxisAlignment.start,

@@ -1,14 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/home/page_view/home/cards/card_credit_card.dart';
-import 'package:pit02gp07/src/pages/home/page_view/home/cards/expenses_card.dart';
-import 'package:pit02gp07/src/pages/home/page_view/home/cards/wallet_card.dart';
-import '../../../../model/model_home_screen_card.dart';
+
+import 'cards/card_credit_card.dart';
+import 'cards/expenses_card.dart';
+import 'cards/wallet_card.dart';
+import 'components/home_screen_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
+  final double revenueValue;
+  final double expenseValue;
+  final double balanceValue;
+
   const HomeScreen({
-    super.key,
-  });
+    Key? key,
+    required this.revenueValue,
+    required this.expenseValue,
+    required this.balanceValue,
+  }) : super(key: key);
 
   static const BottomNavigationBarItem item = BottomNavigationBarItem(
     icon: Icon(Icons.home),
@@ -23,18 +31,22 @@ class HomeScreen extends StatelessWidget {
         right: 8.0,
         left: 8.0,
       ),
-      children: const [
-        ModelHomeScreenCard(
+      children: [
+        HomeScreenCardWidget(
           title: 'Carteira',
-          card: WalletCard(),
+          card: WalletCard(
+            revenueValue: revenueValue,
+            expenseValue: expenseValue,
+            balanceValue: balanceValue,
+          ),
         ),
-        ModelHomeScreenCard(
+        const HomeScreenCardWidget(
           title: 'Despesas por categoria',
           card: ExpensesCard(),
         ),
-        ModelHomeScreenCard(
+        const HomeScreenCardWidget(
           title: 'Cartões cadastrados',
-          card: CardCredit(),
+          card: CreditCard(),
         ),
       ],
     );

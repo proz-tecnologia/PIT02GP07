@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../model/model_expenses_by_category.dart';
+
+import 'components/expenses_card_widget.dart';
+
 
 class ExpensesCard extends StatelessWidget {
   const ExpensesCard({
@@ -18,19 +20,19 @@ class ExpensesCard extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: const [
-            ModelExpensesByCategory(
+            ExpensesCardWidget(
               category: 'Alimentação',
               value: '16,07',
             ),
-            ModelExpensesByCategory(
+            ExpensesCardWidget(
               category: 'Educação',
               value: '11,45',
             ),
-            ModelExpensesByCategory(
+            ExpensesCardWidget(
               category: 'Vestuário',
               value: '4,74',
             ),
-            ModelExpensesByCategory(
+            ExpensesCardWidget(
               category: 'Outros...',
               value: '  1,26',
             ),
