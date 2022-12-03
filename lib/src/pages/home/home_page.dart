@@ -44,14 +44,14 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          PageViewWidget(
+        children:  [
+          const PageViewWidget(
             page: HomeScreen(),
           ),
           PageViewWidget(
-            page: TransactionsScreen(),
+            page: TransactionsScreen(expenseValue: '', listExpenses: controller.expensesList, listExpensesLength: controller.listExpensesLength, revenueValue: '',),
           ),
-          PageViewWidget(
+          const PageViewWidget(
             page: UserCardScreen(),
           ),
         ],
