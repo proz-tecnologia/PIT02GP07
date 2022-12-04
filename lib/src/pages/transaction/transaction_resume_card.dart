@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
-
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_style.dart';
-import '../home/cards/components/wallet_type_widget.dart';
+import '../components/wallet_type_widget.dart';
 
 class TransactionResumeCard extends StatelessWidget {
-  final String revenueValue;
-  final String expenseValue;
+  final double revenueValue;
+  final double expenseValue;
+
   const TransactionResumeCard({
     Key? key,
     required this.revenueValue,
@@ -20,21 +19,21 @@ class TransactionResumeCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         WalletTypeWidget(
-            icon: Icons.arrow_circle_up_outlined,
-            colorIcon: AppColors.iceWhite,
-            backgroundColor: AppColors.mediumGreen,
-            value: revenueValue,
-            type: 'Receitas',
-            style: AppTextStyle.mediumWhite
-            ),
+          icon: Icons.arrow_circle_up_outlined,
+          colorIcon: AppColors.iceWhite,
+          backgroundColor: AppColors.mediumGreen,
+          value: revenueValue.toStringAsFixed(2),
+          type: 'Receitas',
+          style: AppTextStyle.mediumWhite,
+        ),
         WalletTypeWidget(
-            icon: Icons.arrow_circle_up_outlined,
-            colorIcon: AppColors.iceWhite,
-            backgroundColor: AppColors.lightRed,
-            value: expenseValue,
-            type: 'Despesas',
-            style: AppTextStyle.mediumWhite
-            ),
+          icon: Icons.arrow_circle_down_outlined,
+          colorIcon: AppColors.iceWhite,
+          backgroundColor: AppColors.lightRed,
+          value: expenseValue.toStringAsFixed(2),
+          type: 'Despesas',
+          style: AppTextStyle.mediumWhite,
+        ),
       ],
     );
   }

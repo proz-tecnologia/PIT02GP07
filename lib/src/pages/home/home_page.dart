@@ -1,17 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import '../../shared/widget/app_floating_action_button.dart';
 import '../../shared/widget/app_nav_bar.dart';
 import '../../shared/widget/app_top_bar.dart';
 import '../add_transaction/add_transactions.dart';
-import 'components/page_view_widget.dart';
+import '../components/page_view_widget.dart';
 import 'home_screen.dart';
-import '../transaction/transactions_screen.dart';
-import 'cards/user_card/user_card_screen.dart';
-import 'page_view/home/home_controller.dart';
+import '../transaction/transaction_screen.dart';
+import '../credit_card/credit_card_screen.dart';
+import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -29,14 +26,6 @@ class _HomePageState extends State<HomePage> {
   final PageController pageController = PageController();
   final controller = HomeController();
 
-  // @override
-  // void initState() {
-  //   controller.balanceValue.addListener(() {
-  //     setState(() {});
-  //   });
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,37 +41,41 @@ class _HomePageState extends State<HomePage> {
             builder: (context, value, child) {
               return PageViewWidget(
                 page: HomeScreen(
-                  revenueValue: controller.expensesValue.value,
-                  expenseValue: controller.revenuesValue.value,
+                  revenueValue: controller.revenuesValue.value,
+                  expenseValue: controller.expensesValue.value,
                   balanceValue: controller.balanceValue.value,
                 ),
               );
             },
           ),
-          PageViewWidget(
-            page: TransactionsScreen(
-              expenseValue: '',
-              entrylist: controller.entryList,
-              entryListLength: controller.entryListLength,
-              revenueValue: '',
-            ),
+          ValueListenableBuilder(
+            valueListenable: controller.balanceValue,
+            builder: ((context, value, child) {
+              return PageViewWidget(
+                page: TransactionsScreen(
+                  expenseValue: controller.expensesValue.value,
+                  revenueValue: controller.revenuesValue.value,
+                  entrylist: controller.entryList,
+                  entryListLength: controller.entryListLength,
+                ),
+              );
+            }),
           ),
           const PageViewWidget(
-            page: UserCardScreen(),
+            page: CreditCardScreen(),
           ),
         ],
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: (() async {
-          log('Botão Adicionar');
-          controller.addEntryIntoList(
+          controller.addNewEntry(
             await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => AddTransactions(
                   typeList: controller.typeList,
                   categoriesList: controller.categoriesList,
-                  accountTypeList: controller.accountTypeList,
+                  accountOriginList: controller.accountOriginList,
                 ),
               ),
             ),
