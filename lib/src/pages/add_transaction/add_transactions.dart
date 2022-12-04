@@ -6,13 +6,13 @@ import 'add_transaction_controller.dart';
 class AddTransactions extends StatefulWidget {
   final List<String> typeList;
   final List<String> categoriesList;
-  final List<String> accountTypeList;
+  final List<String> accountOriginList;
 
   const AddTransactions({
     Key? key,
     required this.typeList,
     required this.categoriesList,
-    required this.accountTypeList,
+    required this.accountOriginList,
   }) : super(key: key);
 
   @override
@@ -27,14 +27,14 @@ class _AddTransactionsState extends State<AddTransactions> {
   final categoryController = TextEditingController();
   String dropdownType = "";
   String dropdownCategory = "";
-  String dropdownAccount = "";
+  String dropdownAccountOrigin = "";
 
   @override
   initState() {
     super.initState();
     dropdownType = widget.typeList.first;
     dropdownCategory = widget.categoriesList.first;
-    dropdownAccount = widget.accountTypeList.first;
+    dropdownAccountOrigin = widget.accountOriginList.first;
   }
 
   @override
@@ -99,14 +99,14 @@ class _AddTransactionsState extends State<AddTransactions> {
                 }).toList(),
               ),
               DropdownButton<String>(
-                value: dropdownAccount,
+                value: dropdownAccountOrigin,
                 icon: const Icon(Icons.arrow_drop_down),
                 onChanged: (String? value) {
                   setState(() {
-                    dropdownAccount = value!;
+                    dropdownAccountOrigin = value!;
                   });
                 },
-                items: widget.accountTypeList
+                items: widget.accountOriginList
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -123,7 +123,7 @@ class _AddTransactionsState extends State<AddTransactions> {
                       stringValue: valueController.text,
                       type: dropdownType,
                       category: dropdownCategory,
-                      accountOrigin: dropdownAccount,
+                      accountOrigin: dropdownAccountOrigin,
                     ),
                   );
                 },

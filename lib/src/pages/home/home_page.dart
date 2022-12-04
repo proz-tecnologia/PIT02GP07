@@ -68,14 +68,14 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: (() async {
-          controller.addEntryIntoList(
+          controller.addNewEntry(
             await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => AddTransactions(
                   typeList: controller.typeList,
                   categoriesList: controller.categoriesList,
-                  accountTypeList: controller.accountTypeList,
+                  accountOriginList: controller.accountOriginList,
                 ),
               ),
             ),
