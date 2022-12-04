@@ -23,11 +23,11 @@ class HomeController {
   }
 
   void updateExpensesValue(value) {
-    expensesValue.value = value;
+    expensesValue.value += value;
   }
 
   void updateRevenuesValue(value) {
-    revenuesValue.value = value;
+    revenuesValue.value += value;
   }
 
   void updateBalanceValue() {

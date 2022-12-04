@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pit02gp07/src/pages/home/cards/components/expenses_card_widget.dart';
+import 'package:pit02gp07/src/pages/components/expenses_card_widget.dart';
 
 class TransactionCard extends StatefulWidget {
   final String value;

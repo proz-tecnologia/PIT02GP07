@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_text_style.dart';
+import '../../core/theme/app_text_style.dart';
 import 'value_widget.dart';
 
 class ExpensesCardWidget extends StatelessWidget {
