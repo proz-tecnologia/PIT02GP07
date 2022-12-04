@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_style.dart';
 import '../components/wallet_type_widget.dart';
@@ -7,6 +6,7 @@ import '../components/wallet_type_widget.dart';
 class TransactionResumeCard extends StatelessWidget {
   final double revenueValue;
   final double expenseValue;
+
   const TransactionResumeCard({
     Key? key,
     required this.revenueValue,
@@ -27,7 +27,7 @@ class TransactionResumeCard extends StatelessWidget {
           style: AppTextStyle.mediumWhite,
         ),
         WalletTypeWidget(
-          icon: Icons.arrow_circle_up_outlined,
+          icon: Icons.arrow_circle_down_outlined,
           colorIcon: AppColors.iceWhite,
           backgroundColor: AppColors.lightRed,
           value: expenseValue.toStringAsFixed(2),
