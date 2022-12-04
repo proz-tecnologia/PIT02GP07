@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UserCardScreen extends StatelessWidget {
-  const UserCardScreen({
+class CreditCardScreen extends StatelessWidget {
+  const CreditCardScreen({
     super.key,
   });
 

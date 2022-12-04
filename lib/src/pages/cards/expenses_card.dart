@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/expenses_card_widget.dart';
-
+import '../components/expenses_card_widget.dart';
 
 class ExpensesCard extends StatelessWidget {
   const ExpensesCard({
@@ -34,7 +33,7 @@ class ExpensesCard extends StatelessWidget {
             ),
             ExpensesCardWidget(
               category: 'Outros...',
-              value: '  1,26',
+              value: '1,26',
             ),
           ],
         ),
