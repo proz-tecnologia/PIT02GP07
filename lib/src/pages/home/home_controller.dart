@@ -16,7 +16,7 @@ class HomeController {
   void addNewEntry(ExpenseModel? expenseModel) {
     if (expenseModel != null) {
       entryList.add(expenseModel);
-      addValueByType(expenseModel);
+      updateValueByType(expenseModel);
     }
   }
 
@@ -32,7 +32,7 @@ class HomeController {
     balanceValue.value = revenuesValue.value - expensesValue.value;
   }
 
-  void addValueByType(ExpenseModel expenseModel) {
+  void updateValueByType(ExpenseModel expenseModel) {
     if (expenseModel.type == "Despesa") {
       updateExpensesValue(expenseModel.value);
     } else if (expenseModel.type == "Receita") {
