@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:pit02gp07/src/model/expenses_model.dart';
 
@@ -15,11 +13,11 @@ class HomeController {
   var revenuesValue = ValueNotifier<double>(0.0);
   var balanceValue = ValueNotifier<double>(0.0);
 
-  void addEntryIntoList(ExpenseModel expenseModel) {
-    entryList.add(expenseModel);
-    updateExpensesValue(
-        expenseModel.value); //todo implementar updateRevenuesValue()
-    updateBalanceValue();
+  void addEntryIntoList(ExpenseModel? expenseModel) {
+    if (expenseModel != null) {
+      entryList.add(expenseModel);
+      addValueByCategory(expenseModel);
+    }
   }
 
   void updateExpensesValue(value) {
@@ -32,5 +30,14 @@ class HomeController {
 
   void updateBalanceValue() {
     balanceValue.value = revenuesValue.value - expensesValue.value;
+  }
+
+  void addValueByCategory(ExpenseModel expenseModel) {
+    if (expenseModel.type == "Despesa") {
+      updateExpensesValue(expenseModel.value);
+    } else if (expenseModel.type == "Receita") {
+      updateRevenuesValue(expenseModel.value);
+    }
+    updateBalanceValue();
   }
 }
