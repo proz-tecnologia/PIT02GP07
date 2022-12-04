@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/components/value_widget.dart';
-
 import '../../core/theme/app_text_style.dart';
 import '../../model/expenses_model.dart';
-import 'transaction_card.dart';
 import 'transaction_resume_card.dart';
 
 class TransactionsScreen extends StatefulWidget {
@@ -55,6 +53,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             height: 12.0,
           ),
           ListView.builder(
+            //todo oveflow no botão quando o ListView fica maior que a area visível.
             shrinkWrap: true,
             itemCount: widget.entryListLength,
             itemBuilder: (BuildContext context, int index) {
@@ -73,8 +72,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     style: AppTextStyle.smallWhite,
                   ),
                   trailing: SizedBox(
-                    width: 70.0,
+                    width: 100,
                     child: ValueWidget(
+                      //todo overflow em "value" com valores altos. ex: 1.000.000,00
                       value: widget.entrylist[index].value.toStringAsFixed(2),
                     ),
                   ),
