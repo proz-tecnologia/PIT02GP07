@@ -10,9 +10,21 @@ class AppTextStyle {
     fontSize: 14.0,
     color: AppColors.iceWhite,
   );
+  static const TextStyle smallRed = TextStyle(
+    fontSize: 14.0,
+    color: AppColors.lightRed,
+  );
   static const TextStyle mediumWhite = TextStyle(
     fontSize: 18.0,
     color: AppColors.iceWhite,
+  );
+  static const TextStyle mediumRed = TextStyle(
+    fontSize: 18.0,
+    color: AppColors.lightRed,
+  );
+  static const TextStyle mediumGreen = TextStyle(
+    fontSize: 18.0,
+    color: AppColors.mediumGreen,
   );
   static const TextStyle largeWhite = TextStyle(
     fontSize: 20.0,
@@ -21,13 +33,5 @@ class AppTextStyle {
   static const TextStyle extraLargeWhite = TextStyle(
     fontSize: 36.0,
     color: AppColors.iceWhite,
-  );
-  static const TextStyle smallRed = TextStyle(
-    fontSize: 14.0,
-    color: AppColors.lightRed,
-  );
-  static const TextStyle mediumRed = TextStyle(
-    fontSize: 18.0,
-    color: AppColors.lightRed,
   );
 }

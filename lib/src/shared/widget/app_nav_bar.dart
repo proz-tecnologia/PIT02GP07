@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../pages/home/home_screen.dart';
-import '../../pages/transaction/transactions_screen.dart';
+import '../../pages/transaction/transaction_screen.dart';
 import '../../pages/credit_card/credit_card_screen.dart';
 
 class AppNavBar extends StatefulWidget {

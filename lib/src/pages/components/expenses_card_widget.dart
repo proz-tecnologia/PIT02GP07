@@ -26,7 +26,9 @@ class ExpensesCardWidget extends StatelessWidget {
             category,
             style: AppTextStyle.mediumWhite,
           ),
-          ValueWidget(value: value),
+          ValueWidget(
+            value: value,
+          ),
         ],
       ),
     );

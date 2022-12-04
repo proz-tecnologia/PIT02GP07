@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/components/value_widget.dart';
+import 'package:pit02gp07/src/pages/transaction/transaction_controller.dart';
 import '../../core/theme/app_text_style.dart';
 import '../../model/expenses_model.dart';
 import 'transaction_resume_card.dart';
@@ -30,6 +31,7 @@ class TransactionsScreen extends StatefulWidget {
 }
 
 class _TransactionsScreenState extends State<TransactionsScreen> {
+  final controller = TransactionsController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -71,12 +73,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     widget.entrylist[index].category,
                     style: AppTextStyle.smallWhite,
                   ),
-                  trailing: SizedBox(
-                    width: 100,
-                    child: ValueWidget(
-                      //todo overflow em "value" com valores altos. ex: 1.000.000,00
-                      value: widget.entrylist[index].value.toStringAsFixed(2),
-                    ),
+                  trailing: ValueWidget(
+                    value: widget.entrylist[index].value.toStringAsFixed(2),
+                    style: controller.colorByType(widget.entrylist[index].type),
                   ),
                 ),
               );

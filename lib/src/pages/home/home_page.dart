@@ -6,7 +6,7 @@ import '../../shared/widget/app_top_bar.dart';
 import '../add_transaction/add_transactions.dart';
 import '../components/page_view_widget.dart';
 import 'home_screen.dart';
-import '../transaction/transactions_screen.dart';
+import '../transaction/transaction_screen.dart';
 import '../credit_card/credit_card_screen.dart';
 import 'home_controller.dart';
 
