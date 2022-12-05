@@ -1,6 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
 import 'add_transaction_controller.dart';
 
 class AddTransactions extends StatefulWidget {
@@ -40,98 +40,155 @@ class _AddTransactionsState extends State<AddTransactions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Form(
-        key: _formKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              TextFormField(
-                controller: nameController,
-                validator: ((title) {
-                  if (title == null || title.isEmpty) {
-                    return 'Adicione um nome';
-                  }
-                  return null;
-                }),
-              ),
-              TextFormField(
-                controller: valueController,
-                validator: ((value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Adicione um valor';
-                  }
-                  return null;
-                }),
-              ),
-              DropdownButton<String>(
-                value: dropdownType,
-                icon: const Icon(Icons.arrow_drop_down),
-                onChanged: (String? value) {
-                  setState(() {
-                    dropdownType = value!;
-                  });
-                },
-                items: widget.typeList
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              DropdownButton<String>(
-                value: dropdownCategory,
-                icon: const Icon(Icons.arrow_drop_down),
-                onChanged: (String? value) {
-                  setState(() {
-                    dropdownCategory = value!;
-                  });
-                },
-                items: widget.categoriesList
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              DropdownButton<String>(
-                value: dropdownAccountOrigin,
-                icon: const Icon(Icons.arrow_drop_down),
-                onChanged: (String? value) {
-                  setState(() {
-                    dropdownAccountOrigin = value!;
-                  });
-                },
-                items: widget.accountOriginList
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(
-                    context,
-                    controller.addEntry(
-                      name: nameController.text,
-                      stringValue: valueController.text,
-                      type: dropdownType,
-                      category: dropdownCategory,
-                      accountOrigin: dropdownAccountOrigin,
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Salvar',
+      appBar: AppBar(
+        title: const Text('Adicionar operação'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Form(
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextFormField(
+                    controller: nameController,
+                    validator: ((title) {
+                      if (title == null || title.isEmpty) {
+                        return 'Adicione um nome';
+                      }
+                      return null;
+                    }),
+                    decoration: const InputDecoration(
+                        icon: Icon(Icons.border_color_rounded),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.iceWhite),
+                        ),
+                        hintText: 'Informe um nome para a operação.',
+                        labelText: 'Adicionar um nome',
+                        labelStyle: TextStyle(color: AppColors.darkGold)),
+                  ),
                 ),
-              )
-            ],
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextFormField(
+                    controller: valueController,
+                    validator: ((value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Adicione um valor';
+                      }
+                      return null;
+                    }),
+                    decoration: const InputDecoration(
+                        icon: Icon(Icons.monetization_on),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.iceWhite),
+                        ),
+                        hintText: 'Informe o valor da operação.',
+                        labelText: 'Adicione um valor',
+                        labelStyle: TextStyle(color: AppColors.darkGold)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons
+                          .trending_down_rounded), //- TODO - mudar o ícone conforme o tipo da operação,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.iceWhite),
+                      ),
+                    ),
+                    value: dropdownType,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    onChanged: (String? value) {
+                      setState(() {
+                        dropdownType = value!;
+                      });
+                    },
+                    items: widget.typeList
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                        icon: Icon(Icons.category_rounded),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.iceWhite))),
+                    value: dropdownCategory,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    onChanged: (String? value) {
+                      setState(() {
+                        dropdownCategory = value!;
+                      });
+                    },
+                    items: widget.categoriesList
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: DropdownButtonFormField<String>(
+                    // - mudar o ícone caso seja carteira ou caso seja cartão
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.account_balance_wallet_rounded),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.iceWhite),
+                      ),
+                    ),
+                    value: dropdownAccountOrigin,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    onChanged: (String? value) {
+                      setState(() {
+                        dropdownAccountOrigin = value!;
+                      });
+                    },
+                    items: widget.accountOriginList
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        controller.addEntry(
+                          name: nameController.text,
+                          stringValue: valueController.text,
+                          type: dropdownType,
+                          category: dropdownCategory,
+                          accountOrigin: dropdownAccountOrigin,
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Salvar',
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
