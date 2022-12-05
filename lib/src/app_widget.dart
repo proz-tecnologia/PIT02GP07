@@ -14,7 +14,7 @@ class App extends StatelessWidget {
         title: 'Carlos',
       ), */
       home: const HomePage(
-        title: '',
+        title: 'Carlos',
       ),
     );
   }
