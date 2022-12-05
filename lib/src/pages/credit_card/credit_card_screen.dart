@@ -20,8 +20,8 @@ class CreditCardScreen extends StatefulWidget {
 
   static const BottomNavigationBarItem item = BottomNavigationBarItem(
     icon: Icon(Icons.credit_card_outlined),
-    label: 'Cartões',
-    tooltip: 'Ir para Cartões',
+    label: 'Cartão',
+    tooltip: 'Ir para despesas no Cartão',
   );
 
   @override
