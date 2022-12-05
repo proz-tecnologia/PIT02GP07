@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class ExpenseModel {
   final String name;
   final double value;
@@ -64,8 +63,8 @@ class ExpenseModel {
   @override
   bool operator ==(covariant ExpenseModel other) {
     if (identical(this, other)) return true;
-  
-    return 
+
+    return
       other.name == name &&
       other.value == value &&
       other.type == type &&
