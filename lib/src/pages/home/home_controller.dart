@@ -9,18 +9,13 @@ class HomeController {
   final entryList = <ExpenseModel>[];
   int get entryListLength => entryList.length;
 
-  final expenseInCreditCardList = <ExpenseModel>[];
-  int get expenseInCreditCardListLength => expenseInCreditCardList.length;
-
   var expensesValue = ValueNotifier<double>(0.0);
   var revenuesValue = ValueNotifier<double>(0.0);
   var balanceValue = ValueNotifier<double>(0.0);
-  var expenseInCreditCard = ValueNotifier<double>(0.0);
 
   void addNewEntry(ExpenseModel? expenseModel) {
     if (expenseModel != null) {
       entryList.add(expenseModel);
-      addExpenseInCreditCard(expenseModel);
       updateValueByType(expenseModel);
     }
   }
@@ -37,10 +32,6 @@ class HomeController {
     balanceValue.value = revenuesValue.value - expensesValue.value;
   }
 
-  updateExpenseInCreditCard(ExpenseModel expenseModel) {
-    expenseInCreditCard.value += expenseModel.value;
-  }
-
   void updateValueByType(ExpenseModel expenseModel) {
     if (expenseModel.type == "Despesa") {
       updateExpensesValue(expenseModel.value);
@@ -48,12 +39,5 @@ class HomeController {
       updateRevenuesValue(expenseModel.value);
     }
     updateBalanceValue();
-  }
-
-  void addExpenseInCreditCard(ExpenseModel expenseModel) {
-    if (expenseModel.accountOrigin == "Cartão") {
-      expenseInCreditCardList.add(expenseModel);
-      updateExpenseInCreditCard(expenseModel);
-    }
   }
 }
