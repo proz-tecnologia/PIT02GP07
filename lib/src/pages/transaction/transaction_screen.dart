@@ -55,7 +55,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             height: 12.0,
           ),
           ListView.builder(
-            //todo: oveflow no botão quando o ListView fica maior que a area visível.
+            //todo oveflow no botão quando o ListView fica maior que a area visível.
             shrinkWrap: true,
             itemCount: widget.entryListLength,
             itemBuilder: (BuildContext context, int index) {

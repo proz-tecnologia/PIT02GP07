@@ -44,7 +44,6 @@ class _HomePageState extends State<HomePage> {
                   revenueValue: controller.revenuesValue.value,
                   expenseValue: controller.expensesValue.value,
                   balanceValue: controller.balanceValue.value,
-                  expenseInCreditCard: controller.expenseInCreditCard.value,
                 ),
               );
             },
@@ -62,19 +61,9 @@ class _HomePageState extends State<HomePage> {
               );
             }),
           ),
-          ValueListenableBuilder<double>(
-            valueListenable: controller.expenseInCreditCard,
-            builder: ((context, value, child) {
-              return PageViewWidget(
-                page: CreditCardScreen(
-                  expenseInCreditCard: controller.expenseInCreditCard.value,
-                  expenseInCreditCardListLength: controller.expenseInCreditCardListLength, 
-                  expenseInCreditCardList: controller.expenseInCreditCardList,
-
-                ),
-              );
-            }),
-          )
+          const PageViewWidget(
+            page: CreditCardScreen(),
+          ),
         ],
       ),
       floatingActionButton: CustomFloatingActionButton(
