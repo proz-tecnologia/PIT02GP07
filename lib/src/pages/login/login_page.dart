@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 
 import '../../core/theme/app_colors.dart';
@@ -181,7 +182,21 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextButton.styleFrom(
                       foregroundColor: AppColors.iceWhite,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SignUpPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Cadastrar-se',
                       style:
