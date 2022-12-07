@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
 import '../components/creditcard_card_widget.dart';
 
 class CreditCard extends StatelessWidget {
+  final double expenseInCreditCard;
+  
   const CreditCard({
-    Key? key,
+    Key? key, 
+    this.expenseInCreditCard= 0.00,
   }) : super(key: key);
 
   @override
@@ -15,12 +17,12 @@ class CreditCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       elevation: 8.0,
-      child: const Padding(
-        padding: EdgeInsets.all(20.0),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: CreditCardWidget(
-          nameCard: 'Cartão itaú',
+          nameCard: 'Meu Cartão',
           date: '18',
-          value: '1,29',
+          value: expenseInCreditCard.toStringAsFixed(2),
         ),
       ),
     );
