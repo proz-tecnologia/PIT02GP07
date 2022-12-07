@@ -19,11 +19,9 @@ class SignUpController {
 
   void setEmpty() => updateState(SignUpStateEmpty());
 
-  Future<void> SignUp({
+  Future<void> signUp({
     required String name,
-    required String phone,
     required String mail,
-    required String cpf,
     required String password,
   }) async {
     try {
@@ -35,8 +33,8 @@ class SignUpController {
     } catch (e) {
       updateState(
         SignUpStateError(
-          exception: Exception('CPF inválido!'),
-          message: 'C.P.F inválido!',
+          exception: Exception(''),
+          message: '',
         ),
       );
     }
