@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/components/value_widget.dart';
-import 'package:pit02gp07/src/pages/transaction/transaction_controller.dart';
-import '../../core/theme/app_text_style.dart';
-import '../../model/expenses_model.dart';
-import 'transaction_resume_card.dart';
+import 'package:pit02gp07/src/pages/transactions/current_transactions/controller/transaction_controller.dart';
+import '../../../core/theme/app_text_style.dart';
+import '../../../model/expenses_model.dart';
+import 'components/transaction_resume_card.dart';
 
 class TransactionsScreen extends StatefulWidget {
   final double revenueValue;

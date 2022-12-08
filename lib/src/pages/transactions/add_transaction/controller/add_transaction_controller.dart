@@ -1,4 +1,4 @@
-import '../../model/expenses_model.dart';
+import '../../../../model/expenses_model.dart';
 
 class AddTransactionsController {
   ExpenseModel addEntry({

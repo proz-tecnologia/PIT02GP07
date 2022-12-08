@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
 
-Widget textFieldInput({label, obsureText = false}) {
+Widget textFieldInput({label, obsureText = true}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [

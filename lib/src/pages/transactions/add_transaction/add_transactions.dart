@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_colors.dart';
-import 'add_transaction_controller.dart';
+import '../../../core/theme/app_colors.dart';
+import 'controller/add_transaction_controller.dart';
 
 class AddTransactions extends StatefulWidget {
   final List<String> typeList;
