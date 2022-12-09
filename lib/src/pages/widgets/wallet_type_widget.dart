@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'wallet_balance_widget.dart';
+import '../home/components/wallet_balance_widget.dart';
 
 class WalletTypeWidget extends StatelessWidget {
   final IconData icon;

@@ -3,7 +3,7 @@ import 'package:pit02gp07/src/pages/auth/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../shared/password_validator.dart';
+import '../components/password_validator.dart';
 import 'controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {

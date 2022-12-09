@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 
-import '../components/home_screen_card_widget.dart';
-import 'cards/creditcard_card.dart';
-import 'cards/expenses_card.dart';
-import 'cards/wallet_card.dart';
+import 'home_screen_card_widget.dart';
+import 'creditcard_card.dart';
+import 'expenses_card.dart';
+import 'wallet_card.dart';
 
 class HomeScreen extends StatelessWidget {
   final double revenueValue;

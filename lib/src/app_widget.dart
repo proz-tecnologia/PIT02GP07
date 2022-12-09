@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
 import 'pages/home/home_page.dart';
-//import 'pages/home/home_page.dart';
+
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       home: const HomePage(
         title: 'Carlos',
       ),
-    
+
     );
   }
 }
