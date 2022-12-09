@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../../shared/widget/app_floating_action_button.dart';
 import '../../shared/widget/app_nav_bar.dart';
 import '../../shared/widget/app_top_bar.dart';
-import '../add_transaction/add_transactions.dart';
+import '../transactions/add_transaction/add_transactions.dart';
 import '../components/page_view_widget.dart';
 import 'home_screen.dart';
-import '../transaction/transaction_screen.dart';
+import '../transactions/current_transactions/transaction_screen.dart';
 import '../credit_card/credit_card_screen.dart';
-import 'home_controller.dart';
+import 'controller/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;

@@ -1,16 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import '../../core/theme/app_text_style.dart';
+
 import '../../model/expenses_model.dart';
-import '../cards/creditcard_card.dart';
 import '../components/value_widget.dart';
-import '../home/home_controller.dart';
+import '../home/cards/creditcard_card.dart';
+import '../home/controller/home_controller.dart';
+
 
 class CreditCardScreen extends StatefulWidget {
   final double expenseInCreditCard;
   final int expenseInCreditCardListLength;
   final List<ExpenseModel> expenseInCreditCardList;
-  
+
   const CreditCardScreen({
     Key? key,
     required this.expenseInCreditCard,
@@ -30,7 +32,7 @@ class CreditCardScreen extends StatefulWidget {
 
 class _CreditCardScreenState extends State<CreditCardScreen> {
   final controller = HomeController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(

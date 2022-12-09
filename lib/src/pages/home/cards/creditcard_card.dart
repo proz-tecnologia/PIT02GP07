@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../components/creditcard_card_widget.dart';
+
+import '../../components/creditcard_card_widget.dart';
 
 class CreditCard extends StatelessWidget {
   final double expenseInCreditCard;
-  
+
   const CreditCard({
-    Key? key, 
+    Key? key,
     this.expenseInCreditCard= 0.00,
   }) : super(key: key);
 

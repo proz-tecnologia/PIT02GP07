@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/auth/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../shared/password_validator.dart';
-import 'login_controller.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../shared/password_validator.dart';
+import 'controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,14 +22,14 @@ class _LoginPageState extends State<LoginPage> {
   final textController = TextEditingController();
   final passwordController = TextEditingController();
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
   late final PageController pageController;
 
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
       if (textFieldFocusNode.hasPrimaryFocus) return;
-      textFieldFocusNode.canRequestFocus = false;
+      textFieldFocusNode.canRequestFocus = true;
     });
   }
 
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -81,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: _obscured,
@@ -101,8 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: _toggleObscured,
                             child: Icon(
                               _obscured
-                                  ? Icons.visibility_rounded
-                                  : Icons.visibility_off_rounded,
+                                  ? Icons.visibility_off_rounded
+                                  : Icons.visibility_rounded,
                               size: 24,
                             ),
                           ),
@@ -123,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: _formKey.currentState?.validate() == true
                           ? () {
@@ -152,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                           : null,
                       style: ButtonStyle(
                           fixedSize:
-                              MaterialStateProperty.all(const Size(400, 40)),
+                              MaterialStateProperty.all(const Size(300, 40)),
                           backgroundColor:
                               MaterialStateProperty.all(AppColors.darkGray),
                           foregroundColor:
@@ -181,7 +182,21 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextButton.styleFrom(
                       foregroundColor: AppColors.iceWhite,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SignUpPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Cadastrar-se',
                       style:
@@ -189,23 +204,23 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           height: 3.0,
-                          width: 145.0,
+                          width: 100.0,
                           color: AppColors.lightGreen,
                         ),
                         const Text(
                           'ou',
                           style: TextStyle(
-                              fontSize: 25.0, color: AppColors.iceWhite),
+                              fontSize: 18.0, color: AppColors.iceWhite),
                         ),
                         Container(
                           height: 3.0,
-                          width: 145.0,
+                          width: 100.0,
                           color: AppColors.lightGreen,
                         )
                       ],
