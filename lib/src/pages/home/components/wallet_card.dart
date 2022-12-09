@@ -5,7 +5,7 @@ import 'package:pit02gp07/src/pages/home/components/wallet_balance_widget.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_style.dart';
-import '../../widgets/wallet_type_widget.dart';
+import '../../../widgets/wallet_type_widget.dart';
 
 class WalletCard extends StatelessWidget {
   final double revenueValue;

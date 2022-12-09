@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import '../widgets/app_floating_action_button.dart';
-import '../widgets/app_nav_bar.dart';
-import '../widgets/app_top_bar.dart';
+import '../../widgets/app_floating_action_button.dart';
+import '../../widgets/app_nav_bar.dart';
+import '../../widgets/app_top_bar.dart';
 import '../transactions/add_transaction/add_transactions.dart';
-import '../widgets/page_view_widget.dart';
+import '../../widgets/page_view_widget.dart';
 import 'components/home_screen.dart';
 import '../transactions/current_transactions/transaction_screen.dart';
 import '../credit_card/credit_card_screen.dart';
