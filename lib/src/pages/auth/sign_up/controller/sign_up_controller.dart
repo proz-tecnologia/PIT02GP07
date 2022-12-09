@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'sign_up_state.dart';
+import '../state/sign_up_state.dart';
 
 class SignUpController {
   SignUpController({

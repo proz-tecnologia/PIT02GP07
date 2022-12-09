@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/sign_up/sign_up_page.dart';
+import 'package:pit02gp07/src/pages/auth/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../shared/password_validator.dart';
-import 'login_controller.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../shared/password_validator.dart';
+import 'controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   final textController = TextEditingController();
   final passwordController = TextEditingController();
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
   late final PageController pageController;
 
   void _toggleObscured() {
@@ -102,8 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: _toggleObscured,
                             child: Icon(
                               _obscured
-                                  ? Icons.visibility_rounded
-                                  : Icons.visibility_off_rounded,
+                                  ? Icons.visibility_off_rounded
+                                  : Icons.visibility_rounded,
                               size: 24,
                             ),
                           ),
