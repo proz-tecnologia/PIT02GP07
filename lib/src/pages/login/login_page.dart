@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _obscured = !_obscured;
       if (textFieldFocusNode.hasPrimaryFocus) return;
-      textFieldFocusNode.canRequestFocus = false;
+      textFieldFocusNode.canRequestFocus = true;
     });
   }
 
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: _obscured,
@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: _formKey.currentState?.validate() == true
                           ? () {
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                           : null,
                       style: ButtonStyle(
                           fixedSize:
-                              MaterialStateProperty.all(const Size(400, 40)),
+                              MaterialStateProperty.all(const Size(300, 40)),
                           backgroundColor:
                               MaterialStateProperty.all(AppColors.darkGray),
                           foregroundColor:
@@ -204,23 +204,23 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           height: 3.0,
-                          width: 145.0,
+                          width: 100.0,
                           color: AppColors.lightGreen,
                         ),
                         const Text(
                           'ou',
                           style: TextStyle(
-                              fontSize: 25.0, color: AppColors.iceWhite),
+                              fontSize: 18.0, color: AppColors.iceWhite),
                         ),
                         Container(
                           height: 3.0,
-                          width: 145.0,
+                          width: 100.0,
                           color: AppColors.lightGreen,
                         )
                       ],
