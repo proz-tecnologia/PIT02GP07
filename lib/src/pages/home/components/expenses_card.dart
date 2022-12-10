@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../components/expenses_card_widget.dart';
+import 'expenses_card_widget.dart';
 
 class ExpensesCard extends StatelessWidget {
   const ExpensesCard({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/components/value_widget.dart';
+import 'package:pit02gp07/src/widgets/value_widget.dart';
 import 'package:pit02gp07/src/pages/transactions/current_transactions/controller/transaction_controller.dart';
 import '../../../core/theme/app_text_style.dart';
 import '../../../model/expenses_model.dart';

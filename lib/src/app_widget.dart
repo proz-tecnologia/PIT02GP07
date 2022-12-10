@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/auth/login/login_page.dart';
 
 import 'core/theme/app_theme.dart';
-import 'pages/home/home_page.dart';
-//import 'pages/home/home_page.dart';
+
+
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,10 +13,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'AcCount',
       theme: AppTheme.lightTheme,
-      home: const HomePage(
-        title: 'Carlos',
-      ),
-    
+      home: const LoginPage()
+
     );
   }
 }

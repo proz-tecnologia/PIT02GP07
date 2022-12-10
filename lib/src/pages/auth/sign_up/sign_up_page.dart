@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/components/icon_button_return_widget.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/components/sign_up_button.dart';
-import 'package:pit02gp07/src/shared/widget/profile_picture.dart';
+import 'package:pit02gp07/src/widgets/profile_picture.dart';
 
-import '../../../shared/widget/text_field_input_widget.dart';
+import '../../../widgets/text_field_input_widget.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -46,9 +46,9 @@ class SignUpPage extends StatelessWidget {
                             label: 'Nome',
                           ),
                           textFieldInput(label: 'Email'),
-                          textFieldInput(label: 'Senha', obsureText: true),
+                          textFieldInput(label: 'Senha', obscureText: true),
                           textFieldInput(
-                              label: 'Confirmar Senha', obsureText: true)
+                              label: 'Confirmar Senha', obscureText: true)
                         ],
                       ),
                     ),

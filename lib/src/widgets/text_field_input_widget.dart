@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_colors.dart';
+import '../core/theme/app_colors.dart';
 
-Widget textFieldInput({label, obsureText = true}) {
+Widget textFieldInput({label, obscureText = true}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -17,7 +17,7 @@ Widget textFieldInput({label, obsureText = true}) {
         height: 5,
       ),
       TextField(
-        obscureText: obsureText,
+        obscureText: obscureText,
         decoration: const InputDecoration(
           //contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
           enabledBorder: UnderlineInputBorder(

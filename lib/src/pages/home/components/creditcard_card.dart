@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../components/creditcard_card_widget.dart';
+import '../../credit_card/components/creditcard_card_widget.dart';
 
 class CreditCard extends StatelessWidget {
   final double expenseInCreditCard;

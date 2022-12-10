@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_text_style.dart';
+import '../../../core/theme/app_text_style.dart';
 
 class WalletBalanceWidget extends StatelessWidget {
   final String value;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_text_style.dart';
 
 import '../../model/expenses_model.dart';
-import '../components/value_widget.dart';
-import '../home/cards/creditcard_card.dart';
+import '../../widgets/value_widget.dart';
+import '../home/components/creditcard_card.dart';
 import '../home/controller/home_controller.dart';
 
 
@@ -46,7 +46,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
             height: 12.0,
           ),
           ListView.builder(
-            //todo: oveflow no botão quando o ListView fica maior que a area visível.
+            //todo: overflow no botão quando o ListView fica maior que a area visível.
             shrinkWrap: true,
             itemCount: widget.expenseInCreditCardListLength,
             itemBuilder: (BuildContext context, int index) {
