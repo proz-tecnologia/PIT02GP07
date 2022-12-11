@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../components/shared_preferences_keys.dart';
 import '../state/login_state.dart';
 
@@ -8,7 +7,7 @@ class LoginController {
   Future<LoginState> login({
     required String name,
     required String password,
-  }) async {
+  }) async {    
 
     final prefs = await SharedPreferences.getInstance();
     await Future.delayed(const Duration(seconds: 2));

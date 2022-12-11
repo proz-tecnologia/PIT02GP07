@@ -13,9 +13,6 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-final RegExp nameRegExp = RegExp('[a-zA-Z]');
-bool invisible = true;
-
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final controller = LoginController();
@@ -24,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   final textFieldFocusNode = FocusNode();
   bool _obscured = true;
   late final PageController pageController;
+  final RegExp nameRegExp = RegExp('[a-zA-Z]');
+  bool invisible = true;
 
   void _toggleObscured() {
     setState(() {
@@ -35,10 +34,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        height: height,
+        height: MediaQuery.of(context).size.height,
         width: double.infinity,
         alignment: Alignment.center,
         child: Form(
@@ -68,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     horizontal: 32,
                   ),
                   child: TextFormField(
+                    controller: nameController,
                     decoration: const InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       hintText: 'Informe nome de usuário.',
@@ -98,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     horizontal: 32,
                   ),
                   child: TextFormField(
+                    controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _obscured,
                     focusNode: textFieldFocusNode,
