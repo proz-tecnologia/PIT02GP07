@@ -212,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Digite a senha novamente!';
-                        } else if (value == confirmController.text) {
+                        } else if (value == passwordController.text) {
                           return null;
                         } else {
                           return 'Senha não confere, digite novamente!';
