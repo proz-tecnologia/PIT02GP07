@@ -18,6 +18,16 @@ class AppTextStyle {
     fontSize: 18.0,
     color: AppColors.iceWhite,
   );
+  static const TextStyle mediumWhiteBold = TextStyle(
+    fontSize: 18.0,
+    color: AppColors.iceWhite,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle logoBold = TextStyle(
+    fontSize: 18.0,
+    color: AppColors.logoBlack,
+    fontWeight: FontWeight.bold,
+  );
   static const TextStyle mediumRed = TextStyle(
     fontSize: 18.0,
     color: AppColors.lightRed,
