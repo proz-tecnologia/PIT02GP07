@@ -1,5 +1,5 @@
+import 'dart:developer';
 import 'dart:ui';
-
 import '../state/sign_up_state.dart';
 
 class SignUpController {
@@ -27,6 +27,8 @@ class SignUpController {
     try {
       updateState(SignUpStateLoading());
 
+      //TODO: salvar dados de cadastro em armazenamento.
+      log('salvando dados de cadastro');
       await Future.delayed(const Duration(seconds: 3));
 
       updateState(SignUpStateSuccess());
@@ -39,5 +41,4 @@ class SignUpController {
       );
     }
   }
-
 }
