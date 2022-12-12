@@ -36,42 +36,43 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-      child: Column(
-        children: [
-          CreditCard(
-            expenseInCreditCard: widget.expenseInCreditCard,
-          ),
-          const SizedBox(
-            height: 12.0,
-          ),
-          ListView.builder(
-            //todo: overflow no botão quando o ListView fica maior que a area visível.
-            shrinkWrap: true,
-            itemCount: widget.expenseInCreditCardListLength,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                elevation: 8.0,
-                child: ListTile(
-                  title: Text(
-                    widget.expenseInCreditCardList[index].name,
-                    style: AppTextStyle.mediumWhite,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CreditCard(
+              expenseInCreditCard: widget.expenseInCreditCard,
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: widget.expenseInCreditCardListLength,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
                   ),
-                  subtitle: Text(
-                    "${widget.expenseInCreditCardList[index].category} (${widget.expenseInCreditCardList[index].accountOrigin})",
-                    style: AppTextStyle.smallWhite,
+                  elevation: 8.0,
+                  child: ListTile(
+                    title: Text(
+                      widget.expenseInCreditCardList[index].name,
+                      style: AppTextStyle.mediumWhite,
+                    ),
+                    subtitle: Text(
+                      "${widget.expenseInCreditCardList[index].category} (${widget.expenseInCreditCardList[index].accountOrigin})",
+                      style: AppTextStyle.smallWhite,
+                    ),
+                    trailing: ValueWidget(
+                      value: widget.expenseInCreditCardList[index].value
+                          .toStringAsFixed(2),
+                    ),
                   ),
-                  trailing: ValueWidget(
-                    value: widget.expenseInCreditCardList[index].value
-                        .toStringAsFixed(2),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
