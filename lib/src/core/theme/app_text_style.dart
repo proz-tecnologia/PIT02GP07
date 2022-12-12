@@ -25,7 +25,7 @@ class AppTextStyle {
   );
   static const TextStyle logoBold = TextStyle(
     fontSize: 18.0,
-    color: AppColors.logoBlack,
+    color: AppColors.darkGold,
     fontWeight: FontWeight.bold,
   );
   static const TextStyle mediumRed = TextStyle(

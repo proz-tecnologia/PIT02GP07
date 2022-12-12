@@ -50,7 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     SizedBox(
                       width: 80,
-                      child: Image.asset('assets/images/bank.png'),
+                      child: Image.asset(
+                        'assets/images/bank.png',
+                        color: AppColors.iceWhite,
+                      ),
                     ),
                     const Text(
                       'AcCount',
@@ -73,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Informe nome de usuário.',
                       labelText: 'Usuário',
                       labelStyle: TextStyle(
-                        color: AppColors.lightGreen,
+                        color: AppColors.iceWhite,
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -107,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Informe senha de usuário.',
                       labelText: 'Senha',
                       labelStyle: const TextStyle(
-                        color: AppColors.lightGreen,
+                        color: AppColors.iceWhite,
                       ),
                       enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
