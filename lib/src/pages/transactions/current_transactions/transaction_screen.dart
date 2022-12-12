@@ -70,7 +70,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     style: AppTextStyle.largeWhite,
                   ),
                   subtitle: Text(
-                    widget.entrylist[index].category,
+                    "${widget.entrylist[index].category} (${widget.entrylist[index].accountOrigin})",
                     style: AppTextStyle.smallWhite,
                   ),
                   trailing: ValueWidget(

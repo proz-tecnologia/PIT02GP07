@@ -7,7 +7,6 @@ import '../../widgets/value_widget.dart';
 import '../home/components/creditcard_card.dart';
 import '../home/controller/home_controller.dart';
 
-
 class CreditCardScreen extends StatefulWidget {
   final double expenseInCreditCard;
   final int expenseInCreditCardListLength;
@@ -57,11 +56,11 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                 elevation: 8.0,
                 child: ListTile(
                   title: Text(
-                    widget.expenseInCreditCardList[index].category,
+                    widget.expenseInCreditCardList[index].name,
                     style: AppTextStyle.mediumWhite,
                   ),
-                  subtitle: const Text(
-                    'Data',
+                  subtitle: Text(
+                    "${widget.expenseInCreditCardList[index].category} (${widget.expenseInCreditCardList[index].accountOrigin})",
                     style: AppTextStyle.smallWhite,
                   ),
                   trailing: ValueWidget(
