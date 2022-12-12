@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/pages/auth/login/login_page.dart';
@@ -17,7 +15,9 @@ class SignUpButton extends StatelessWidget {
     required this.password,
   });
 
-  final controller = SignUpController(onUpdate: () {});
+  final controller = SignUpController(
+      //onUpdate: () {},
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +31,23 @@ class SignUpButton extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-          await controller.signUp(
+          await controller
+              .signUp(
             name: name,
             mail: mail,
             password: password,
+          )
+              .then(
+            (value) {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            },
           );
-          Navigator.pop(context);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginPage(),
-              ));
         },
         child: const Text(
           'Confirmar',
