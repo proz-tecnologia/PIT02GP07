@@ -7,12 +7,16 @@ class LoginController {
   Future<LoginState> login({
     required String name,
     required String password,
-  }) async {    
-
+  }) async {
     final prefs = await SharedPreferences.getInstance();
     await Future.delayed(const Duration(seconds: 2));
     await prefs.setBool(SharedPreferencesKeys.hasUser, true);
 
     return LoginStateSuccess();
+  }
+
+  String userName(String name) {
+    final firstName = name.split(' ').first;
+    return firstName;
   }
 }

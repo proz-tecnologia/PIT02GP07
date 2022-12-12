@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late final String firstName;
   final _formKey = GlobalKey<FormState>();
   final controller = LoginController();
   final nameController = TextEditingController();
@@ -151,6 +152,8 @@ class _LoginPageState extends State<LoginPage> {
                                 child: CircularProgressIndicator(),
                               ),
                             );
+                            firstName =
+                                controller.userName(nameController.text);
                             controller
                                 .login(
                                     name: nameController.text,
@@ -162,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => HomePage(
-                                      title: nameController.text,
+                                      title: firstName,
                                     ),
                                   ),
                                 );
