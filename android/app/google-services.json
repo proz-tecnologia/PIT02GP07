@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "796045398594",
-    "project_id": "finance-app-ff7c5",
-    "storage_bucket": "finance-app-ff7c5.appspot.com"
+    "project_number": "1041652698081",
+    "project_id": "account-cd7d3",
+    "storage_bucket": "account-cd7d3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:796045398594:android:3302a4dabcbc5da09a93db",
+        "mobilesdk_app_id": "1:1041652698081:android:23e241cda257775da6a0a0",
         "android_client_info": {
           "package_name": "com.example.pit02gp07"
         }
       },
       "oauth_client": [
         {
-          "client_id": "796045398594-roobks70q77m3nulm080mspcjrsi6btj.apps.googleusercontent.com",
+          "client_id": "1041652698081-b0ntmv4lanjcs8hddqpmrbi0v3guu4l8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAe94G1M4QMxvPQHunT_xA-PhZxsAlqETU"
+          "current_key": "AIzaSyAfsviH_zbQNiFdcUgrheye1hMfbW8TXL0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "796045398594-roobks70q77m3nulm080mspcjrsi6btj.apps.googleusercontent.com",
+              "client_id": "1041652698081-b0ntmv4lanjcs8hddqpmrbi0v3guu4l8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
