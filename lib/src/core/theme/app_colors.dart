@@ -4,6 +4,7 @@ class AppColors {
   AppColors._();
 
   static const Color darkGray = Color(0xFF3E3E3C);
+  static const Color mediumGray = Color(0xFF5F5F5F);
   static const Color darkerGreen = Color(0xFF188F60);
   static const Color darkGreen = Color(0xFF228D57);
   static const Color mediumGreen = Color(0xFF85BB65);
@@ -12,5 +13,5 @@ class AppColors {
   static const Color lightGold = Color(0xFFFFD185);
   static const Color iceWhite = Color(0xFFEEEEEE);
   static const Color lightRed = Color(0xFFFF5E5F);
-  
+  static const Color logoBlack = Color(0xFF0A0A0A);
 }

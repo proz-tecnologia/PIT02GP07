@@ -36,52 +36,54 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-      child: Column(
-        children: [
-          Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            elevation: 8.0,
-            child: Padding(
-              padding: const EdgeInsets.all(28.0),
-              child: TransactionResumeCard(
-                revenueValue: widget.revenueValue,
-                expenseValue: widget.expenseValue,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              elevation: 8.0,
+              child: Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: TransactionResumeCard(
+                  revenueValue: widget.revenueValue,
+                  expenseValue: widget.expenseValue,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 12.0,
-          ),
-          ListView.builder(
-            //todo oveflow no botão quando o ListView fica maior que a area visível.
-            shrinkWrap: true,
-            itemCount: widget.entryListLength,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                elevation: 8.0,
-                child: ListTile(
-                  title: Text(
-                    widget.entrylist[index].name,
-                    style: AppTextStyle.largeWhite,
+            const SizedBox(
+              height: 12.0,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: widget.entryListLength,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
                   ),
-                  subtitle: Text(
-                    widget.entrylist[index].category,
-                    style: AppTextStyle.smallWhite,
+                  elevation: 8.0,
+                  child: ListTile(
+                    title: Text(
+                      widget.entrylist[index].name,
+                      style: AppTextStyle.largeWhite,
+                    ),
+                    subtitle: Text(
+                      "${widget.entrylist[index].category} (${widget.entrylist[index].accountOrigin})",
+                      style: AppTextStyle.smallWhite,
+                    ),
+                    trailing: ValueWidget(
+                      value: widget.entrylist[index].value.toStringAsFixed(2),
+                      style:
+                          controller.colorByType(widget.entrylist[index].type),
+                    ),
                   ),
-                  trailing: ValueWidget(
-                    value: widget.entrylist[index].value.toStringAsFixed(2),
-                    style: controller.colorByType(widget.entrylist[index].type),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

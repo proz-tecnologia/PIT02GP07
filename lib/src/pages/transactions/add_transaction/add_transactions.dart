@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/theme/app_colors.dart';
 import 'controller/add_transaction_controller.dart';
 
@@ -43,17 +42,22 @@ class _AddTransactionsState extends State<AddTransactions> {
       appBar: AppBar(
         title: const Text('Adicionar operação'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        alignment: Alignment.center,
         child: Form(
           key: _formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
                   child: TextFormField(
                     controller: nameController,
                     validator: ((title) {
@@ -63,17 +67,20 @@ class _AddTransactionsState extends State<AddTransactions> {
                       return null;
                     }),
                     decoration: const InputDecoration(
-                        icon: Icon(Icons.border_color_rounded),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.iceWhite),
-                        ),
-                        hintText: 'Informe um nome para a operação.',
-                        labelText: 'Adicionar um nome',
-                        labelStyle: TextStyle(color: AppColors.darkGold)),
+                      icon: Icon(Icons.border_color_rounded),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.iceWhite),
+                      ),
+                      hintText: 'Informe um nome para a operação.',
+                      labelText: 'Adicionar um nome',
+                    ),
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
                   child: TextFormField(
                     controller: valueController,
                     validator: ((value) {
@@ -83,17 +90,20 @@ class _AddTransactionsState extends State<AddTransactions> {
                       return null;
                     }),
                     decoration: const InputDecoration(
-                        icon: Icon(Icons.monetization_on),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.iceWhite),
-                        ),
-                        hintText: 'Informe o valor da operação.',
-                        labelText: 'Adicione um valor',
-                        labelStyle: TextStyle(color: AppColors.darkGold)),
+                      icon: Icon(Icons.monetization_on),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.iceWhite),
+                      ),
+                      hintText: 'Informe o valor da operação.',
+                      labelText: 'Adicione um valor',
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
                   child: DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
                       icon: Icon(Icons
@@ -118,8 +128,11 @@ class _AddTransactionsState extends State<AddTransactions> {
                     }).toList(),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
                   child: DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
                         icon: Icon(Icons.category_rounded),
@@ -141,8 +154,11 @@ class _AddTransactionsState extends State<AddTransactions> {
                     }).toList(),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
                   child: DropdownButtonFormField<String>(
                     // - mudar o ícone caso seja carteira ou caso seja cartão
                     decoration: const InputDecoration(
@@ -167,9 +183,9 @@ class _AddTransactionsState extends State<AddTransactions> {
                     }).toList(),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FloatingActionButton(
+                Container(
+                  padding: const EdgeInsets.all(32.0),
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(
                         context,

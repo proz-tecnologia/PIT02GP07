@@ -51,7 +51,8 @@ class HomeController {
   }
 
   void addExpenseInCreditCard(ExpenseModel expenseModel) {
-    if (expenseModel.accountOrigin == "Cartão") {
+    //TODO: separar origem e cartões
+    if (expenseModel.accountOrigin != "Carteira") {
       expenseInCreditCardList.add(expenseModel);
       updateExpenseInCreditCard(expenseModel);
     }

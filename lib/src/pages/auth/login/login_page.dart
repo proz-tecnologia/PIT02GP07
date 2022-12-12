@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
-
 import '../../../core/theme/app_colors.dart';
 import '../components/password_validator.dart';
 import 'controller/login_controller.dart';
@@ -13,17 +13,17 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-final RegExp nameRegExp = RegExp('[a-zA-Z]');
-bool invisible = true;
-
 class _LoginPageState extends State<LoginPage> {
+  late final String firstName;
   final _formKey = GlobalKey<FormState>();
   final controller = LoginController();
-  final textController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final textFieldFocusNode = FocusNode();
   bool _obscured = true;
   late final PageController pageController;
+  final RegExp nameRegExp = RegExp('[a-zA-Z]');
+  bool invisible = true;
 
   void _toggleObscured() {
     setState(() {
@@ -35,282 +35,172 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.darkGreen,
-        leading: SizedBox(
-          width: 50,
-          child: Image.asset('assets/images/bank.png'),
-        ),
-        leadingWidth: 200,
-        title: const Text('AcCount',
-            style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Container(
-          height: height,
-          width: double.infinity,
-          alignment: Alignment.center,
-          child: Form(
-            key: _formKey,
-            onChanged: () => setState(() {}),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.lightGreen)),
-                        hintText: 'Informe seu usuário.',
-                        labelText: 'Usuário',
-                        labelStyle: TextStyle(color: AppColors.lightGreen),
-                      ),
-                      validator: (value) {
-                        if (value == null ||
-                            value.isEmpty ||
-                            !nameRegExp.hasMatch(value)) {
-                          return 'Informe um usuário válido!';
-                        } else {
-                          return null;
-                        }
-                      },
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        alignment: Alignment.center,
+        child: Form(
+          key: _formKey,
+          onChanged: () => setState(() {}),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      width: 80,
+                      child: Image.asset('assets/images/bank.png'),
                     ),
+                    const Text(
+                      'AcCount',
+                      style: AppTextStyle.logoBold,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 40.0,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: _obscured,
-                      focusNode: textFieldFocusNode,
-                      decoration: InputDecoration(
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                        labelText: 'Senha',
-                        labelStyle:
-                            const TextStyle(color: AppColors.lightGreen),
-                        isDense: true,
-                        enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.lightGreen),
-                        ),
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
-                          child: GestureDetector(
-                            onTap: _toggleObscured,
-                            child: Icon(
-                              _obscured
-                                  ? Icons.visibility_off_rounded
-                                  : Icons.visibility_rounded,
-                              size: 24,
-                            ),
-                          ),
+                  child: TextFormField(
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      hintText: 'Informe nome de usuário.',
+                      labelText: 'Usuário',
+                      labelStyle: TextStyle(
+                        color: AppColors.lightGreen,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColors.iceWhite,
                         ),
                       ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Por favor, informe a senha!';
-                        } else {
-                          bool result = validatePassword(value);
-                          if (result) {
-                            return null;
-                          } else {
-                            return 'Senha incorreta!';
-                          }
-                        }
-                      },
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: _formKey.currentState?.validate() == true
-                          ? () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              );
-                              controller
-                                  .login(
-                                      name: textController.text,
-                                      password: passwordController.text)
-                                  .then(
-                                (value) {
-                                  Navigator.pop(context);
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) =>
-                                            const HomePage(title: 'Carlos'),
-                                      ));
-                                },
-                              );
-                            }
-                          : null,
-                      style: ButtonStyle(
-                          fixedSize:
-                              MaterialStateProperty.all(const Size(300, 40)),
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.darkGray),
-                          foregroundColor:
-                              MaterialStateProperty.all(AppColors.iceWhite),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text('Logar'),
-                          SizedBox(
-                            width: 8,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        foregroundColor: AppColors.iceWhite),
-                    onPressed: () {},
-                    child: const Text('Recuperar a senha.'),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppColors.iceWhite,
-                    ),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                      Navigator.pop(context);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const SignUpPage(),
-                        ),
-                      );
+                    validator: (value) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          !nameRegExp.hasMatch(value)) {
+                        return 'Informe um usuário válido!';
+                      } else {
+                        return null;
+                      }
                     },
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 32,
+                  ),
+                  child: TextFormField(
+                    controller: passwordController,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _obscured,
+                    focusNode: textFieldFocusNode,
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      hintText: 'Informe senha de usuário.',
+                      labelText: 'Senha',
+                      labelStyle: const TextStyle(
+                        color: AppColors.lightGreen,
+                      ),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColors.iceWhite,
+                        ),
+                      ),
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                        child: GestureDetector(
+                          onTap: _toggleObscured,
+                          child: Icon(
+                            _obscured
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Informe uma senha válida!';
+                      } else {
+                        bool result = validatePassword(value);
+                        if (result) {
+                          return null;
+                        } else {
+                          return 'Senha incorreta!';
+                        }
+                      }
+                    },
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(32.0),
+                  child: ElevatedButton(
+                    onPressed: _formKey.currentState?.validate() == true
+                        ? () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            );
+                            firstName =
+                                controller.userName(nameController.text);
+                            controller
+                                .login(
+                                    name: nameController.text,
+                                    password: passwordController.text)
+                                .then(
+                              (value) {
+                                Navigator.pop(context);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomePage(
+                                      title: firstName,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                        : null,
                     child: const Text(
-                      'Cadastrar-se',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                      'Logar',
+                      style: AppTextStyle.mediumWhiteBold,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 3.0,
-                          width: 100.0,
-                          color: AppColors.lightGreen,
-                        ),
-                        const Text(
-                          'ou',
-                          style: TextStyle(
-                              fontSize: 18.0, color: AppColors.iceWhite),
-                        ),
-                        Container(
-                          height: 3.0,
-                          width: 100.0,
-                          color: AppColors.lightGreen,
-                        )
-                      ],
-                    ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Recuperar a senha.',
+                    style: AppTextStyle.smallWhite,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 3, color: AppColors.darkGray),
-                          ),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.iceWhite),
-                              shape: MaterialStateProperty.all(
-                                const ContinuousRectangleBorder(
-                                  side: BorderSide(
-                                      width: 0.5, color: AppColors.darkGray),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Image.asset(
-                              'assets/images/facebook.png',
-                              fit: BoxFit.contain,
-                              width: 40.0,
-                              height: 50.0,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 3, color: AppColors.darkGray),
-                          ),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.iceWhite),
-                              shape: MaterialStateProperty.all(
-                                const ContinuousRectangleBorder(
-                                  side: BorderSide(
-                                      width: 0.5, color: AppColors.darkGray),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Image.asset(
-                              'assets/images/google.png',
-                              fit: BoxFit.contain,
-                              width: 40.0,
-                              height: 50.0,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 3, color: AppColors.darkGray),
-                          ),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.iceWhite),
-                              shape: MaterialStateProperty.all(
-                                const ContinuousRectangleBorder(
-                                  side: BorderSide(
-                                      width: 0.5, color: AppColors.darkGray),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Image.asset(
-                              'assets/images/twitter.png',
-                              fit: BoxFit.contain,
-                              width: 40.0,
-                              height: 50.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Cadastrar-se',
+                    style: AppTextStyle.smallWhite,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
