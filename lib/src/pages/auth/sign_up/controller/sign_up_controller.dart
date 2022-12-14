@@ -2,7 +2,7 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/state/sign_up_state.dart';
-import 'package:pit02gp07/src/pages/auth/splash/repository.dart';
+import '../../splash/repository/repository.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final AuthRepository repository;

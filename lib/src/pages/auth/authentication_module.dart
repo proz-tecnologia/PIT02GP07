@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pit02gp07/src/pages/auth/splash/repository.dart';
-import 'package:pit02gp07/src/pages/auth/splash/repository_impl.dart';
-import 'package:pit02gp07/src/pages/auth/splash/splash_controller.dart';
-
+import 'package:pit02gp07/src/pages/auth/splash/controller/splash_controller.dart';
+import '../home/home_page.dart';
 import 'login/controller/login_controller.dart';
 import 'login/login_page.dart';
 import 'sign_up/controller/sign_up_controller.dart';
 import 'sign_up/sign_up_page.dart';
+import 'splash/repository/repository.dart';
+import 'splash/repository/repository_impl.dart';
 import 'splash/splash_page.dart';
 
 class AuthenticationModule extends Module {
@@ -37,7 +37,11 @@ class AuthenticationModule extends Module {
           child: (_, args) => const SplashPage(),
         ),
         ChildRoute(
-          '/login',
+          '/home/',
+          child: (_, args) => const HomePage(title: '',)
+        ),
+        ChildRoute(
+          '/login/',
           child: (_, args) => const LoginPage(),
         ),
        /*  ChildRoute(
@@ -45,7 +49,7 @@ class AuthenticationModule extends Module {
           child: (_, args) => const RecoveryPasswordPage(),
         ), */
         ChildRoute(
-          '/createAccount',
+          '/signUp',
           child: (_, args) => const SignUpPage(),
         )
       ];
