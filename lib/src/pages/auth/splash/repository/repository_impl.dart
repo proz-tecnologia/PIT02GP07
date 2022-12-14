@@ -24,16 +24,16 @@ class AuthRepositoryImpl extends AuthRepository {
   User? getUser() => _auth.currentUser;
 
   @override
-  //TODO - criar conta no firebase do App
+
   Future<FirebaseApp> init() async {
     return await Firebase.initializeApp(
-      name: 'AcCount',
+      name: 'AcCount Finance App',
       options: const FirebaseOptions(
-          apiKey: "AIzaSyAfsviH_zbQNiFdcUgrheye1hMfbW8TXL0",
-          appId: '1:1041652698081:android:23e241cda257775da6a0a0',
+          apiKey: "AIzaSyA65apA03G1yrnZT1HjJmtGSdSz2Se8yDw",
+          appId: '1:494955119206:android:f8ed79a4fbd0b6c37563a7',
           messagingSenderId:
-              '1041652698081-b0ntmv4lanjcs8hddqpmrbi0v3guu4l8.apps.googleusercontent.com',
-          projectId: 'account-cd7d3'),
+              '494955119206-ooais6ks5or3utqhj889s4h8sh689kbs.apps.googleusercontent.com',
+          projectId: 'account-finance-app'),
     );
   }
 
