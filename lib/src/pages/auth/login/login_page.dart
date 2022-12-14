@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/sign_up_page.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
@@ -16,7 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late final String firstName;
   final _formKey = GlobalKey<FormState>();
-  final controller = LoginController();
+  final cubit = Modular.get<LoginCubit>();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final textFieldFocusNode = FocusNode();
@@ -155,11 +156,11 @@ class _LoginPageState extends State<LoginPage> {
                                 child: CircularProgressIndicator(),
                               ),
                             );
-                            firstName =
-                                controller.userName(nameController.text);
-                            controller
+                            // firstName =
+                            //     cubit.userName(nameController.text);
+                            cubit
                                 .login(
-                                    name: nameController.text,
+                                    email: nameController.text,
                                     password: passwordController.text)
                                 .then(
                               (value) {

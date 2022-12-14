@@ -1,8 +1,14 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../components/shared_preferences_keys.dart';
+
+import 'dart:developer';
+
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../splash/repository.dart';
 import '../state/login_state.dart';
 
-class LoginController {
+/* class LoginController {
   LoginState state = LoginStateEmpty();
   Future<LoginState> login({
     required String name,
@@ -18,5 +24,27 @@ class LoginController {
   String userName(String name) {
     final firstName = name.split(' ').first;
     return firstName;
+  }
+}
+ */
+
+class LoginCubit extends Cubit<LoginState> {
+  final AuthRepository repository;
+
+  LoginCubit({required this.repository}) : super(LoginStateEmpty());
+
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      emit(LoginStateLoading());
+      final user = await repository.login(email: email, password: password);
+      log(user.toString());
+      emit(LoginStateSuccess());
+    } catch (e, s) {
+      FirebaseCrashlytics.instance.recordError(e, s);
+      emit(LoginStateError());
+    }
   }
 }

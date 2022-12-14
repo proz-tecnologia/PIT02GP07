@@ -1,0 +1,52 @@
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pit02gp07/src/pages/auth/splash/repository.dart';
+import 'package:pit02gp07/src/pages/auth/splash/repository_impl.dart';
+import 'package:pit02gp07/src/pages/auth/splash/splash_controller.dart';
+
+import 'login/controller/login_controller.dart';
+import 'login/login_page.dart';
+import 'sign_up/controller/sign_up_controller.dart';
+import 'sign_up/sign_up_page.dart';
+import 'splash/splash_page.dart';
+
+class AuthenticationModule extends Module {
+  @override
+  List<Bind<Object>> get binds => [
+        Bind.factory<AuthRepository>((i) => AuthRepositoryImpl()),
+        Bind.lazySingleton<SplashBloc>(
+            (i) => SplashBloc(repository: i.get<AuthRepository>(),
+            ),
+          ),
+        Bind.lazySingleton<LoginCubit>((i) => LoginCubit(repository: i.get<AuthRepository>(),
+        ),),
+        // Bind.lazySingleton<RecoveryPasswordCubit>(
+        //   (i) => RecoveryPasswordCubit(
+        //     repository: i.get<AuthRepository>(),
+        //   ),
+        // ),
+        Bind.lazySingleton<SignUpCubit>(
+          (i) => SignUpCubit(
+            repository: i.get<AuthRepository>(),
+          ),
+        ),
+      ];
+      @override
+  List<ModularRoute> get routes => [
+        ChildRoute(
+          '/',
+          child: (_, args) => const SplashPage(),
+        ),
+        ChildRoute(
+          '/login',
+          child: (_, args) => const LoginPage(),
+        ),
+       /*  ChildRoute(
+          '/recoveryPassword',
+          child: (_, args) => const RecoveryPasswordPage(),
+        ), */
+        ChildRoute(
+          '/createAccount',
+          child: (_, args) => const SignUpPage(),
+        )
+      ];
+}
