@@ -1,8 +1,9 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pit02gp07/src/model/user_model.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/state/sign_up_state.dart';
-import '../../splash/repository/repository.dart';
+import '../../repository/repository.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final AuthRepository repository;
@@ -23,6 +24,10 @@ class SignUpCubit extends Cubit<SignUpState> {
         name: name,
         email: email,
         password: password,
+      );
+
+      await repository.createUserData(
+        user: UserData(userName: name, userId: repository.getUser()!.uid),
       );
 
       emit(SignUpStateSuccess());

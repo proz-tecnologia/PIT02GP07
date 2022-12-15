@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../../../model/user_model.dart';
 import 'repository.dart';
-
 
 class AuthRepositoryImpl extends AuthRepository {
   FirebaseAuth get _auth => FirebaseAuth.instance;
@@ -14,7 +15,8 @@ class AuthRepositoryImpl extends AuthRepository {
   }) async {
     await Future.delayed(const Duration(seconds: 2));
 
-    await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
 
     await _auth.currentUser!.updateDisplayName(name);
     await _auth.currentUser!.sendEmailVerification();
@@ -24,7 +26,6 @@ class AuthRepositoryImpl extends AuthRepository {
   User? getUser() => _auth.currentUser;
 
   @override
-
   Future<FirebaseApp> init() async {
     return await Firebase.initializeApp(
       name: 'AcCount Finance App',
@@ -47,5 +48,12 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<void> recoveryPassword({required String user}) async {
     return await _auth.sendPasswordResetEmail(email: user);
+  }
+
+  @override
+  Future<void> createUserData({required UserData user}) async {
+    await FirebaseFirestore.instance.collection('users').add(
+          user.toMap(),
+        );
   }
 }

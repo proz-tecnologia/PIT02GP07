@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pit02gp07/src/app_controller.dart';
 import 'package:pit02gp07/src/pages/auth/login/login_screen.dart';
-import 'package:pit02gp07/src/pages/home/home_page.dart';
 import 'components/login_error_card.dart';
 import 'controller/login_controller.dart';
 import 'state/login_state.dart';
@@ -18,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   final cubit = Modular.get<LoginCubit>();
 
   late final String firstName;
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +39,13 @@ class _LoginPageState extends State<LoginPage> {
                 errorMessage: 'Erro ao logar, tente novamente!,'),
           );
         } else if (state is LoginStateSuccess) {
+          Modular.get<AppController>().user = state.user;
+
           Navigator.pop(context);
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomePage(title: ''),
-            ),
-          );
+          Modular.to.pushReplacementNamed('/home/');
         }
       },
       child: const LoginScreen(),
-
     );
   }
 }

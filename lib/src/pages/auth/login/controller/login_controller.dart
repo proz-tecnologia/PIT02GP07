@@ -1,8 +1,6 @@
-
-import 'dart:developer';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../splash/repository/repository.dart';
+import '../../repository/repository.dart';
 import '../state/login_state.dart';
 
 /* class LoginController {
@@ -36,8 +34,11 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     try {
       emit(LoginStateLoading());
-      final user = await repository.login(email: email, password: password);
-      log(user.toString());
+      final userCredential =
+          await repository.login(
+            email: email,
+            password: password);
+
       emit(LoginStateSuccess());
     } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s);

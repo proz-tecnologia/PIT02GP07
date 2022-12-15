@@ -1,7 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pit02gp07/src/model/expenses_model.dart';
+import 'package:pit02gp07/src/pages/home/repository/home_repository.dart';
+import 'package:pit02gp07/src/pages/home/state/home_state.dart';
 
-class HomeController {
+class HomeController extends Cubit<HomeState> {
+  final HomeRepository repository;
+  final String id;
+
+  HomeController({required this.repository, required this.id})
+      : super(HomeStateEmpty());
+
   final typeList = <String>["Despesa", "Receita"];
   final categoriesList = <String>["Alimentação", "Educação", "Sálario"];
   final accountOriginList = <String>["Carteira", "Cartão"];
@@ -57,4 +66,8 @@ class HomeController {
       updateExpenseInCreditCard(expenseModel);
     }
   }
+}
+
+Future<void> getUserData() async {
+  
 }

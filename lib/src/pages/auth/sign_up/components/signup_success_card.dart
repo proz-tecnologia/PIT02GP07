@@ -23,7 +23,7 @@ class SuccessCard extends StatelessWidget {
             onPressed: () {
               Modular.to.popUntil(
                 ModalRoute.withName(
-                  '/login',
+                  '/login/',
                 ),
               );
             },

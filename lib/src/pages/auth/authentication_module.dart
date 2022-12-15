@@ -5,8 +5,8 @@ import 'login/controller/login_controller.dart';
 import 'login/login_page.dart';
 import 'sign_up/controller/sign_up_controller.dart';
 import 'sign_up/sign_up_page.dart';
-import 'splash/repository/repository.dart';
-import 'splash/repository/repository_impl.dart';
+import 'repository/repository.dart';
+import 'repository/repository_impl.dart';
 import 'splash/splash_page.dart';
 
 class AuthenticationModule extends Module {

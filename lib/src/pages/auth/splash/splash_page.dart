@@ -23,10 +23,12 @@ class SplashPage extends StatelessWidget {
         },
         child: Container(
           color: AppColors.iceWhite,
-          child: SizedBox(
-            width: 150,
-            height: 150,
-            child: Image.asset('assets/images/bank.png'),
+          child: Center(
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset('assets/images/bank.png'),
+            ),
           ),
         ),
       ),
