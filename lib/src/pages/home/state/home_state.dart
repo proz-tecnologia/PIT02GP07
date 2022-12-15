@@ -7,10 +7,11 @@ class HomeStateLoading extends HomeState {}
 class HomeStateEmpty extends HomeState {}
 
 class HomeStateSuccess extends HomeState {
+  final UserData user;
 
-  final UserData
-
-
-  HomeStateSuccess(this.UserData);}
+  HomeStateSuccess({
+    required this.user,
+  });
+}
 
 class HomeStateError extends HomeState {}

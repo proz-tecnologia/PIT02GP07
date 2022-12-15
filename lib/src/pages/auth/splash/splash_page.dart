@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pit02gp07/src/app_controller.dart';
 import 'package:pit02gp07/src/pages/auth/splash/controller/splash_controller.dart';
 
 import 'package:pit02gp07/src/pages/auth/splash/state/splash_state.dart';
@@ -16,9 +17,11 @@ class SplashPage extends StatelessWidget {
         bloc: Modular.get<SplashBloc>()..setup(),
         listener: (context, state) {
           if (state is SplashStateLogged) {
-            Modular.to.pushReplacementNamed('/home/');
+            Modular.get<AppController>().setUser(state.user);
+
+            Modular.to.pushReplacementNamed('/home');
           } else if (state is SplashStateNotLogged) {
-            Modular.to.pushReplacementNamed('/login/');
+            Modular.to.pushReplacementNamed('/login');
           }
         },
         child: Container(

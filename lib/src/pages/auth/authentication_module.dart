@@ -12,13 +12,19 @@ import 'splash/splash_page.dart';
 class AuthenticationModule extends Module {
   @override
   List<Bind<Object>> get binds => [
-        Bind.factory<AuthRepository>((i) => AuthRepositoryImpl()),
+        Bind.factory<AuthRepository>(
+          (i) => AuthRepositoryImpl(),
+          ),
         Bind.lazySingleton<SplashBloc>(
-            (i) => SplashBloc(repository: i.get<AuthRepository>(),
+            (i) => SplashBloc(
+              repository: i.get<AuthRepository>(),
             ),
           ),
-        Bind.lazySingleton<LoginCubit>((i) => LoginCubit(repository: i.get<AuthRepository>(),
-        ),),
+        Bind.lazySingleton<LoginCubit>(
+          (i) => LoginCubit(
+            repository: i.get<AuthRepository>(),
+          ),
+        ),
         // Bind.lazySingleton<RecoveryPasswordCubit>(
         //   (i) => RecoveryPasswordCubit(
         //     repository: i.get<AuthRepository>(),
@@ -30,18 +36,19 @@ class AuthenticationModule extends Module {
           ),
         ),
       ];
+
       @override
-  List<ModularRoute> get routes => [
+      List<ModularRoute> get routes => [
         ChildRoute(
           '/',
           child: (_, args) => const SplashPage(),
         ),
         ChildRoute(
-          '/home/',
-          child: (_, args) => const HomePage(title: '',)
+          '/home',
+          child: (_, args) => const HomePage(),
         ),
         ChildRoute(
-          '/login/',
+          '/login',
           child: (_, args) => const LoginPage(),
         ),
        /*  ChildRoute(

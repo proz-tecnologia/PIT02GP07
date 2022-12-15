@@ -16,9 +16,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final cubit = Modular.get<LoginCubit>();
-
-  late final String firstName;
-
+  //late final String firstName;
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
@@ -39,10 +37,10 @@ class _LoginPageState extends State<LoginPage> {
                 errorMessage: 'Erro ao logar, tente novamente!,'),
           );
         } else if (state is LoginStateSuccess) {
-          Modular.get<AppController>().user = state.user;
+          Modular.get<AppController>().setUser(state.user);
 
           Navigator.pop(context);
-          Modular.to.pushReplacementNamed('/home/');
+          Modular.to.pushReplacementNamed('/home');
         }
       },
       child: const LoginScreen(),

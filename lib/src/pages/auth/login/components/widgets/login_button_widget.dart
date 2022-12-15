@@ -30,7 +30,7 @@ class LoginButton extends StatelessWidget {
                         password: passwordController.text)
                     .then((value) {
                   Navigator.pop(context);
-                  Modular.to.pushReplacementNamed('/home/');
+                  Modular.to.pushReplacementNamed('/home');
                 });
               }
             : null,

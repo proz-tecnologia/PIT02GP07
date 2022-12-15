@@ -7,7 +7,6 @@ import 'package:pit02gp07/src/pages/auth/sign_up/controller/sign_up_controller.d
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_style.dart';
 import '../components/password_validator.dart';
-import '../login/login_page.dart';
 
 import 'package:image_picker/image_picker.dart';
 
@@ -240,22 +239,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   child: CircularProgressIndicator(),
                                 ),
                               );
-                              await cubit
-                                  .signUp(
-                                name: nameController.text,
+                              await cubit.signUp(
                                 email: emailController.text,
+                                name: nameController.text,
                                 password: passwordController.text,
-                              )
-                                  .then(
-                                (value) {
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const LoginPage(),
-                                    ),
-                                  );
-                                },
                               );
                             }
                           : null,

@@ -5,19 +5,18 @@ import 'package:pit02gp07/src/pages/home/repository/home_repository.dart';
 
 import '../../../model/user_model.dart';
 
-class HomeRepositoryImpl extends HomeRepository {
+class HomeRepositoryImpl implements HomeRepository {
   @override
-  Future<UserData> Future getUserData({String userId}) async {
-   final response = await FirebaseFirestore.instance
-   .collection('users')
-   .where('userId', isEqualTo: userId)
-   .get();
+  Future<UserData> getUserData({required String userId}) async {
+    final response = await FirebaseFirestore.instance
+        .collection('users')
+        .where('userId', isEqualTo: userId)
+        .get();
 
-    if(response.docs.isNotEmpty)
-   final document = response.docs[0].data();
-final userData = UserData.fromMap(document);
+    final document = response.docs.first.data();
 
-return userData;
-}
+    final userData = UserData.fromMap(document);
 
+    return userData;
+  }
 }

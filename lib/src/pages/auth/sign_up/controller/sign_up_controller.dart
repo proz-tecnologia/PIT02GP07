@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pit02gp07/src/model/user_model.dart';
@@ -27,7 +26,9 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
 
       await repository.createUserData(
-        user: UserData(userName: name, userId: repository.getUser()!.uid),
+        user: UserData(
+          userName: name,
+          userId: repository.getUser()!.uid),
       );
 
       emit(SignUpStateSuccess());

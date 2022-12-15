@@ -34,12 +34,12 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     try {
       emit(LoginStateLoading());
-      final userCredential =
-          await repository.login(
+
+      final userCredential = await repository.login(
             email: email,
             password: password);
 
-      emit(LoginStateSuccess());
+      emit(LoginStateSuccess(user:userCredential.user!));
     } catch (e, s) {
       FirebaseCrashlytics.instance.recordError(e, s);
       emit(LoginStateError());
