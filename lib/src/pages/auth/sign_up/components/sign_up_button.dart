@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/pages/auth/login/login_page.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/controller/sign_up_controller.dart';
+
 
 class SignUpButton extends StatelessWidget {
   final String name;
@@ -15,9 +17,8 @@ class SignUpButton extends StatelessWidget {
     required this.password,
   });
 
-  final controller = SignUpController(
-      //onUpdate: () {},
-      );
+  final cubit = Modular.get<SignUpCubit>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,10 @@ class SignUpButton extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-          await controller
+          await cubit
               .signUp(
             name: name,
-            mail: mail,
+            email: mail,
             password: password,
           )
               .then(

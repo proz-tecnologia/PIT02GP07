@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/controller/sign_up_controller.dart';
+
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_style.dart';
 import '../components/password_validator.dart';
@@ -18,7 +20,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
-  final controller = SignUpController();
+  final cubit = Modular.get<SignUpCubit>();
   PickedFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
   final nameController = TextEditingController();
@@ -238,10 +240,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                   child: CircularProgressIndicator(),
                                 ),
                               );
-                              await controller
+                              await cubit
                                   .signUp(
                                 name: nameController.text,
-                                mail: emailController.text,
+                                email: emailController.text,
                                 password: passwordController.text,
                               )
                                   .then(
