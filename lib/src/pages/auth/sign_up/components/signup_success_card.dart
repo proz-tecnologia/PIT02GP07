@@ -21,10 +21,8 @@ class SuccessCard extends StatelessWidget {
           const SizedBox(height: 8.0),
           ElevatedButton(
             onPressed: () {
-              Modular.to.popUntil(
-                ModalRoute.withName(
-                  '/login/',
-                ),
+              Modular.to.pushNamed(
+                '/login',
               );
             },
             child: const Text('Ir para login'),
