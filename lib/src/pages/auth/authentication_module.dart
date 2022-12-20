@@ -44,10 +44,6 @@ class AuthenticationModule extends Module {
           child: (_, args) => const SplashPage(),
         ),
         ChildRoute(
-          '/home',
-          child: (_, args) => const HomePage(),
-        ),
-        ChildRoute(
           '/login',
           child: (_, args) => const LoginPage(),
         ),
