@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           );
         } else if (state is LoginStateError) {
-          Navigator.pop(context);
+          Modular.to.pop();
           showModalBottomSheet(
             context: context,
             builder: (context) => const CustomErrorCard(
@@ -39,8 +39,8 @@ class _LoginPageState extends State<LoginPage> {
         } else if (state is LoginStateSuccess) {
           Modular.get<AppController>().setUser(state.user);
 
-          Navigator.pop(context);
-          Modular.to.pushReplacementNamed('/home');
+          Modular.to.pop();
+          Modular.to.pushReplacementNamed('/home/');
         }
       },
       child: const LoginScreen(),
