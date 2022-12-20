@@ -3,26 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../repository/repository.dart';
 import '../state/login_state.dart';
 
-/* class LoginController {
-  LoginState state = LoginStateEmpty();
-  Future<LoginState> login({
-    required String name,
-    required String password,
-  }) async {
-    final prefs = await SharedPreferences.getInstance();
-    await Future.delayed(const Duration(seconds: 2));
-    await prefs.setBool(SharedPreferencesKeys.hasUser, true);
-
-    return LoginStateSuccess();
-  }
-
-  String userName(String name) {
-    final firstName = name.split(' ').first;
-    return firstName;
-  }
-}
- */
-
 class LoginCubit extends Cubit<LoginState> {
   final AuthRepository repository;
 
