@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/app_controller.dart';
 import 'package:pit02gp07/src/pages/auth/authentication_module.dart';
 
-import '../home/home_module.dart';
+import 'pages/home/home_module.dart';
 
 class AppModule extends Module {
   @override
