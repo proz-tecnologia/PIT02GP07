@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pit02gp07/src/pages/auth/sign_up/components/sign_up_button.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/controller/sign_up_controller.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_style.dart';
 import '../components/password_validator.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -225,23 +225,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(32.0),
-                    child: ElevatedButton(
-                      onPressed: _formKey.currentState?.validate() == true
-                          ? () async {
-                              await cubit.signUp(
-                                email: emailController.text,
-                                name: nameController.text,
-                                password: passwordController.text,
-                              );
-                            }
-                          : null,
-                      child: const Text(
-                        'Confirmar',
-                        style: AppTextStyle.mediumWhiteBold,
-                      ),
-                    ),
+                  SignUpButton(
+                    name: nameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
                   ),
                 ],
               ),
