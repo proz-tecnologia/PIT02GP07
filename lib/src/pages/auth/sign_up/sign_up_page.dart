@@ -1,8 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'components/signup_error_card.dart';
-import 'components/signup_success_card.dart';
+import 'components/sign_up_feedback.dart';
 import 'controller/sign_up_controller.dart';
 import 'sign_up_screen.dart';
 import 'state/sign_up_state.dart';
@@ -30,16 +30,34 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           );
         } else if (state is SignUpStateError) {
-          Navigator.of(context, rootNavigator: true).pop();
-          showModalBottomSheet(
+          Modular.to.pop();
+          showDialog(
             context: context,
-            builder: (context) => const ErrorCard(),
+            builder: (context) {
+              return SignUpFeedBack(
+                message: 'Erro ao criar sua conta!',
+                textButton: 'Tentar novamente',
+                onPressed: () {
+                  Modular.to.pop();
+                },
+              );
+            },
           );
         } else if (state is SignUpStateSuccess) {
-          Navigator.of(context, rootNavigator: true).pop();
-          showModalBottomSheet(
+          Modular.to.pop();
+          showDialog(
             context: context,
-            builder: (context) => const SuccessCard(),
+            builder: (context) {
+              return SignUpFeedBack(
+                message: 'Conta criada com sucesso!',
+                textButton: 'Ir para login',
+                onPressed: () {
+                  Modular.to.pushNamed(
+                    '/login',
+                  );
+                },
+              );
+            },
           );
         }
       },
