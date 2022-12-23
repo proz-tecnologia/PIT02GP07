@@ -216,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Modular.to.pushNamed('/recoveryPassword'),
                     child: const Text(
                       'Recuperar a senha.',
                       style: AppTextStyle.smallWhite,
