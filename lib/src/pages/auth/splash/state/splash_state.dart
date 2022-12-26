@@ -1,7 +1,14 @@
-abstract class SplashState{}
+import 'package:firebase_auth/firebase_auth.dart';
 
-class SplashStateLoading extends SplashState{}
+abstract class SplashState {}
 
-class SplashStateLogged extends SplashState{}
+class SplashStateLoading extends SplashState {}
 
-class SplashStateNotLogged extends SplashState{}
+class SplashStateLogged extends SplashState {
+  User user;
+  SplashStateLogged({
+    required this.user,
+  });
+}
+
+class SplashStateNotLogged extends SplashState {}
