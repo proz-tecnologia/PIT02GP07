@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-abstract class AuthRepository {
-  Future<void>init();
+import '../../../model/user_model.dart';
 
-  Future<void>signUp({
+abstract class AuthRepository {
+  Future<void> init();
+
+  Future<void> signUp({
     required String name,
     required String email,
     required String password,
@@ -14,7 +16,9 @@ abstract class AuthRepository {
     required String password,
   });
 
-  Future<void> recoveryPassword ({required String user});
+  Future<void> recoveryPassword({required String user});
+
+  Future<void> createUserData({required UserData user});
 
   User? getUser();
 }
