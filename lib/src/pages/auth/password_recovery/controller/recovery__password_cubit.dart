@@ -1,7 +1,9 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pit02gp07/src/pages/auth/password_recovery/state/recovery_password_state.dart';
-import 'package:pit02gp07/src/pages/auth/splash/repository/repository.dart';
+
+import '../../repository/repository.dart';
+
 
 class RecoveryPasswordCubit extends Cubit<RecoveryPasswordState> {
   final AuthRepository repository;
