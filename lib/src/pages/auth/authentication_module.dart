@@ -3,6 +3,8 @@ import 'sign_up/sign_up_page.dart';
 import 'splash/controller/splash_controller.dart';
 import 'login/controller/login_controller.dart';
 import 'login/login_page.dart';
+import 'password_recovery/controller/recovery__password_cubit.dart';
+import 'password_recovery/recovery_password_page.dart';
 import 'sign_up/controller/sign_up_controller.dart';
 import 'repository/repository.dart';
 import 'repository/repository_impl.dart';
@@ -22,13 +24,12 @@ class AuthenticationModule extends Module {
         Bind.lazySingleton<LoginCubit>(
           (i) => LoginCubit(
             repository: i.get<AuthRepository>(),
+        ),),
+        Bind.lazySingleton<RecoveryPasswordCubit>(
+          (i) => RecoveryPasswordCubit(
+            repository: i.get<AuthRepository>(),
           ),
         ),
-        // Bind.lazySingleton<RecoveryPasswordCubit>(
-        //   (i) => RecoveryPasswordCubit(
-        //     repository: i.get<AuthRepository>(),
-        //   ),
-        // ),
         Bind.lazySingleton<SignUpCubit>(
           (i) => SignUpCubit(
             repository: i.get<AuthRepository>(),
@@ -46,10 +47,10 @@ class AuthenticationModule extends Module {
           '/login',
           child: (_, args) => const LoginPage(),
         ),
-        /*  ChildRoute(
+       ChildRoute(
           '/recoveryPassword',
           child: (_, args) => const RecoveryPasswordPage(),
-        ), */
+        ),
         ChildRoute(
           '/signUp',
           child: (_, args) => const SignUpPage(),
