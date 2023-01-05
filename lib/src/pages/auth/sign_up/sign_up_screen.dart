@@ -99,8 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   Container(
-                    //TODO: implementar junto à função 'recuperar senha'.
-                    padding: const EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                       vertical: 8.0,
                       horizontal: 32,
                     ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_text_style.dart';
 
 import '../../model/expenses_model.dart';
-import '../../widgets/value_widget.dart';
+import '../../shared/widgets/value_widget.dart';
 import '../home/components/creditcard_card.dart';
 import '../home/controller/home_controller.dart';
 

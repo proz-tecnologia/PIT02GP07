@@ -4,6 +4,9 @@ import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 import 'package:pit02gp07/src/pages/home/repository/home_repository.dart';
 import 'package:pit02gp07/src/pages/home/repository/home_repository_impl.dart';
+import 'package:pit02gp07/src/pages/transactions/add_transaction/add_transactions.dart';
+
+import '../transactions/add_transaction/controller/add_transaction_controller.dart';
 
 class HomeModule extends Module {
   @override
@@ -16,6 +19,13 @@ class HomeModule extends Module {
               repository: i.get<HomeRepository>(),
               id: i.get<AppController>().user!.uid),
         ),
+        Bind.factory<AddTransactionCubit>(
+          (i) => AddTransactionCubit(
+            i.get<HomeRepository>(),
+            i.get<AppController>().user!.uid,
+            i.get<HomeCubit>().userData!,
+          ),
+        ),
       ];
 
   @override
@@ -24,5 +34,12 @@ class HomeModule extends Module {
           '/',
           child: (_, args) => const HomePage(),
         ),
+        ChildRoute(
+          '/add',
+          child: (_, args) => AddTransactions(
+            transaction: args.data['transaction'],
+            type: args.data['type'],
+            //accountOriginList: args.data['account_origin_list'],
+            categories: args.data['categories'],))
       ];
 }

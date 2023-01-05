@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pages/home/components/home_screen.dart';
-import '../pages/transactions/current_transactions/transaction_screen.dart';
-import '../pages/credit_card/credit_card_screen.dart';
+import '../../pages/home/components/home_screen.dart';
+import '../../pages/transactions/current_transactions/transaction_screen.dart';
+import '../../pages/credit_card/credit_card_screen.dart';
 
 class AppNavBar extends StatefulWidget {
   final PageController pageController;
