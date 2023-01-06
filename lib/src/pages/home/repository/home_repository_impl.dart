@@ -13,7 +13,9 @@ class HomeRepositoryImpl implements HomeRepository {
       FirebaseFirestore.instance.collection('transactions');
 
   @override
-  Future<UserData> getUserData({required String userId}) async {
+  Future<UserData> getUserData({
+    required String userId,
+  }) async {
     final response = await _users.where('userId', isEqualTo: userId).get();
 
     final document = response.docs.first.data() as Map<String, dynamic>;
@@ -37,35 +39,40 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<void> updateBalance({required UserData userData}) async {
+  Future<void> updateBalance({
+    required UserData userData,
+  }) async =>
     await _users.doc(userData.docId).update({
       'balance': userData.balance,
     });
-  }
+
 
   @override
-  Future<List<TransactionModel>> getTransaction(
-    String userId, [
-    List<String>? categories,
-    DateTime? initialDate,
-    DateTime? endDate,
-  ]) async {
-    var draw = _transactions.where('userId', isEqualTo: userId);
+  Future<List<TransactionModel>> getTransaction({
+    required String userId,
+    //List<String>? categories,
+    // DateTime? initialDate,
+    // DateTime? endDate,
+  }) async {
+    // var draw = _transactions.where('userId', isEqualTo: userId);
+    // // if (categories?.isNotEmpty ?? false) {
+    // //   draw = draw.where('category', whereIn: categories);
+    // // }
+    // if (initialDate != null) {
+    //   draw = draw.where('createdAt',
+    //       isGreaterThan: Timestamp.fromDate(DateTime(2022, 12, 21, 0, 0)));
+    // }
+    // if (endDate != null) {
+    //   draw = draw.where('createdAt',
+    //       isLessThan: Timestamp.fromDate(DateTime(2022, 12, 21, 0, 0)));
+    // }
 
-    if (categories?.isNotEmpty ?? false) {
-      draw = draw.where('category', whereIn: categories);
-    }
-    if (initialDate != null) {
-      draw = draw.where('createdAt',
-          isGreaterThan: Timestamp.fromDate(DateTime(2022, 12, 21, 0, 0)));
-    }
-    if (endDate != null) {
-      draw = draw.where('createdAt',
-          isLessThan: Timestamp.fromDate(DateTime(2022, 12, 21, 0, 0)));
-    }
-
-    final firebaseTransaction =
-        await draw.orderBy('createdAt', descending: true).get();
+    // final firebaseTransaction =
+    //     await draw.orderBy('createdAt', descending: true).get();
+    final firebaseTransaction = await _transactions
+    .where('userId', isEqualTo: userId)
+    .orderBy('createdAt', descending: true)
+    .get();
 
     final transaction = firebaseTransaction.docs
         .map(
@@ -80,12 +87,12 @@ class HomeRepositoryImpl implements HomeRepository {
     return transaction;
   }
 
-  @override
-  Future<void> addCategory(
-      {required String category, required String docId}) async {
-    await _users.doc(docId).update({
-      'categories': FieldValue.arrayUnion([category]),
-      'userName': 'Paula Franco',
-    });
-  }
+  // @override
+  // Future<void> addCategory(
+  //     {required String category, required String docId}) async {
+  //   await _users.doc(docId).update({
+  //     'categories': FieldValue.arrayUnion([category]),
+  //     'userName': 'Paula Franco',
+  //   });
+  // }
 }

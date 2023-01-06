@@ -11,17 +11,17 @@ import 'controller/add_transaction_controller.dart';
 
 class AddTransactions extends StatefulWidget {
   final TransactionModel? transaction;
-  final List<String> categories;
+  //final List<String> categories;
   //final List<String> accountOriginList;
   final TransactionType? type;
 
-  const AddTransactions(
-      {super.key,
-      this.transaction,
-      required this.type,
-      //required this.accountOriginList,
-      this.categories = const <String>[]})
-      : assert(
+  const AddTransactions({
+    super.key,
+    this.transaction,
+    required this.type,
+    //required this.accountOriginList,
+    //this.categories = const <String>[]})
+  }) : assert(
           transaction != null || type != null,
           'Transaction && type can not be null at the same time',
         );
@@ -35,6 +35,7 @@ class _AddTransactionsState extends State<AddTransactions> {
   final controller = AddTransactionsController();
   late final TextEditingController nameController;
   late final MoneyMaskedTextController valueController;
+  late final TextEditingController categoryController;
 
   final cubit = Modular.get<AddTransactionCubit>();
 
@@ -45,6 +46,7 @@ class _AddTransactionsState extends State<AddTransactions> {
       (widget.transaction?.type ?? widget.type) == TransactionType.revenue
           ? 'receita'
           : 'despesa';
+
   String get buttonName =>
       (widget.transaction != null) ? 'Salvar' : 'Adicionar';
 
@@ -55,7 +57,7 @@ class _AddTransactionsState extends State<AddTransactions> {
 
   @override
   initState() {
-    category = widget.transaction?.category ?? widget.categories[0];
+    //category = widget.transaction?.category ?? widget.categories[0];
     nameController = TextEditingController(
       text: fillValue(
         widget.transaction?.name,
@@ -65,6 +67,12 @@ class _AddTransactionsState extends State<AddTransactions> {
       precision: 2,
       leftSymbol: 'R\$',
       initialValue: widget.transaction?.value ?? 0.0,
+    );
+
+    categoryController = TextEditingController(
+      text: fillValue(
+        widget.transaction?.category,
+      ),
     );
 
     super.initState();
@@ -171,26 +179,36 @@ class _AddTransactionsState extends State<AddTransactions> {
                         ],
                       ),
                     ),
-                    if (widget.categories.isNotEmpty)
-                      Container(
+                     Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8.0,
                           horizontal: 32,
                         ),
-                        child: DropDownTextField(
-                          enableSearch: true,
-                          dropDownList: widget.categories
-                              .map(
-                                (e) => DropDownValueModel(name: e, value: e),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            if (!widget.categories.contains('Salário')) {
-                              cubit.addCategory(category: 'Salário');
-                            }
-                            category = value.value;
-                          },
-                        ),
+                        child: TextFormField(
+                          controller: categoryController,
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.category_rounded),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: AppColors.iceWhite,
+                              ),
+                            ),
+                          ),
+                        )
+                        // DropDownTextField(
+                        //   enableSearch: true,
+                        //   dropDownList: widget.categories
+                        //       .map(
+                        //         (e) => DropDownValueModel(name: e, value: e),
+                        //       )
+                        //       .toList(),
+                        //   onChanged: (value) {
+                        //     if (!widget.categories.contains('Salário')) {
+                        //       cubit.addCategory(category: 'Salário');
+                        //     }
+                        //     category = value.value;
+                        //   },
+                        // ),
                       ),
                     // Container(
                     //   padding: const EdgeInsets.symmetric(

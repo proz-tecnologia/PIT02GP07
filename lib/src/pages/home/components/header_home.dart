@@ -13,18 +13,21 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Olá, seja bem vindo ${widget.state.user.userName}',
-            style: const TextStyle(
-              color: AppColors.iceWhite,
+    return Container(
+      color: AppColors.darkGreen,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Olá, seja bem vindo ${widget.state.user.userName}',
+              style: const TextStyle(
+                color: AppColors.iceWhite,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

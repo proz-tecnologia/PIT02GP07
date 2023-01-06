@@ -69,17 +69,17 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
     }
   }
 
-  Future<void> addCategory({
-    required String category,
-  }) async {
-    try {
-      emit(AddTransactionStateLoading());
+//   Future<void> addCategory({
+//     required String category,
+//   }) async {
+//     try {
+//       emit(AddTransactionStateLoading());
 
-      await _repository.addCategory(category: category, docId: userData.docId!);
+//       await _repository.addCategory(category: category, docId: userData.docId!);
 
-      emit(AddTransactionStateSuccess());
-    } catch (e) {
-      emit(AddTransactionStateError(exception: e as Exception));
-    }
-  }
+//       emit(AddTransactionStateSuccess());
+//     } catch (e) {
+//       emit(AddTransactionStateError(exception: e as Exception));
+//     }
+//   }
 }
