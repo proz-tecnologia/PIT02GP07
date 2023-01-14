@@ -14,6 +14,7 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       color: AppColors.darkGreen,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,7 +22,7 @@ class HomeHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Olá, seja bem vindo ${widget.state.user.userName}',
+              'Olá, seja bem vindo(a),  ${widget.state.user.userName}',
               style: const TextStyle(
                 color: AppColors.iceWhite,
               ),

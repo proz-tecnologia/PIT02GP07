@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
 
     Modular.get<HomeCubit>().getUserData(selectedCategories);
   }
+ late final HomeStateSuccessWidget teste;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +50,8 @@ class _HomePageState extends State<HomePage> {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is HomeStateSuccess) {
-                return HomeStateSuccessWidget(
-                  state: state,
-                  selectedCategories: selectedCategories,
-                  onSelectItem: (value) => addCategory(value),
-                );
-              }
-              return PageView(
+                return  PageView(
+
                 controller: pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
@@ -73,19 +69,25 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                   ),
-                  ValueListenableBuilder(
-                    valueListenable: controller.balanceValue,
-                    builder: ((context, value, child) {
-                      return PageViewWidget(
-                        page: TransactionsScreen(
-                          expenseValue: controller.expensesValue.value,
-                          revenueValue: controller.revenuesValue.value,
-                          entrylist: controller.entryList,
-                          entryListLength: controller.entryListLength,
-                        ),
-                      );
-                    }),
-                  ),
+                 // ignore: unnecessary_type_check
+                  HomeStateSuccessWidget(
+                  state: state,
+                  selectedCategories: selectedCategories,
+                  onSelectItem: (value) => addCategory(value),
+                ),
+                  // ValueListenableBuilder(
+                  //   valueListenable: controller.balanceValue,
+                  //   builder: ((context, value, child) {
+                  //     return PageViewWidget(
+                  //       page: TransactionsScreen(
+                  //         expenseValue: controller.expensesValue.value,
+                  //         revenueValue: controller.revenuesValue.value,
+                  //         entrylist: controller.entryList,
+                  //         entryListLength: controller.entryListLength,
+                  //       ),
+                  //     );
+                  //   }),
+                  // ),
                   ValueListenableBuilder<double>(
                     valueListenable: controller.expenseInCreditCard,
                     builder: ((context, value, child) {
@@ -103,7 +105,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               );
-            }),
+
+            }
+            return Container();
+            },
+
+            ),
           ),
         ),
       ),

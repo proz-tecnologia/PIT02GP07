@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/core/theme/app_colors.dart';
 
 import '../state/home_state.dart';
 import 'header_home.dart';
@@ -31,7 +32,7 @@ class _HomeStateSuccessWidgetState extends State<HomeStateSuccessWidget> {
         Expanded(
           child: Container(
             height: MediaQuery.of(context).size.height * 0.8,
-            color: Colors.grey.shade200,
+            color: AppColors.darkGray,
             child: widget.state.transactions.isEmpty
                 ? const HomeEmptyStateWidget()
                 : HomeStateSuccessWithFiltersWidget(

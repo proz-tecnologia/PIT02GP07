@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
@@ -39,6 +40,8 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
     this.userData,
   ) : super(AddTransactionStateEmpty());
 
+
+
   Future<void> addTransaction({
     required TransactionModel transaction,
   }) async {
@@ -46,6 +49,7 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
       emit(AddTransactionStateLoading());
 
       UserData? myUserData;
+      var balanceValue = ValueNotifier<double>(userData.balance);
 
       final updateTransaction = transaction.copyWith(userId: _userId);
 

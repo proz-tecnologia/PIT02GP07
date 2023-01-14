@@ -31,7 +31,7 @@ class WalletCard extends StatelessWidget {
         padding: const EdgeInsets.all(28.0),
         child: Column(
           children: [
-             WalletBalanceWidget(
+            WalletBalanceWidget(
               value: balanceValue.toStringAsFixed(2),
               type: 'Saldo',
               style: AppTextStyle.extraLargeWhite,

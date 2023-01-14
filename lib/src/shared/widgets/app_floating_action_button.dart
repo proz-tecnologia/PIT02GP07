@@ -6,16 +6,16 @@ import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import '../../model/transaction_model.dart';
 import '../../pages/home/controller/home_cubit.dart';
 
-
-
 class CustomFloatingActionButton extends StatelessWidget {
-    const CustomFloatingActionButton({
-  Key? key,
+  const CustomFloatingActionButton({
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
+      fanAngle: 90,
+      type: ExpandableFabType.up,
       child: const Icon(Icons.add),
       distance: 54.0,
       children: [
