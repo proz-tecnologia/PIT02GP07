@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/core/theme/app_colors.dart';
+
+import '../../pages/home/components/home_state_success.dart';
 
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  const AppTopBar({Key? key, required this.widget}) : super(key: key);
 
-  const AppTopBar({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
+  final HomeStateSuccessWidget widget;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -19,7 +19,10 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
         size: 55.0,
         Icons.account_circle_rounded,
       ),
-      title: Text('Olá, $title'),
+      title: Text(
+        'Olá, ${widget.state.user.userName}',
+        style: const TextStyle(color: AppColors.iceWhite),
+      ),
       actions: const [
         Icon(Icons.more_vert_outlined),
       ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_style.dart';
-import '../../../../widgets/wallet_type_widget.dart';
+import '../../../../shared/widgets/wallet_type_widget.dart';
 
 class TransactionResumeCard extends StatelessWidget {
   final double revenueValue;
