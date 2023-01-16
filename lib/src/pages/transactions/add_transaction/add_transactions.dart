@@ -100,9 +100,9 @@ class _AddTransactionsState extends State<AddTransactions> {
               ),
             );
           } else if (state is AddTransactionStateSuccess) {
-            Modular.to.popUntil(ModalRoute.withName('/home/transactions'));
+            Modular.to.popUntil(ModalRoute.withName('/home/'));
           } else if (state is AddTransactionStateError) {
-            Modular.to.pop(context);
+            Navigator.pop(context);
           } else if (state is AddCategoryStateSuccess) {
             Navigator.pop(context);
           }

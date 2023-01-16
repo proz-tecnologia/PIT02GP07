@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 
+import '../../../shared/utils/formatters.dart';
 import 'home_state_success.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -27,6 +28,24 @@ class HomeHeader extends StatelessWidget {
                 color: AppColors.iceWhite,
               ),
             ),
+          const Text(
+              '    Seu saldo é',
+              style: TextStyle(
+                color: AppColors.iceWhite,
+              ),
+            ),
+            Center(
+              child: Text(
+                Formatters.formatToReal(widget.state.user.balance),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+
+
           ],
         ),
       ),

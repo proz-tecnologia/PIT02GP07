@@ -16,6 +16,10 @@ abstract class HomeRepository {
   Future<void> updateBalance({
     required UserData userData,
   });
+
+  Future<void> deleteTransaction({
+    required String id,
+  });
   // Future<void> addCategory({
   //   required String category,
   //   required String docId,

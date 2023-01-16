@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_colors.dart';
 import '../state/home_state.dart';
 import 'financial_operation.dart';
 
@@ -40,7 +41,7 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
                         child: Chip(
                           label: Text(e),
                           backgroundColor: selectedCategories.contains(e)
-                              ? Colors.blue
+                              ? AppColors.darkGold
                               : null,
                         ),
                       ),

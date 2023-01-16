@@ -49,7 +49,7 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
       emit(AddTransactionStateLoading());
 
       UserData? myUserData;
-      var balanceValue = ValueNotifier<double>(userData.balance);
+      
 
       final updateTransaction = transaction.copyWith(userId: _userId);
 
