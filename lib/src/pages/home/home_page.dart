@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pit02gp07/src/pages/home/components/wallet_balance_widget.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
 import '../../shared/widgets/app_floating_action_button.dart';
 import '../../shared/widgets/app_nav_bar.dart';
 import '../../shared/widgets/page_view_widget.dart';
 import 'components/home_screen.dart';
-import '../transactions/current_transactions/transaction_screen.dart';
+
 import '../credit_card/credit_card_screen.dart';
 import 'components/home_state_success.dart';
 import 'controller/home_controller.dart';
@@ -55,20 +56,21 @@ class _HomePageState extends State<HomePage> {
                 controller: pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  ValueListenableBuilder<double>(
-                    valueListenable: controller.balanceValue,
-                    builder: (context, value, child) {
-                      return PageViewWidget(
-                        page: HomeScreen(
-                          revenueValue: controller.revenuesValue.value,
-                          expenseValue: controller.expensesValue.value,
-                          balanceValue: controller.balanceValue.value,
-                          expenseInCreditCard:
-                              controller.expenseInCreditCard.value,
-                        ),
-                      );
-                    },
-                  ),
+                  //WalletBalanceWidget(widget: widget),
+                  // ValueListenableBuilder<double>(
+                  //   valueListenable: controller.balanceValue,
+                  //   builder: (context, value, child) {
+                  //     return PageViewWidget(
+                  //       page: HomeScreen(
+                  //         revenueValue: controller.revenuesValue.value,
+                  //         expenseValue: controller.expensesValue.value,
+                  //         balanceValue: controller.balanceValue.value,
+                  //         expenseInCreditCard:
+                  //             controller.expenseInCreditCard.value,
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                  // ignore: unnecessary_type_check
                   HomeStateSuccessWidget(
                   state: state,

@@ -13,6 +13,7 @@ abstract class HomeRepository {
   Future<void> addTransaction({
     required TransactionModel transaction,
   });
+
   Future<void> updateBalance({
     required UserData userData,
   });
@@ -20,8 +21,8 @@ abstract class HomeRepository {
   Future<void> deleteTransaction({
     required String id,
   });
-  // Future<void> addCategory({
-  //   required String category,
-  //   required String docId,
-  // });
+  Future<void> addCategory({
+    required String category,
+    required String userId,
+  });
 }

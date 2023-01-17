@@ -38,6 +38,7 @@ class HomeRepositoryImpl implements HomeRepository {
     );
   }
 
+
   @override
   Future<void> updateBalance({
     required UserData userData,
@@ -49,14 +50,14 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<List<TransactionModel>> getTransaction({
     required String userId,
-    //List<String>? categories,
+    List<String>? categories,
     DateTime? initialDate,
     DateTime? endDate,
   }) async {
     var draw = _transactions.where('userId', isEqualTo: userId);
-    // // if (categories?.isNotEmpty ?? false) {
-    // //   draw = draw.where('category', whereIn: categories);
-    // // }
+    if (categories?.isNotEmpty ?? false) {
+      draw = draw.where('category', whereIn: categories);
+    }
     if (initialDate != null) {
       draw = draw.where('createdAt',
           isGreaterThan: Timestamp.fromDate(DateTime(2022, 12, 21, 0, 0)));
@@ -88,12 +89,12 @@ class HomeRepositoryImpl implements HomeRepository {
   }) async {
     await _transactions.doc(id).delete();
   }
-  // @override
-  // Future<void> addCategory(
-  //     {required String category, required String docId}) async {
-  //   await _users.doc(docId).update({
-  //     'categories': FieldValue.arrayUnion([category]),
-  //     'userName': 'Paula Franco',
-  //   });
-  // }
+  @override
+  Future<void> addCategory(
+      {required String category, required String userId}) async {
+    await _users.doc(userId).update({
+      'categories': FieldValue.arrayUnion([category]),
+      'userName': 'Paula Franco',
+    });
+  }
 }
