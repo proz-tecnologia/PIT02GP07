@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
@@ -40,8 +39,6 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
     this.userData,
   ) : super(AddTransactionStateEmpty());
 
-
-
   Future<void> addTransaction({
     required TransactionModel transaction,
   }) async {
@@ -49,7 +46,6 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
       emit(AddTransactionStateLoading());
 
       UserData? myUserData;
-      var balanceValue = ValueNotifier<double>(userData.balance);
 
       final updateTransaction = transaction.copyWith(userId: _userId);
 
@@ -73,17 +69,19 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
     }
   }
 
-//   Future<void> addCategory({
-//     required String category,
-//   }) async {
-//     try {
-//       emit(AddTransactionStateLoading());
 
-//       await _repository.addCategory(category: category, docId: userData.docId!);
+  Future<void> addCategory({
+    required String category,
+  }) async {
+    try {
+      emit(AddTransactionStateLoading());
 
-//       emit(AddTransactionStateSuccess());
-//     } catch (e) {
-//       emit(AddTransactionStateError(exception: e as Exception));
-//     }
-//   }
+      await _repository.addCategory(
+          category: category, userId: userData.userId);
+
+      emit(AddTransactionStateSuccess());
+    } catch (e) {
+      emit(AddTransactionStateError(exception: e as Exception));
+    }
+  }
 }

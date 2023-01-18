@@ -11,7 +11,7 @@ import 'controller/add_transaction_controller.dart';
 
 class AddTransactions extends StatefulWidget {
   final TransactionModel? transaction;
-  //final List<String> categories;
+  final List<String> categories;
   //final List<String> accountOriginList;
   final TransactionType? type;
 
@@ -20,7 +20,7 @@ class AddTransactions extends StatefulWidget {
     this.transaction,
     required this.type,
     //required this.accountOriginList,
-    //this.categories = const <String>[]})
+    this.categories = const <String>[],
   }) : assert(
           transaction != null || type != null,
           'Transaction && type can not be null at the same time',
@@ -35,12 +35,10 @@ class _AddTransactionsState extends State<AddTransactions> {
   final controller = AddTransactionsController();
   late final TextEditingController nameController;
   late final MoneyMaskedTextController valueController;
-  late final TextEditingController categoryController;
-
-  final cubit = Modular.get<AddTransactionCubit>();
 
   String category = "";
-  String dropdownAccountOrigin = "";
+
+  final cubit = Modular.get<AddTransactionCubit>();
 
   String get type =>
       (widget.transaction?.type ?? widget.type) == TransactionType.revenue
@@ -56,8 +54,8 @@ class _AddTransactionsState extends State<AddTransactions> {
           : AppColors.lightRed;
 
   @override
-  initState() {
-    //category = widget.transaction?.category ?? widget.categories[0];
+  void initState() {
+    category = widget.transaction?.category ?? widget.categories[0];
     nameController = TextEditingController(
       text: fillValue(
         widget.transaction?.name,
@@ -66,13 +64,7 @@ class _AddTransactionsState extends State<AddTransactions> {
     valueController = MoneyMaskedTextController(
       precision: 2,
       leftSymbol: 'R\$',
-      initialValue: widget.transaction?.value ?? 0.0,
-    );
-
-    categoryController = TextEditingController(
-      text: fillValue(
-        widget.transaction?.category,
-      ),
+      initialValue: widget.transaction?.value ?? 0,
     );
 
     super.initState();
@@ -100,9 +92,9 @@ class _AddTransactionsState extends State<AddTransactions> {
               ),
             );
           } else if (state is AddTransactionStateSuccess) {
-            Modular.to.popUntil(ModalRoute.withName('/home/transactions'));
+            Modular.to.popUntil(ModalRoute.withName('/home/'));
           } else if (state is AddTransactionStateError) {
-            Modular.to.pop(context);
+            Navigator.pop(context);
           } else if (state is AddCategoryStateSuccess) {
             Navigator.pop(context);
           }
@@ -174,71 +166,32 @@ class _AddTransactionsState extends State<AddTransactions> {
                         ),
                         inputFormatters: [
                           MaskTextInputFormatter(
-                              mask: 'R\$ 0000,00',
+                              mask: 'R\$ 0.000,00',
                               filter: {'0': RegExp(r'[0-9]')}),
                         ],
                       ),
                     ),
-                     Container(
+                    if (widget.categories.isNotEmpty)
+                      Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8.0,
                           horizontal: 32,
                         ),
-                        child: TextFormField(
-                          controller: categoryController,
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.category_rounded),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iceWhite,
-                              ),
-                            ),
-                          ),
-                        )
-                        // DropDownTextField(
-                        //   enableSearch: true,
-                        //   dropDownList: widget.categories
-                        //       .map(
-                        //         (e) => DropDownValueModel(name: e, value: e),
-                        //       )
-                        //       .toList(),
-                        //   onChanged: (value) {
-                        //     if (!widget.categories.contains('Salário')) {
-                        //       cubit.addCategory(category: 'Salário');
-                        //     }
-                        //     category = value.value;
-                        //   },
-                        // ),
+                        child: DropDownTextField(
+                          enableSearch: true,
+                          dropDownList: widget.categories
+                              .map(
+                                (e) => DropDownValueModel(name: e, value: e),
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            if (!widget.categories.contains('Salário')) {
+                              cubit.addCategory(category: 'Salário');
+                            }
+                            category = value.value;
+                          },
+                        ),
                       ),
-                    // Container(
-                    //   padding: const EdgeInsets.symmetric(
-                    //     vertical: 8.0,
-                    //     horizontal: 32,
-                    //   ),
-                    //   child: DropdownButtonFormField<String>(
-                    //     // - mudar o ícone caso seja carteira ou caso seja cartão
-                    //     decoration: const InputDecoration(
-                    //       icon: Icon(Icons.account_balance_wallet_rounded),
-                    //       enabledBorder: UnderlineInputBorder(
-                    //         borderSide: BorderSide(color: AppColors.iceWhite),
-                    //       ),
-                    //     ),
-                    //     value: dropdownAccountOrigin,
-                    //     icon: const Icon(Icons.arrow_drop_down),
-                    //     onChanged: (String? value) {
-                    //       setState(() {
-                    //         dropdownAccountOrigin = value!;
-                    //       });
-                    //     },
-                    //     items: widget.accountOriginList
-                    //         .map<DropdownMenuItem<String>>((String value) {
-                    //       return DropdownMenuItem<String>(
-                    //         value: value,
-                    //         child: Text(value),
-                    //       );
-                    //     }).toList(),
-                    //   ),
-                    // ),
                     Container(
                       padding: const EdgeInsets.all(32.0),
                       child: ElevatedButton(

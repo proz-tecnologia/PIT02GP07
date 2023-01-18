@@ -5,28 +5,24 @@ class UserData {
   final double balance;
   final String userId;
   final String userName;
-  final String? docId;
-  List<String> categories = const <String>['Paula', 'Carlos'];
+  List<String> categories = const <String>['Despesa', 'Receita'];
 
   UserData({
     this.balance = 0.0,
     required this.userId,
     required this.userName,
-    this.categories = const <String>['Paula', 'Carlos'],
-    this.docId,
+    this.categories = const <String>['Despesa', 'Receita'],
   });
 
   UserData copyWith({
     double? balance,
     String? userId,
     String? userName,
-    String? docId,
   }) {
     return UserData(
       balance: balance ?? this.balance,
       userId: userId ?? this.userId,
       userName: userName ?? this.userName,
-      docId: docId ?? this.docId,
     );
   }
 
@@ -35,7 +31,6 @@ class UserData {
       'balance': balance,
       'userId': userId,
       'userName': userName,
-      'docId': docId,
       'categories': categories,
     };
   }
@@ -45,8 +40,9 @@ class UserData {
       balance: map['balance']?.toDouble() ?? 0.0,
       userId: map['userId'] ?? '',
       userName: map['userName'] ?? '',
-      docId: map['docId'] ?? '',
-      categories: map.containsKey('categories') ? List.castFrom(map['categories']) : [],
+      categories: map.containsKey('categories') && map['categories'] != null
+          ? List.castFrom(map['categories'])
+          : [],
     );
   }
 

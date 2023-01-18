@@ -10,10 +10,10 @@ https://marvelapp.com/prototype/e2ciid3
 ## GRUPO 7
 ### INTEGRANTES DO GRUPO:
  - Paula Franco
- - Mateus Rossi
  - Carlos Misael
 
  ### STATUS DO PROJETO
 - SPRINT 0: **finalizada em 12/09/2022**
 - SPRINT I: **finalizada em 31/10/2022**
   - tela Home: https://marvelapp.com/prototype/e2ciid3/screen/89260903/handoff
+- SPRINT II: **finalizada em 02/12/2022**

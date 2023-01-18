@@ -1,48 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/shared/utils/formatters.dart';
 
 import '../../../core/theme/app_text_style.dart';
+import 'home_state_success.dart';
 
 class WalletBalanceWidget extends StatelessWidget {
-  final String value;
-  final String type;
-  final TextStyle style;
-  final CrossAxisAlignment columnAlignment;
-  final MainAxisAlignment rowAlignment;
 
-  const WalletBalanceWidget({
-    Key? key,
-    required this.value,
-    required this.type,
-    required this.style,
-    this.columnAlignment = CrossAxisAlignment.center,
-    this.rowAlignment = MainAxisAlignment.start,
-  }) : super(key: key);
+ const WalletBalanceWidget({
+  Key? key,
+  required this.widget,
+ }) : super(key: key);
+
+ final HomeStateSuccessWidget widget;
+
+
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: columnAlignment,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
-          mainAxisAlignment: rowAlignment,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
-              'R\$: ',
-              style: AppTextStyle.smallWhite,
+             Center(
+              child: Text(
+                Formatters.formatToReal(widget.state.user.balance),
+                style: AppTextStyle.smallWhite,
+              ),
             ),
-            Text(
-              value,
-              style: style,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: rowAlignment,
-          children: [
-            Text(
-              type,
-              style: AppTextStyle.extraSmallWhite,
-            ),
+            const Text('Saldo',
+            style: AppTextStyle.extraSmallWhite,)
           ],
         ),
       ],

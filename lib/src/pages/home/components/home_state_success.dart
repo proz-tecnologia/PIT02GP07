@@ -32,7 +32,7 @@ class _HomeStateSuccessWidgetState extends State<HomeStateSuccessWidget> {
         Expanded(
           child: Container(
             height: MediaQuery.of(context).size.height * 0.8,
-            color: AppColors.darkGray,
+            color: AppColors.iceWhite,
             child: widget.state.transactions.isEmpty
                 ? const HomeEmptyStateWidget()
                 : HomeStateSuccessWithFiltersWidget(

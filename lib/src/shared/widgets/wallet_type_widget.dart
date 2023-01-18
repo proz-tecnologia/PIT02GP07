@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../pages/home/components/wallet_balance_widget.dart';
+
 
 class WalletTypeWidget extends StatelessWidget {
   final IconData icon;
   final Color colorIcon;
   final Color backgroundColor;
-  final String value;
+  //final String value;
   final String type;
   final TextStyle style;
   final CrossAxisAlignment columnAlignment;
@@ -17,7 +17,7 @@ class WalletTypeWidget extends StatelessWidget {
     required this.icon,
     required this.colorIcon,
     required this.backgroundColor,
-    required this.value,
+    //required this.value,
     required this.type,
     required this.style,
     this.columnAlignment = CrossAxisAlignment.center,
@@ -40,16 +40,14 @@ class WalletTypeWidget extends StatelessWidget {
             color: colorIcon,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 12.0,
-          ),
-          child: WalletBalanceWidget(
-            value: value,
-            type: type,
-            style: style,
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(
+        //     left: 12.0,
+        //   ),
+        //   child: WalletBalanceWidget(widget: null,
+
+        //   ),
+        // ),
       ],
     );
   }
