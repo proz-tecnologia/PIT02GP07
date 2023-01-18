@@ -55,7 +55,7 @@ class _AddTransactionsState extends State<AddTransactions> {
 
   @override
   void initState() {
-    category = widget.transaction?.category ?? widget.categories[1];
+    category = widget.transaction?.category ?? widget.categories[0];
     nameController = TextEditingController(
       text: fillValue(
         widget.transaction?.name,
