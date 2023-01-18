@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:pit02gp07/src/pages/home/components/home_state_success.dart';
-import 'package:pit02gp07/src/pages/home/components/wallet_balance_widget.dart';
+
 
 import 'home_screen_card_widget.dart';
 import 'creditcard_card.dart';

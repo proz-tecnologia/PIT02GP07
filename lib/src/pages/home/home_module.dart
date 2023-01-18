@@ -39,7 +39,6 @@ class HomeModule extends Module {
           child: (_, args) => AddTransactions(
             transaction: args.data['transaction'],
             type: args.data['type'],
-            //accountOriginList: args.data['account_origin_list'],
             categories: args.data['categories'],
           ),
         ),

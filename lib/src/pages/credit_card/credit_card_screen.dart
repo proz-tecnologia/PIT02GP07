@@ -5,7 +5,7 @@ import '../../core/theme/app_text_style.dart';
 import '../../model/expenses_model.dart';
 import '../../shared/widgets/value_widget.dart';
 import '../home/components/creditcard_card.dart';
-import '../home/controller/home_controller.dart';
+
 
 class CreditCardScreen extends StatefulWidget {
   final double expenseInCreditCard;
@@ -30,7 +30,7 @@ class CreditCardScreen extends StatefulWidget {
 }
 
 class _CreditCardScreenState extends State<CreditCardScreen> {
-  final controller = HomeController();
+  //final controller = HomeController();
 
   @override
   Widget build(BuildContext context) {
