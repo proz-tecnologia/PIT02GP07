@@ -4,6 +4,7 @@ import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
+import 'package:pit02gp07/src/pages/transactions/current_transactions/transaction_screen.dart';
 import '../../shared/widgets/app_floating_action_button.dart';
 import '../../shared/widgets/app_nav_bar.dart';
 
@@ -57,6 +58,9 @@ class _HomePageState extends State<HomePage> {
                         selectedCategories: selectedCategories,
                         onSelectItem: (value) => addCategory(value),
                       ),
+                      TransactionsScreen(
+                        state: state,
+                      )
                     ],
                   );
                 }
