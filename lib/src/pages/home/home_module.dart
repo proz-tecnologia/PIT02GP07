@@ -40,7 +40,7 @@ class HomeModule extends Module {
             transaction: args.data['transaction'],
             type: args.data['type'],
             //accountOriginList: args.data['account_origin_list'],
-            //categories: args.data['categories'],))
+            categories: args.data['categories'],
           ),
         ),
       ];

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -21,7 +20,7 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: state.transactions.length,
+      itemCount: state.transactions.length > 3 ? 3 : state.transactions.length,
       itemBuilder: (context, index) {
         if (index == 0) {
           return Column(
