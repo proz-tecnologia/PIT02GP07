@@ -8,7 +8,6 @@ import '../../shared/widgets/app_floating_action_button.dart';
 import '../../shared/widgets/app_nav_bar.dart';
 
 import 'components/home_state_success.dart';
-import 'controller/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PageController pageController = PageController();
-  final controller = HomeController();
+
   List<String> selectedCategories = [];
 
   void addCategory(String category) {
