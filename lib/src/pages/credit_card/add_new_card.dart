@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_credit_card/credit_card_widget.dart';
-
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 
 import '../../model/card_model.dart';
+import 'components/card_utils.dart';
+import 'components/input_formatters.dart';
 
 class AddNewCardScreen extends StatefulWidget {
   const AddNewCardScreen({super.key});
 
-  static const BottomNavigationBarItem item = BottomNavigationBarItem(
-    icon: Icon(Icons.credit_card_outlined),
-    label: 'Cartão',
-    tooltip: 'Ir para despesas no Cartão',
-  );
   @override
   State<AddNewCardScreen> createState() => _AddNewCardScreenState();
 }
@@ -21,12 +16,12 @@ class AddNewCardScreen extends StatefulWidget {
 class _AddNewCardScreenState extends State<AddNewCardScreen> {
   TextEditingController cardNumberController = TextEditingController();
 
-  CardType cardType = CardType.Invalid;
+  CreditCardType cardType = CreditCardType.Invalid;
 
   void getCardTypeFrmNum() {
     if (cardNumberController.text.length <= 6) {
       String cardNum = CardUtils.getCleanedNumber(cardNumberController.text);
-      CardType type = CardUtils.getCardTypeFrmNumber(cardNum);
+      CreditCardType type = CardUtils.getCardTypeFrmNumber(cardNum);
       if (type != cardType) {
         setState(() {
           cardType = type;
@@ -52,64 +47,67 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
       appBar: AppBar(
         title: const Text('Novo cartão'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Form(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              const Spacer(),
+              Form(
                 child: Column(
-              children: [
-                TextFormField(
-                  controller: cardNumberController,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(16),
-                    CardNumberInputFormatter(),
-                  ],
-                  decoration: const InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.iceWhite)),
-                      hintText: 'Número',
-                      suffixIcon: CardUtils.getCardIcon(cardType),
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: SvgPicture.asset('assets/icons/card.svg'),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: AppColors.iceWhite)),
+                            hintText: 'Nome Cartão',
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Icon(Icons.credit_card),
+                            )),
                       ),
-                )
-              ],
-            ))
-          ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(5),
+                              CardMonthInputFormatter(),
+                            ],
+                            decoration: const InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: AppColors.iceWhite)),
+                              hintText: 'MM/AA',
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                child: Icon(Icons.calendar_month),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              const Spacer(
+                flex: 1,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32),
+                child: ElevatedButton(
+                    onPressed: () {}, child: const Text('Adicionar cartão')),
+              )
+            ],
+          ),
         ),
-      ),
-    );
-  }
-}
-
-class CardNumberInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.selection.baseOffset == 0) {
-      return newValue;
-    }
-
-    String inputData = newValue.text;
-    StringBuffer buffer = StringBuffer();
-
-    for (var i = 0; i < inputData.length; i++) {
-      buffer.write(inputData[i]);
-      int index = i + 1;
-
-      if (index % 4 == 0 && inputData.length != index) {
-        buffer.write('  ');
-      }
-    }
-
-    return TextEditingValue(
-      text: buffer.toString(),
-      selection: TextSelection.collapsed(
-        offset: buffer.toString().length,
       ),
     );
   }

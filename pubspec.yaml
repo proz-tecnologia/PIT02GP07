@@ -30,7 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
 
- 
+
   cloud_firestore: ^4.2.0
   cubit: ^0.1.2
   dropdown_textfield: ^1.0.7
@@ -76,6 +76,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/icons/
     - assets/images/
   # To add assets to your application, add an assets section, like this:
   #assets:

@@ -33,8 +33,12 @@ class HomeHeader extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_outlined),
                   tooltip: 'Logout',
                 ),
-                Text('Olá, seja bem vindo(a),  ${widget.state.user.userName}',
-                    style: AppTextStyle.mediumWhite),
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text(
+                      'Olá, seja bem vindo(a),  ${widget.state.user.userName}',
+                      style: AppTextStyle.mediumWhite),
+                ),
               ],
             ),
             Row(
