@@ -17,3 +17,4 @@ https://marvelapp.com/prototype/e2ciid3
 - SPRINT I: **finalizada em 31/10/2022**
   - tela Home: https://marvelapp.com/prototype/e2ciid3/screen/89260903/handoff
 - SPRINT II: **finalizada em 02/12/2022**
+- SPRINT III: **finalizada em 13/01/2023**
