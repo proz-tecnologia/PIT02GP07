@@ -12,14 +12,12 @@ import 'controller/add_transaction_controller.dart';
 class AddTransactions extends StatefulWidget {
   final TransactionModel? transaction;
   final List<String> categories;
-  //final List<String> accountOriginList;
   final TransactionType? type;
 
   const AddTransactions({
     super.key,
     this.transaction,
     required this.type,
-    //required this.accountOriginList,
     this.categories = const <String>[],
   }) : assert(
           transaction != null || type != null,

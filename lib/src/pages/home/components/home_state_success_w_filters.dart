@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../state/home_state.dart';
@@ -26,36 +27,46 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Wrap(
-                children: state.user.categories.map((String e) {
-                  return SizedBox(
-                    height: 36.0,
-                    width: 120.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(
-                        4.0,
-                      ),
-                      child: InkWell(
-                        onTap: () => onSelectItem(e),
-                        child: Chip(
-                          label: Text(e),
-                          backgroundColor: selectedCategories.contains(e)
-                              ? AppColors.darkGold
-                              : null,
+              PopupMenuButton(
+                  icon: const Icon(Icons.filter_list),
+                  itemBuilder: (context) {
+                    return [
+                      PopupMenuItem(
+                        child: Wrap(
+                          children: state.user.categories.map((String e) {
+                            return SizedBox(
+                              height: 36.0,
+                              width: 120.0,
+                              child: InkWell(
+                                onTap: () => onSelectItem(e),
+                                child: Chip(
+                                  label: Text(e),
+                                  backgroundColor:
+                                      selectedCategories.contains(e)
+                                          ? AppColors.darkGold
+                                          : null,
+                                ),
+                              ),
+                            );
+                          }).toList(),
                         ),
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-              FinanceOperationWidget(
-                transaction: state.transactions[index],
+                      )
+                    ];
+                  }),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FinanceOperationWidget(
+                  transaction: state.transactions[index],
+                ),
               ),
             ],
           );
         }
-        return FinanceOperationWidget(
-          transaction: state.transactions[index],
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FinanceOperationWidget(
+            transaction: state.transactions[index],
+          ),
         );
       },
     );

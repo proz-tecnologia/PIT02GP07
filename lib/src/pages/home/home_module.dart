@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/app_controller.dart';
+import 'package:pit02gp07/src/pages/credit_card/add_new_card.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 import 'package:pit02gp07/src/pages/home/repository/home_repository.dart';
@@ -41,6 +42,10 @@ class HomeModule extends Module {
             type: args.data['type'],
             categories: args.data['categories'],
           ),
+        ),
+        ChildRoute(
+          '/card',
+          child: (_, args) => const AddNewCardScreen(),
         ),
       ];
 }

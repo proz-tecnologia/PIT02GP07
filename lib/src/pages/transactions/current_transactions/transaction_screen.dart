@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pit02gp07/src/pages/home/components/financial_operation.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
 import 'package:pit02gp07/src/shared/utils/formatters.dart';
@@ -43,20 +40,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           shrinkWrap: true,
           itemCount: widget.state.transactions.length,
           itemBuilder: (BuildContext context, int index) {
-            return Slidable(
-              endActionPane:
-                  ActionPane(motion: const ScrollMotion(), extentRatio: 0.25,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                    InkWell(
-                      child: Icon(Icons.edit),
-                      onTap: () {},
-                    ),
-                    InkWell(child: Icon(Icons.delete), onTap: () {})
-                  ]),
-              child: FinanceOperationWidget(
-                  transaction: widget.state.transactions[index]),
-            );
+            return FinanceOperationWidget(
+                transaction: widget.state.transactions[index]);
           },
         ),
       ),

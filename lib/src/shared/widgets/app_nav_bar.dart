@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/pages/credit_card/add_new_card.dart';
 import '../../pages/home/home_page.dart';
 import '../../pages/transactions/current_transactions/transaction_screen.dart';
-import '../../pages/credit_card/credit_card_screen.dart';
 
 class AppNavBar extends StatefulWidget {
   final PageController pageController;
@@ -36,7 +36,7 @@ class _AppNavBarState extends State<AppNavBar> {
       items: const [
         HomePage.item,
         TransactionsScreen.item,
-        CreditCardScreen.item,
+        AddNewCardScreen.item,
       ],
     );
   }

@@ -40,6 +40,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_credit_card: ^3.0.5
   flutter_expandable_fab: ^1.6.1
   flutter_masked_text2: ^0.9.1
   flutter_modular: ^5.0.3
