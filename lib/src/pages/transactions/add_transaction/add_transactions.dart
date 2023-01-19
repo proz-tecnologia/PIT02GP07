@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +32,7 @@ class AddTransactions extends StatefulWidget {
 
 class _AddTransactionsState extends State<AddTransactions> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = AddTransactionsController();
+
   late final TextEditingController nameController;
   late final MoneyMaskedTextController valueController;
 
@@ -180,19 +178,15 @@ class _AddTransactionsState extends State<AddTransactions> {
                           horizontal: 32,
                         ),
                         child: DropDownTextField(
-                          searchDecoration: InputDecoration(
-                            labelStyle: TextStyle(color: Colors.black),
-                          ),
                           textFieldDecoration: const InputDecoration(
-                              icon: Icon(Icons.category_outlined),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: AppColors.iceWhite),
-                              ),
-                              labelStyle: TextStyle(color: Colors.black)),
-                          textStyle: const TextStyle(color: Colors.black),
-                          listTextStyle: const TextStyle(color: Colors.black),
-                          enableSearch: true,
+                            icon: Icon(Icons.category_outlined),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.iceWhite),
+                            ),
+                          ),
+                          //textStyle: const TextStyle(color: Colors.black),
+                          listTextStyle:
+                              const TextStyle(color: AppColors.darkGray),
                           dropDownList: widget.categories
                               .map(
                                 (e) => DropDownValueModel(name: e, value: e),

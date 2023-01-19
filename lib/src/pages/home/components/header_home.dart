@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
-import 'package:pit02gp07/src/shared/widgets/wallet_type_widget.dart';
 
 import '../../../shared/utils/formatters.dart';
 import 'home_state_success.dart';
@@ -20,31 +20,41 @@ class HomeHeader extends StatelessWidget {
       width: double.infinity,
       color: AppColors.darkGreen,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Olá, seja bem vindo(a),  ${widget.state.user.userName}',
-              style: const TextStyle(
-                color: AppColors.iceWhite,
-              ),
-            ),
-            const Text(
-              '    Seu saldo é',
-              style: TextStyle(
-                color: AppColors.iceWhite,
-              ),
-            ),
-            Center(
-              child: Text(
-                Formatters.formatToReal(widget.state.user.balance),
-                style: const TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () async {
+                    await Modular.to.pushNamed('/login');
+                  },
+                  icon: const Icon(Icons.arrow_back_outlined),
+                  tooltip: 'Logout',
                 ),
-              ),
+                Text('Olá, seja bem vindo(a),  ${widget.state.user.userName}',
+                    style: AppTextStyle.mediumWhite),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '    Seu saldo é: ',
+                  style: TextStyle(
+                    color: AppColors.iceWhite,
+                  ),
+                ),
+                Text(
+                  Formatters.formatToReal(widget.state.user.balance),
+                  style: const TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

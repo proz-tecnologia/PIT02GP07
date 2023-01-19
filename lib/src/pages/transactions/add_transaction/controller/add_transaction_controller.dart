@@ -9,24 +9,7 @@ import '../../../../model/user_model.dart';
 import '../../../home/repository/home_repository.dart';
 import '../state/add_transaction_state.dart';
 
-class AddTransactionsController {
-  ExpenseModel addEntry(
-      {required String name,
-      required String stringValue,
-      required String type,
-      required String category,
-      required String accountOrigin}) {
-    final value = double.parse(stringValue);
-    final expense = ExpenseModel(
-      name: name,
-      value: value,
-      type: type,
-      category: category,
-      accountOrigin: accountOrigin,
-    );
-    return expense;
-  }
-}
+
 
 class AddTransactionCubit extends Cubit<AddTransactionState> {
   final HomeRepository _repository;

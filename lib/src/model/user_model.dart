@@ -5,13 +5,29 @@ class UserData {
   final double balance;
   final String userId;
   final String userName;
-  List<String> categories = const <String>['Despesa', 'Receita'];
+  List<String> categories = const <String>[
+    'Transporte',
+    'Salário',
+    'Alimentação',
+    'Saúde',
+    'Educação',
+    'Diversão',
+    'Outros'
+  ];
 
   UserData({
     this.balance = 0.0,
     required this.userId,
     required this.userName,
-    this.categories = const <String>['Despesa', 'Receita'],
+    this.categories = const <String>[
+      'Transporte',
+      'Salário',
+      'Alimentação',
+      'Saúde',
+      'Educação',
+      'Diversão',
+      'Outros'
+    ],
   });
 
   UserData copyWith({
