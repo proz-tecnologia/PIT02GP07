@@ -46,29 +46,6 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                WalletTypeWidget(
-                  icon: Icons.arrow_circle_up_outlined,
-                  colorIcon: AppColors.iceWhite,
-                  backgroundColor: AppColors.mediumGreen,
-                  //value: widget.state.transaction
-                  type: 'Receita',
-                  style: AppTextStyle.mediumWhite,
-                  columnAlignment: CrossAxisAlignment.start,
-                ),
-                WalletTypeWidget(
-                  icon: Icons.arrow_circle_down_outlined,
-                  colorIcon: AppColors.iceWhite,
-                  backgroundColor: AppColors.lightRed,
-                  //value: widget.state.transaction
-                  type: 'Despesa',
-                  style: AppTextStyle.mediumWhite,
-                  columnAlignment: CrossAxisAlignment.start,
-                ),
-              ],
-            )
           ],
         ),
       ),

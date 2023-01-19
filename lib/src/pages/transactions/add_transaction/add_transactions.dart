@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -178,6 +180,18 @@ class _AddTransactionsState extends State<AddTransactions> {
                           horizontal: 32,
                         ),
                         child: DropDownTextField(
+                          searchDecoration: InputDecoration(
+                            labelStyle: TextStyle(color: Colors.black),
+                          ),
+                          textFieldDecoration: const InputDecoration(
+                              icon: Icon(Icons.category_outlined),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: AppColors.iceWhite),
+                              ),
+                              labelStyle: TextStyle(color: Colors.black)),
+                          textStyle: const TextStyle(color: Colors.black),
+                          listTextStyle: const TextStyle(color: Colors.black),
                           enableSearch: true,
                           dropDownList: widget.categories
                               .map(
