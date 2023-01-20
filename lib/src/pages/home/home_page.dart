@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pit02gp07/src/pages/credit_card/credit_card_screen.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
 import 'package:pit02gp07/src/pages/transactions/current_transactions/transaction_screen.dart';
@@ -66,7 +67,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       TransactionsScreen(
                         state: state,
-                      )
+                      ),
+                      CreditCardScreen(
+                        state: state,
+                      ),
                     ],
                   );
                 }

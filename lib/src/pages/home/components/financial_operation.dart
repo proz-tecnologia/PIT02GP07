@@ -31,6 +31,7 @@ class FinanceOperationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.mediumGray,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -61,6 +62,10 @@ class FinanceOperationWidget extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+            SizedBox(
+              key: Key('SPACER_DATE_NAME_${transaction.id.toString()}'),
+              height: 8.0,
             ),
             const Divider(),
             const SizedBox(height: 8.0),

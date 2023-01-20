@@ -6,10 +6,10 @@ abstract class HomeRepository {
   Future<UserData> getUserData({
     required String userId,
   });
-  Future<List<TransactionModel>> getTransaction({
-    required String userId,
-    //List<String>? categories,
-  });
+  Future<List<TransactionModel>> getTransaction(
+    String userId,
+    [List<String>? categories,
+  ]);
   Future<void> addTransaction({
     required TransactionModel transaction,
   });

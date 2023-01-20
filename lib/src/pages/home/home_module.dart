@@ -18,7 +18,8 @@ class HomeModule extends Module {
         Bind.singleton<HomeCubit>(
           (i) => HomeCubit(
               repository: i.get<HomeRepository>(),
-              id: i.get<AppController>().user!.uid),
+              id: i.get<AppController>().user!.uid
+              ),
         ),
         Bind.factory<AddTransactionCubit>(
           (i) => AddTransactionCubit(

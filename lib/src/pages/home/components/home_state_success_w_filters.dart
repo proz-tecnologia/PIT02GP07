@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../../../core/theme/app_colors.dart';
 import '../state/home_state.dart';
 import 'financial_operation.dart';
 
@@ -27,32 +25,14 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              PopupMenuButton(
-                  icon: const Icon(Icons.filter_list),
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                        child: Wrap(
-                          children: state.user.categories.map((String e) {
-                            return SizedBox(
-                              height: 36.0,
-                              width: 120.0,
-                              child: InkWell(
-                                onTap: () => onSelectItem(e),
-                                child: Chip(
-                                  label: Text(e),
-                                  backgroundColor:
-                                      selectedCategories.contains(e)
-                                          ? AppColors.darkGold
-                                          : null,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      )
-                    ];
-                  }),
+              Wrap(
+                children: state.user.categories.map((String e) {
+                  return CustomFilterChip(
+                      onSelectItem: onSelectItem,
+                      category: e,
+                      isSelected: selectedCategories.contains(e),);
+                }).toList(),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FinanceOperationWidget(
@@ -69,6 +49,39 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class CustomFilterChip extends StatelessWidget {
+  const CustomFilterChip({
+    Key? key,
+    required this.onSelectItem,
+    required this.category,
+    required this.isSelected,
+  }) : super(key: key);
+
+  final Function(String value) onSelectItem;
+  final String category;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 36.0,
+      width: 120.0,
+      child: Padding(
+        padding: const EdgeInsets.all(
+          4.0,
+        ),
+        child: InkWell(
+          onTap: () => onSelectItem(category),
+          child: Chip(
+            label: Text(category),
+            backgroundColor: isSelected ? Colors.blue : null,
+          ),
+        ),
+      ),
     );
   }
 }
