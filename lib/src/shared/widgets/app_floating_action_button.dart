@@ -49,17 +49,6 @@ class CustomFloatingActionButton extends StatelessWidget {
           backgroundColor: AppColors.lightGreen,
           child: const Icon(Icons.attach_money_rounded),
         ),
-        FloatingActionButton.small(
-          heroTag: '3',
-          onPressed: () async {
-            await Modular.to.pushNamed(
-              '/home/card',
-              arguments: {},
-            );
-          },
-          backgroundColor: AppColors.darkGold,
-          child: const Icon(Icons.credit_card),
-        ),
       ],
     );
   }

@@ -12,6 +12,7 @@ import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 import 'package:pit02gp07/src/pages/home/home_module.dart';
 import 'package:pit02gp07/src/pages/home/home_page.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
+import 'package:pit02gp07/src/pages/transactions/current_transactions/components/transaction_state_success.dart';
 import 'package:pit02gp07/src/shared/widgets/app_floating_action_button.dart';
 
 import 'home_cubit.mock.dart';
