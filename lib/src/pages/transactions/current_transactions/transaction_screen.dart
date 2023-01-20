@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/home/components/financial_operation.dart';
 import 'package:pit02gp07/src/pages/home/state/home_state.dart';
 import 'package:pit02gp07/src/shared/utils/formatters.dart';
-
 import '../../../core/theme/app_colors.dart';
 
 class TransactionsScreen extends StatefulWidget {

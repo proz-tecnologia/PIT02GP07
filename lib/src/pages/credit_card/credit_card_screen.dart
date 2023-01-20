@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/app_widget.dart';
 import 'package:pit02gp07/src/pages/credit_card/add_new_card.dart';
@@ -23,7 +22,6 @@ class CreditCardScreen extends StatefulWidget {
 }
 
 class _CreditCardScreenState extends State<CreditCardScreen> {
-  //final controller = HomeController();
 
   @override
   Widget build(BuildContext context) {

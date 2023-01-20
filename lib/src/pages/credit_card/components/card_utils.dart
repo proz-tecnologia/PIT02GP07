@@ -69,4 +69,9 @@ class CardUtils {
 
     return fourDigitsYear < now.year;
   }
+
+  static String getCleanedNumber(String text) {
+    RegExp regExp = RegExp(r"[^0-9]");
+    return text.replaceAll(regExp, '');
+  }
 }

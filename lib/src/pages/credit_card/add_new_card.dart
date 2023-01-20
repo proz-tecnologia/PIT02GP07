@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
+import '../../model/card_model.dart';
 import 'components/input_formatters.dart';
 
 class AddNewCardScreen extends StatefulWidget {
@@ -11,6 +12,8 @@ class AddNewCardScreen extends StatefulWidget {
 }
 
 class _AddNewCardScreenState extends State<AddNewCardScreen> {
+  TextEditingController cardNumberController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
