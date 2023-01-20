@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:pit02gp07/src/model/card_model.dart';
-
 import 'card_strings.dart';
 
 
@@ -95,16 +93,16 @@ class CardUtils {
     String img = "";
     Icon? icon;
     switch (cardType) {
-      case CreditCardType.Master:
+      case CreditCardType.master:
         img = 'mastercard.png';
         break;
-      case CreditCardType.Visa:
+      case CreditCardType.visa:
         img = 'visa.png';
         break;
-      case CreditCardType.AmericanExpress:
+      case CreditCardType.americanExpress:
         img = 'american_express.png';
         break;
-      case CreditCardType.Others:
+      case CreditCardType.others:
         icon = const Icon(
           Icons.credit_card,
           size: 24.0,
@@ -164,15 +162,15 @@ class CardUtils {
     CreditCardType cardType;
     if (input.startsWith(RegExp(
         r'((5[1-5])|(222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720))'))) {
-      cardType = CreditCardType.Master;
+      cardType = CreditCardType.master;
     } else if (input.startsWith(RegExp(r'[4]'))) {
-      cardType = CreditCardType.Visa;
+      cardType = CreditCardType.visa;
     } else if (input.startsWith(RegExp(r'((34)|(37))'))) {
-      cardType = CreditCardType.AmericanExpress;
+      cardType = CreditCardType.americanExpress;
     }  else if (input.length <= 8) {
-      cardType = CreditCardType.Others;
+      cardType = CreditCardType.others;
     } else {
-      cardType = CreditCardType.Invalid;
+      cardType = CreditCardType.invalid;
     }
     return cardType;
   }

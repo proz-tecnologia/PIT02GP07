@@ -1,7 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pit02gp07/src/pages/credit_card/add_new_card.dart';
-import '../../core/theme/app_text_style.dart';
 
 class CreditCardScreen extends StatefulWidget {
   const CreditCardScreen({
@@ -19,8 +17,7 @@ class CreditCardScreen extends StatefulWidget {
 }
 
 class _CreditCardScreenState extends State<CreditCardScreen> {
-  //final controller = HomeController();
-
+  
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

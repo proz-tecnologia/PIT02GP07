@@ -1,14 +1,14 @@
 
 enum CreditCardType {
-  Master,
-  Visa,
-  Verve,
-  Discover,
-  AmericanExpress,
-  DinersClub,
-  Jcb,
-  Others,
-  Invalid
+  master,
+  visa,
+  verve,
+  discover,
+  americanExpress,
+  dinersClub,
+  jcb,
+  others,
+  invalid
 }
 
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
-
 import '../../model/card_model.dart';
 import 'components/card_utils.dart';
 import 'components/input_formatters.dart';
@@ -16,7 +15,7 @@ class AddNewCardScreen extends StatefulWidget {
 class _AddNewCardScreenState extends State<AddNewCardScreen> {
   TextEditingController cardNumberController = TextEditingController();
 
-  CreditCardType cardType = CreditCardType.Invalid;
+  CreditCardType cardType = CreditCardType.invalid;
 
   void getCardTypeFrmNum() {
     if (cardNumberController.text.length <= 6) {

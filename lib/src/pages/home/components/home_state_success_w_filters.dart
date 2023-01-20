@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-
 import '../../../core/theme/app_colors.dart';
 import '../state/home_state.dart';
 import 'financial_operation.dart';
