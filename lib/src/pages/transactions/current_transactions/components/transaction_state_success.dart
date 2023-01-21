@@ -79,16 +79,11 @@ class CustomFilterChip extends StatelessWidget {
     return SizedBox(
       height: 36.0,
       width: 120.0,
-      child: Padding(
-        padding: const EdgeInsets.all(
-          4.0,
-        ),
-        child: InkWell(
-          onTap: () => onSelectItem(category),
-          child: Chip(
-            label: Text(category),
-            backgroundColor: isSelected ? Colors.blue : null,
-          ),
+      child: InkWell(
+        onTap: () => onSelectItem(category),
+        child: Chip(
+          label: Text(category),
+          backgroundColor: isSelected ? Colors.blue : null,
         ),
       ),
     );

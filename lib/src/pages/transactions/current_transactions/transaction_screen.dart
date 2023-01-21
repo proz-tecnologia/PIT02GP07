@@ -37,19 +37,16 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           style: const TextStyle(color: AppColors.iceWhite),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.8,
-          color: AppColors.darkGray,
-          child: widget.state.transactions.isEmpty
-              ? const HomeEmptyStateWidget()
-              : TransactionStateSuccessWidget(
-                  onSelectItem: widget.onSelectItem,
-                  selectedCategories: widget.selectedCategories,
-                  state: widget.state,
-                ),
-        ),
+      body: Container(
+        height: MediaQuery.of(context).size.height * 0.8,
+        color: AppColors.darkGray,
+        child: widget.state.transactions.isEmpty
+            ? const HomeEmptyStateWidget()
+            : TransactionStateSuccessWidget(
+                onSelectItem: widget.onSelectItem,
+                selectedCategories: widget.selectedCategories,
+                state: widget.state,
+              ),
       ),
     );
   }
