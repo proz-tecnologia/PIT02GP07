@@ -11,13 +11,13 @@ import '../state/add_transaction_state.dart';
 
 
 class AddTransactionCubit extends Cubit<AddTransactionState> {
-  final HomeRepository _repository;
-  final String _userId;
+  final HomeRepository repository;
+  final String userId;
   final UserData userData;
 
   AddTransactionCubit(
-    this._repository,
-    this._userId,
+    this.repository,
+    this.userId,
     this.userData,
   ) : super(AddTransactionStateEmpty());
 
@@ -29,9 +29,9 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
 
       UserData? myUserData;
 
-      final updateTransaction = transaction.copyWith(userId: _userId);
+      final updateTransaction = transaction.copyWith(userId: userId);
 
-      await _repository.addTransaction(transaction: updateTransaction);
+      await repository.addTransaction(transaction: updateTransaction);
       if (transaction.type == TransactionType.expense) {
         myUserData = userData.copyWith(
           balance: userData.balance - transaction.value,
@@ -43,7 +43,7 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
       }
 
       Modular.get<HomeCubit>().userData = myUserData;
-      await _repository.updateBalance(userData: myUserData);
+      await repository.updateBalance(userData: myUserData);
 
       emit(AddTransactionStateSuccess());
     } catch (e) {
@@ -58,7 +58,7 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
     try {
       emit(AddTransactionStateLoading());
 
-      await _repository.addCategory(
+      await repository.addCategory(
           category: category, userId: userData.userId);
 
       emit(AddTransactionStateSuccess());

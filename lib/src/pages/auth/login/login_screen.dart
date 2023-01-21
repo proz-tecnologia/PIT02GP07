@@ -150,8 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: _formKey.currentState?.validate() == true
                         ? () {
-                            // firstName =
-                            //     cubit.userName(emailController.text);
                             cubit.login(
                               email: emailController.text,
                               password: passwordController.text,
@@ -165,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Modular.to.pushNamed('/recoveryPassword'),
                   child: const Text(
                     'Recuperar a senha.',
                     style: AppTextStyle.smallWhite,
