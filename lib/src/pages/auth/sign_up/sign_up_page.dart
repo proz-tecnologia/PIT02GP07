@@ -16,7 +16,6 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final cubit = Modular.get<SignUpCubit>();
-  //late final String firstName;
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpState>(
