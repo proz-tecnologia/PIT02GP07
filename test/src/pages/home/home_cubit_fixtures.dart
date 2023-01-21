@@ -6,7 +6,6 @@ class HomeCubitFixture {
     userId: '1234',
     userName: 'userName',
     balance: 3680.0,
-    
   );
 
   List<TransactionModel> transactions = [
@@ -14,21 +13,19 @@ class HomeCubitFixture {
       type: TransactionType.revenue,
       value: 220.0,
       name: 'name',
-      category: 'Vendas',
-      id: '12',
+      category: 'Transporte',
     ),
     TransactionModel(
       type: TransactionType.revenue,
-      value: 221.0,
+      value: 320.2,
       name: 'name',
-      category: 'Vendas',
-      id: '31',
+      category: 'Transporte',
     ),
     TransactionModel(
       type: TransactionType.revenue,
-      value: 222.0,
+      value: 430.3,
       name: 'name',
-      category: 'Vendas',
+      category: 'Transporte',
     ),
   ];
 }

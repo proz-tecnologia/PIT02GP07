@@ -35,7 +35,7 @@ void main() {
           expect(user.categories, []);
         },
       );
-      
+
     },
   );
 }

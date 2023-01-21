@@ -6,7 +6,15 @@ class UserDataFixtures {
     'userId': faker.guid.random.string(50),
     'userName': faker.person.name(),
     'docId': faker.guid.random.string(10),
-    'categories': List.generate(4, (index) => faker.animal.name()),
+    'categories': [
+    'Transporte',
+    'Salário',
+    'Alimentação',
+    'Saúde',
+    'Educação',
+    'Diversão',
+    'Outros'
+  ],
   };
 
   final Map<String, dynamic> empty = <String, dynamic>{};

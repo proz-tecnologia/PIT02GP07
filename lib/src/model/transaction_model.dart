@@ -11,7 +11,6 @@ class TransactionModel {
   String name;
   String category;
   String? userId;
-  String? card;
   Timestamp? createdAt;
 
   String get dateFormated => createdAt!.toDate().toLocal().toString();
@@ -23,7 +22,6 @@ class TransactionModel {
     required this.category,
     this.createdAt,
     this.userId,
-    this.card,
     this.id,
   }) {
     createdAt ??= Timestamp.now();
@@ -35,7 +33,6 @@ class TransactionModel {
     String? category,
     TransactionType? type,
     String? id,
-    String? card,
     String? userId,
   }) {
     return TransactionModel(
@@ -44,7 +41,6 @@ class TransactionModel {
       name: name ?? this.name,
       category: category ?? this.category,
       id: id ?? this.id,
-      card: card ?? this.card,
       userId: userId ?? this.userId,
     );
   }
@@ -56,7 +52,6 @@ class TransactionModel {
       'category': category,
       'type': type.name,
       'userId': userId,
-      'card': card,
       'id': id,
       'createdAt': createdAt,
     };
@@ -69,8 +64,7 @@ class TransactionModel {
       category: map['category'] ?? '',
       id: map['id'] ?? '',
       userId: map['userId'] ?? '',
-      card: map['card'] ?? '',
-      type: map['type'] == 'revenue'
+     type: map['type'] == 'revenue'
           ? TransactionType.revenue
           : TransactionType.expense,
       createdAt: map['createdAt'],
