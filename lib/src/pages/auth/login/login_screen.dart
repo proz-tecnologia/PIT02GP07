@@ -6,7 +6,6 @@ import '../../../core/theme/app_text_style.dart';
 import '../components/password_validator.dart';
 import 'controller/login_controller.dart';
 
-// ignore: must_be_immutable
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,

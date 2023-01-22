@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import 'package:pit02gp07/src/pages/auth/login/components/login_error_card.dart';
 import 'package:pit02gp07/src/pages/auth/login/components/login_success_card.dart';
 import 'package:pit02gp07/src/pages/auth/password_recovery/controller/recovery__password_cubit.dart';
