@@ -12,14 +12,12 @@ import 'controller/add_transaction_controller.dart';
 class AddTransactions extends StatefulWidget {
   final TransactionModel? transaction;
   final List<String> categories;
-  //final List<String> accountOriginList;
   final TransactionType? type;
 
   const AddTransactions({
     super.key,
     this.transaction,
     required this.type,
-    //required this.accountOriginList,
     this.categories = const <String>[],
   }) : assert(
           transaction != null || type != null,
@@ -32,11 +30,12 @@ class AddTransactions extends StatefulWidget {
 
 class _AddTransactionsState extends State<AddTransactions> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = AddTransactionsController();
+
   late final TextEditingController nameController;
   late final MoneyMaskedTextController valueController;
 
   String category = "";
+  String card = "";
 
   final cubit = Modular.get<AddTransactionCubit>();
 
@@ -178,7 +177,14 @@ class _AddTransactionsState extends State<AddTransactions> {
                           horizontal: 32,
                         ),
                         child: DropDownTextField(
-                          enableSearch: true,
+                          textFieldDecoration: const InputDecoration(
+                            icon: Icon(Icons.category_outlined),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.iceWhite),
+                            ),
+                          ),
+                          listTextStyle:
+                              const TextStyle(color: AppColors.darkGray),
                           dropDownList: widget.categories
                               .map(
                                 (e) => DropDownValueModel(name: e, value: e),
@@ -192,6 +198,33 @@ class _AddTransactionsState extends State<AddTransactions> {
                           },
                         ),
                       ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 32,
+                      ),
+                      child: DropDownTextField(
+                        textFieldDecoration: const InputDecoration(
+                          icon: Icon(Icons.credit_card),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.iceWhite),
+                          ),
+                        ),
+                        listTextStyle:
+                            const TextStyle(color: AppColors.darkGray),
+                        dropDownList: widget.categories
+                            .map(
+                              (e) => DropDownValueModel(name: e, value: e),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          if (!widget.categories.contains('Salário')) {
+                            cubit.addCategory(category: 'Salário');
+                          }
+                          category = value.value;
+                        },
+                      ),
+                    ),
                     Container(
                       padding: const EdgeInsets.all(32.0),
                       child: ElevatedButton(

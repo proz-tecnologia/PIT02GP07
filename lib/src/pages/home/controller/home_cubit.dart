@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeStateLoading());
 
       userData = await repository.getUserData(userId: id);
-      final transactions = await repository.getTransaction(userId: id);
+      final transactions = await repository.getTransaction(id, categories);
 
       emit(HomeStateSuccess(
         user: userData!,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../controller/home_cubit.dart';
 
 class HomeEmptyStateWidget extends StatelessWidget {
   const HomeEmptyStateWidget({
@@ -13,12 +11,8 @@ class HomeEmptyStateWidget extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Voce ainda não tem transações'),
-          TextButton(
-            onPressed: () => context.read<HomeCubit>().getUserData(),
-            child: const Text('Limpar filtros'),
-          ),
+        children: const [
+          Text('Voce ainda não tem transações cadastradas.'),
         ],
       ),
     );

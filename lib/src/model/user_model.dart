@@ -1,18 +1,34 @@
 import 'dart:convert';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class UserData {
   final double balance;
   final String userId;
   final String userName;
-  List<String> categories = const <String>['Despesa', 'Receita'];
+  List<String> categories = const <String>[
+    'Transporte',
+    'Salário',
+    'Alimentação',
+    'Saúde',
+    'Educação',
+    'Diversão',
+    'Outros'
+  ];
+  List<String> cards = const <String>[''];
 
-  UserData({
-    this.balance = 0.0,
-    required this.userId,
-    required this.userName,
-    this.categories = const <String>['Despesa', 'Receita'],
-  });
+  UserData(
+      {this.balance = 0.0,
+      required this.userId,
+      required this.userName,
+      this.categories = const <String>[
+        'Transporte',
+        'Salário',
+        'Alimentação',
+        'Saúde',
+        'Educação',
+        'Diversão',
+        'Outros'
+      ],
+      this.cards = const <String>['']});
 
   UserData copyWith({
     double? balance,
@@ -32,6 +48,7 @@ class UserData {
       'userId': userId,
       'userName': userName,
       'categories': categories,
+      'cards': cards,
     };
   }
 
@@ -43,6 +60,7 @@ class UserData {
       categories: map.containsKey('categories') && map['categories'] != null
           ? List.castFrom(map['categories'])
           : [],
+      //cards: map.containsKey('cards') && map['cards'] !null ? List.castFrom(map['cards']) : [],
     );
   }
 

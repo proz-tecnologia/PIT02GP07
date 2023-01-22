@@ -48,13 +48,14 @@ class HomeRepositoryImpl implements HomeRepository {
       });
 
   @override
-  Future<List<TransactionModel>> getTransaction({
-    required String userId,
-    List<String>? categories,
+  Future<List<TransactionModel>> getTransaction(
+    String userId,
+    [List<String>? categories,
     DateTime? initialDate,
     DateTime? endDate,
-  }) async {
+  ]) async {
     var draw = _transactions.where('userId', isEqualTo: userId);
+
     if (categories?.isNotEmpty ?? false) {
       draw = draw.where('category', whereIn: categories);
     }
