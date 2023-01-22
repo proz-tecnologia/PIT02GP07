@@ -6,7 +6,6 @@ import '../../../core/theme/app_text_style.dart';
 import '../components/password_validator.dart';
 import 'controller/login_controller.dart';
 
-// ignore: must_be_immutable
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
@@ -150,8 +149,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: _formKey.currentState?.validate() == true
                         ? () {
-                            // firstName =
-                            //     cubit.userName(emailController.text);
                             cubit.login(
                               email: emailController.text,
                               password: passwordController.text,
@@ -165,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Modular.to.pushNamed('/recoveryPassword'),
                   child: const Text(
                     'Recuperar a senha.',
                     style: AppTextStyle.smallWhite,

@@ -16,7 +16,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final cubit = Modular.get<LoginCubit>();
-  //late final String firstName;
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
           showModalBottomSheet(
             context: context,
             builder: (context) => const CustomErrorCard(
-                errorMessage: 'Erro ao logar, tente novamente!,'),
+                errorMessage: 'Erro ao logar, tente novamente!'),
           );
         } else if (state is LoginStateSuccess) {
           Modular.get<AppController>().setUser(state.user);

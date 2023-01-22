@@ -11,16 +11,14 @@ import 'controller/add_transaction_controller.dart';
 
 class AddTransactions extends StatefulWidget {
   final TransactionModel? transaction;
-  //final List<String> categories;
-  //final List<String> accountOriginList;
+  final List<String> categories;
   final TransactionType? type;
 
   const AddTransactions({
     super.key,
     this.transaction,
     required this.type,
-    //required this.accountOriginList,
-    //this.categories = const <String>[]})
+    this.categories = const <String>[],
   }) : assert(
           transaction != null || type != null,
           'Transaction && type can not be null at the same time',
@@ -32,15 +30,14 @@ class AddTransactions extends StatefulWidget {
 
 class _AddTransactionsState extends State<AddTransactions> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = AddTransactionsController();
+
   late final TextEditingController nameController;
   late final MoneyMaskedTextController valueController;
-  late final TextEditingController categoryController;
-
-  final cubit = Modular.get<AddTransactionCubit>();
 
   String category = "";
-  String dropdownAccountOrigin = "";
+  String card = "";
+
+  final cubit = Modular.get<AddTransactionCubit>();
 
   String get type =>
       (widget.transaction?.type ?? widget.type) == TransactionType.revenue
@@ -56,8 +53,8 @@ class _AddTransactionsState extends State<AddTransactions> {
           : AppColors.lightRed;
 
   @override
-  initState() {
-    //category = widget.transaction?.category ?? widget.categories[0];
+  void initState() {
+    category = widget.transaction?.category ?? widget.categories[0];
     nameController = TextEditingController(
       text: fillValue(
         widget.transaction?.name,
@@ -66,13 +63,7 @@ class _AddTransactionsState extends State<AddTransactions> {
     valueController = MoneyMaskedTextController(
       precision: 2,
       leftSymbol: 'R\$',
-      initialValue: widget.transaction?.value ?? 0.0,
-    );
-
-    categoryController = TextEditingController(
-      text: fillValue(
-        widget.transaction?.category,
-      ),
+      initialValue: widget.transaction?.value ?? 0,
     );
 
     super.initState();
@@ -174,71 +165,66 @@ class _AddTransactionsState extends State<AddTransactions> {
                         ),
                         inputFormatters: [
                           MaskTextInputFormatter(
-                              mask: 'R\$ 0000,00',
+                              mask: 'R\$ 0.000,00',
                               filter: {'0': RegExp(r'[0-9]')}),
                         ],
                       ),
                     ),
-                     Container(
+                    if (widget.categories.isNotEmpty)
+                      Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8.0,
                           horizontal: 32,
                         ),
-                        child: TextFormField(
-                          controller: categoryController,
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.category_rounded),
+                        child: DropDownTextField(
+                          textFieldDecoration: const InputDecoration(
+                            icon: Icon(Icons.category_outlined),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iceWhite,
-                              ),
+                              borderSide: BorderSide(color: AppColors.iceWhite),
                             ),
                           ),
-                        )
-                        // DropDownTextField(
-                        //   enableSearch: true,
-                        //   dropDownList: widget.categories
-                        //       .map(
-                        //         (e) => DropDownValueModel(name: e, value: e),
-                        //       )
-                        //       .toList(),
-                        //   onChanged: (value) {
-                        //     if (!widget.categories.contains('Salário')) {
-                        //       cubit.addCategory(category: 'Salário');
-                        //     }
-                        //     category = value.value;
-                        //   },
-                        // ),
+                          listTextStyle:
+                              const TextStyle(color: AppColors.darkGray),
+                          dropDownList: widget.categories
+                              .map(
+                                (e) => DropDownValueModel(name: e, value: e),
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            if (!widget.categories.contains('Salário')) {
+                              cubit.addCategory(category: 'Salário');
+                            }
+                            category = value.value;
+                          },
+                        ),
                       ),
-                    // Container(
-                    //   padding: const EdgeInsets.symmetric(
-                    //     vertical: 8.0,
-                    //     horizontal: 32,
-                    //   ),
-                    //   child: DropdownButtonFormField<String>(
-                    //     // - mudar o ícone caso seja carteira ou caso seja cartão
-                    //     decoration: const InputDecoration(
-                    //       icon: Icon(Icons.account_balance_wallet_rounded),
-                    //       enabledBorder: UnderlineInputBorder(
-                    //         borderSide: BorderSide(color: AppColors.iceWhite),
-                    //       ),
-                    //     ),
-                    //     value: dropdownAccountOrigin,
-                    //     icon: const Icon(Icons.arrow_drop_down),
-                    //     onChanged: (String? value) {
-                    //       setState(() {
-                    //         dropdownAccountOrigin = value!;
-                    //       });
-                    //     },
-                    //     items: widget.accountOriginList
-                    //         .map<DropdownMenuItem<String>>((String value) {
-                    //       return DropdownMenuItem<String>(
-                    //         value: value,
-                    //         child: Text(value),
-                    //       );
-                    //     }).toList(),
-                    //   ),
-                    // ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 32,
+                      ),
+                      child: DropDownTextField(
+                        textFieldDecoration: const InputDecoration(
+                          icon: Icon(Icons.credit_card),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.iceWhite),
+                          ),
+                        ),
+                        listTextStyle:
+                            const TextStyle(color: AppColors.darkGray),
+                        dropDownList: widget.categories
+                            .map(
+                              (e) => DropDownValueModel(name: e, value: e),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          if (!widget.categories.contains('Salário')) {
+                            cubit.addCategory(category: 'Salário');
+                          }
+                          category = value.value;
+                        },
+                      ),
+                    ),
                     Container(
                       padding: const EdgeInsets.all(32.0),
                       child: ElevatedButton(

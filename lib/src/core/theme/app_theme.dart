@@ -48,7 +48,6 @@ class AppTheme {
         ),
       ),
       colorScheme: const ColorScheme(
-        //TODO: apenas "primary" atribuído valor por enquanto (os demais atribuídos apenas pra corrigir erro.)
         brightness: Brightness.dark,
         primary: AppColors.darkGold,
         onPrimary: AppColors.iceWhite,

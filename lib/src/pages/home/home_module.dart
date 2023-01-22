@@ -14,11 +14,9 @@ class HomeModule extends Module {
         Bind.factory<HomeRepository>(
           (i) => HomeRepositoryImpl(),
         ),
-        Bind.singleton<HomeCubit>(
-          (i) => HomeCubit(
-              repository: i.get<HomeRepository>(),
-              id: i.get<AppController>().user!.uid),
-        ),
+        Bind.singleton<HomeCubit>((i) => HomeCubit(
+            repository: i.get<HomeRepository>(),
+            id: i.get<AppController>().user!.uid)),
         Bind.factory<AddTransactionCubit>(
           (i) => AddTransactionCubit(
             i.get<HomeRepository>(),
@@ -39,8 +37,7 @@ class HomeModule extends Module {
           child: (_, args) => AddTransactions(
             transaction: args.data['transaction'],
             type: args.data['type'],
-            //accountOriginList: args.data['account_origin_list'],
-            //categories: args.data['categories'],))
+            categories: args.data['categories'],
           ),
         ),
       ];

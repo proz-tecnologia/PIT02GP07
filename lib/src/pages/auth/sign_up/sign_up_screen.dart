@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/components/sign_up_button.dart';
 import 'package:pit02gp07/src/pages/auth/sign_up/controller/sign_up_controller.dart';
 import '../../../core/theme/app_colors.dart';
 import '../components/password_validator.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,8 +15,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final cubit = Modular.get<SignUpCubit>();
-  PickedFile? _imageFile;
-  final ImagePicker _picker = ImagePicker();
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -66,7 +63,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  imageProfile(),
                   Container(
                     padding: const EdgeInsets.symmetric(
                       vertical: 8.0,
@@ -99,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   Container(
-                                        padding: const EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 8.0,
                       horizontal: 32,
                     ),
@@ -236,86 +232,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  Widget imageProfile() {
-    return Center(
-      child: Stack(children: <Widget>[
-        CircleAvatar(
-          radius: 80.0,
-          // ignore: unnecessary_null_comparison
-          backgroundImage: _imageFile == null
-              ? null
-              //AssetImage('assets/images/google.png')
-              : FileImage(File(_imageFile!.path)),
-        ),
-        Positioned(
-          bottom: 20.0,
-          right: 20.0,
-          child: InkWell(
-            onTap: () {
-              showModalBottomSheet(
-                context: context,
-                builder: ((builder) => bottomSheet()),
-              );
-            },
-            child: const Icon(
-              Icons.camera_alt,
-              color: AppColors.iceWhite,
-              size: 28.0,
-            ),
-          ),
-        ),
-      ]),
-    );
-  }
-
-  Widget bottomSheet() {
-    return Container(
-      height: 100.0,
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20,
-      ),
-      child: Column(
-        children: <Widget>[
-          const Text(
-            'Escolha uma foto de perfil',
-            style: TextStyle(
-              fontSize: 20.0,
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            TextButton.icon(
-              icon: const Icon(Icons.camera),
-              onPressed: () {
-                takePhoto(ImageSource.camera);
-              },
-              label: const Text('Câmera'),
-            ),
-            TextButton.icon(
-              icon: const Icon(Icons.image),
-              onPressed: () {
-                takePhoto(ImageSource.gallery);
-              },
-              label: const Text('Galeria'),
-            ),
-          ])
-        ],
-      ),
-    );
-  }
-
-  void takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(
-      source: source,
-    );
-    setState(() {
-      _imageFile = pickedFile! as PickedFile;
-    });
   }
 }

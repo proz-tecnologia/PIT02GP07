@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-
-import '../../../core/theme/app_colors.dart';
 import '../state/home_state.dart';
 import 'financial_operation.dart';
 
@@ -21,44 +18,29 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: state.transactions.length,
+      itemCount: state.transactions.length > 3 ? 3 : state.transactions.length,
       itemBuilder: (context, index) {
         if (index == 0) {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Wrap(
-                children: state.user.categories.map((String e) {
-                  return SizedBox(
-                    height: 36.0,
-                    width: 120.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(
-                        4.0,
-                      ),
-                      child: InkWell(
-                        onTap: () => onSelectItem(e),
-                        child: Chip(
-                          label: Text(e),
-                          backgroundColor: selectedCategories.contains(e)
-                              ? AppColors.darkGold
-                              : null,
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-              FinanceOperationWidget(
-                transaction: state.transactions[index],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FinanceOperationWidget(
+                  transaction: state.transactions[index],
+                ),
               ),
             ],
           );
         }
-        return FinanceOperationWidget(
-          transaction: state.transactions[index],
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FinanceOperationWidget(
+            transaction: state.transactions[index],
+          ),
         );
       },
     );
   }
 }
+

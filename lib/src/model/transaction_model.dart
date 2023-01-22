@@ -1,9 +1,8 @@
-
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-enum TransactionType {revenue, expense}
+enum TransactionType { revenue, expense }
 
 class TransactionModel {
   String? id;
@@ -14,7 +13,7 @@ class TransactionModel {
   String? userId;
   Timestamp? createdAt;
 
-  String get dateFormated => createdAt!.toDate().toLocal().toString();
+  String get dateFormatted => createdAt!.toDate().toLocal().toString();
 
   TransactionModel({
     required this.type,
@@ -65,7 +64,7 @@ class TransactionModel {
       category: map['category'] ?? '',
       id: map['id'] ?? '',
       userId: map['userId'] ?? '',
-      type: map['type'] == 'revenue'
+     type: map['type'] == 'revenue'
           ? TransactionType.revenue
           : TransactionType.expense,
       createdAt: map['createdAt'],

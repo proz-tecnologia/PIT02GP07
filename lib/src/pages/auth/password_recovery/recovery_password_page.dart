@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pit02gp07/src/core/theme/app_colors.dart';
+import 'package:pit02gp07/src/pages/auth/login/components/login_error_card.dart';
 import 'package:pit02gp07/src/pages/auth/login/components/login_success_card.dart';
 import 'package:pit02gp07/src/pages/auth/password_recovery/controller/recovery__password_cubit.dart';
+import 'package:pit02gp07/src/pages/auth/password_recovery/recovery_password_screen.dart';
 import 'package:pit02gp07/src/pages/auth/password_recovery/state/recovery_password_state.dart';
 
 class RecoveryPasswordPage extends StatefulWidget {
@@ -33,51 +34,32 @@ class _RecoveryPasswordPageState extends State<RecoveryPasswordPage> {
                 child: CircularProgressIndicator(),
               ),
             );
-          } else if (state is RecoveryPasswordStateError) {
-            Navigator.pop(context);
+          } else if (state is RecoveryPasswordStateSuccess) {
+            Modular.to.pop();
             showModalBottomSheet(
               context: context,
               builder: (context) => CustomSuccessCard(
-                successMessage:
-                    'Você receberá um email para alteração de senha no email cadastrado.',
-                onButtonPressed: () {
-                  Modular.to.popUntil(
-                    ModalRoute.withName(
-                      '/login',
-                    ),
-                  );
-                },
+                  successMessage:
+                      'Você receberá um email para alteração de senha no email cadastrado.',
+                  onButtonPressed: () {
+                    Modular.to.popUntil(
+                      ModalRoute.withName(
+                        '/login',
+                      ),
+                    );
+                  }),
+            );
+          } else if (state is RecoveryPasswordStateError) {
+            Modular.to.pop();
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => const CustomErrorCard(
+                errorMessage: 'Email inválido!',
               ),
             );
           }
         },
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
-            ),
-            TextFormField(
-              controller: userController,
-              decoration: const InputDecoration(
-                hintText: 'Informe o email.',
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.iceWhite,
-                  ),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                cubit.recoveryPassword(
-                  email: userController.text,
-                );
-              },
-              child: const Text('Enviar'),
-            ),
-          ],
-        ),
+        child: const RecoveryPasswordScreen(),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
+import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/model/transaction_model.dart';
 
 class FinanceOperationWidget extends StatelessWidget {
@@ -14,8 +15,9 @@ class FinanceOperationWidget extends StatelessWidget {
   String get textType =>
       transaction.type == TransactionType.expense ? 'Despesa' : 'Receita';
 
-  Color get color =>
-      transaction.type == TransactionType.expense ? AppColors.lightRed : Colors.green;
+  Color get color => transaction.type == TransactionType.expense
+      ? AppColors.lightRed
+      : AppColors.lightGreen;
 
   String get value =>
       'R\$ ${transaction.value.toStringAsFixed(2).replaceFirst('.', ',')}';
@@ -29,6 +31,7 @@ class FinanceOperationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.mediumGray,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,8 +44,8 @@ class FinanceOperationWidget extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      height: 16.0,
-                      width: 16.0,
+                      height: 10.0,
+                      width: 10.0,
                       decoration: BoxDecoration(
                         color: color,
                         shape: BoxShape.circle,
@@ -60,26 +63,28 @@ class FinanceOperationWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 8.0),
+            SizedBox(
+              key: Key('SPACER_DATE_NAME_${transaction.id.toString()}'),
+              height: 8.0,
+            ),
             const Divider(),
             const SizedBox(height: 8.0),
             Text(
               transaction.name,
-              style: Theme.of(context).textTheme.headline6,
+              style: AppTextStyle.mediumWhite,
             ),
             const SizedBox(height: 8.0),
             Text(
               transaction.category,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: AppTextStyle.smallWhite,
             ),
-            const SizedBox(height: 8.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
                   value,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: AppTextStyle.mediumWhiteBold,
                 ),
               ],
             )
