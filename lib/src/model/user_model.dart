@@ -13,22 +13,21 @@ class UserData {
     'Diversão',
     'Outros'
   ];
-  List<String> cards = const <String>[''];
 
-  UserData(
-      {this.balance = 0.0,
-      required this.userId,
-      required this.userName,
-      this.categories = const <String>[
-        'Transporte',
-        'Salário',
-        'Alimentação',
-        'Saúde',
-        'Educação',
-        'Diversão',
-        'Outros'
-      ],
-      this.cards = const <String>['']});
+  UserData({
+    this.balance = 0.0,
+    required this.userId,
+    required this.userName,
+    this.categories = const <String>[
+      'Transporte',
+      'Salário',
+      'Alimentação',
+      'Saúde',
+      'Educação',
+      'Diversão',
+      'Outros'
+    ],
+  });
 
   UserData copyWith({
     double? balance,
@@ -48,7 +47,6 @@ class UserData {
       'userId': userId,
       'userName': userName,
       'categories': categories,
-      'cards': cards,
     };
   }
 
@@ -60,7 +58,6 @@ class UserData {
       categories: map.containsKey('categories') && map['categories'] != null
           ? List.castFrom(map['categories'])
           : [],
-      //cards: map.containsKey('cards') && map['cards'] !null ? List.castFrom(map['cards']) : [],
     );
   }
 

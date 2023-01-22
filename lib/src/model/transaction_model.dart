@@ -13,7 +13,7 @@ class TransactionModel {
   String? userId;
   Timestamp? createdAt;
 
-  String get dateFormated => createdAt!.toDate().toLocal().toString();
+  String get dateFormatted => createdAt!.toDate().toLocal().toString();
 
   TransactionModel({
     required this.type,
