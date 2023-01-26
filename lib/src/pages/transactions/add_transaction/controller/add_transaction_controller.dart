@@ -66,4 +66,6 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
       emit(AddTransactionStateError(exception: e as Exception));
     }
   }
+
+  
 }
