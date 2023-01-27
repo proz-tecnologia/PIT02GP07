@@ -1,14 +1,12 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:pit02gp07/src/pages/home/controller/home_cubit.dart';
 
 import '../../../../model/transaction_model.dart';
 import '../../../../model/user_model.dart';
 import '../../../home/repository/home_repository.dart';
 import '../state/add_transaction_state.dart';
-
-
 
 class AddTransactionCubit extends Cubit<AddTransactionState> {
   final HomeRepository repository;
@@ -52,20 +50,18 @@ class AddTransactionCubit extends Cubit<AddTransactionState> {
   }
 
 
+
   Future<void> addCategory({
     required String category,
   }) async {
     try {
       emit(AddTransactionStateLoading());
 
-      await repository.addCategory(
-          category: category, userId: userData.userId);
+      await repository.addCategory(category: category, userId: userData.userId);
 
       emit(AddTransactionStateSuccess());
     } catch (e) {
       emit(AddTransactionStateError(exception: e as Exception));
     }
   }
-
-  
 }

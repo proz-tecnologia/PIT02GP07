@@ -36,7 +36,7 @@ class HomeHeader extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text(
-                      'Olá, seja bem vindo(a),  ${widget.state.user.userName}',
+                      'Olá, ${widget.state.user.userName}',
                       style: AppTextStyle.mediumWhite),
                 ),
               ],

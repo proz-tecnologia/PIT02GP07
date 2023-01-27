@@ -6,14 +6,10 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
   const HomeStateSuccessWithFiltersWidget({
     Key? key,
     required this.state,
-    required this.selectedCategories,
-    required this.onSelectItem,
+
   }) : super(key: key);
 
   final HomeStateSuccess state;
-
-  final List<String> selectedCategories;
-  final Function(String value) onSelectItem;
 
   @override
   Widget build(BuildContext context) {
@@ -43,4 +39,3 @@ class HomeStateSuccessWithFiltersWidget extends StatelessWidget {
     );
   }
 }
-
