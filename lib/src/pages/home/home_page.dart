@@ -61,8 +61,8 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       HomeStateSuccessWidget(
                         state: state,
-                        selectedCategories: selectedCategories,
-                        onSelectItem: (value) => addCategory(value),
+                        // selectedCategories: selectedCategories,
+                        // onSelectItem: (value) => addCategory(value),
                       ),
                       TransactionsScreen(
                         state: state,

@@ -18,9 +18,7 @@ abstract class HomeRepository {
     required UserData userData,
   });
 
-  Future<void> deleteTransaction({
-    required String id,
-  });
+  
   Future<void> addCategory({
     required String category,
     required String userId,

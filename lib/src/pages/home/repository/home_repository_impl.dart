@@ -38,7 +38,6 @@ class HomeRepositoryImpl implements HomeRepository {
     );
   }
 
-
   @override
   Future<void> updateBalance({
     required UserData userData,
@@ -49,8 +48,8 @@ class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<TransactionModel>> getTransaction(
-    String userId,
-    [List<String>? categories,
+    String userId, [
+    List<String>? categories,
     DateTime? initialDate,
     DateTime? endDate,
   ]) async {
@@ -85,12 +84,6 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<void> deleteTransaction({
-    required String id,
-  }) async {
-    await _transactions.doc(id).delete();
-  }
-  @override
   Future<void> addCategory(
       {required String category, required String userId}) async {
     await _users.doc(userId).update({
@@ -98,4 +91,6 @@ class HomeRepositoryImpl implements HomeRepository {
       'userName': 'Paula Franco',
     });
   }
+
+ 
 }

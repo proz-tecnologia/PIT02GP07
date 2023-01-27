@@ -8,14 +8,11 @@ import 'home_state_success_w_filters.dart';
 
 class HomeStateSuccessWidget extends StatefulWidget {
   final HomeStateSuccess state;
-  final List<String> selectedCategories;
-  final Function(String value) onSelectItem;
 
   const HomeStateSuccessWidget({
     super.key,
     required this.state,
-    required this.selectedCategories,
-    required this.onSelectItem,
+    
   });
 
   @override
@@ -36,8 +33,7 @@ class _HomeStateSuccessWidgetState extends State<HomeStateSuccessWidget> {
             child: widget.state.transactions.isEmpty
                 ? const HomeEmptyStateWidget()
                 : HomeStateSuccessWithFiltersWidget(
-                    onSelectItem: widget.onSelectItem,
-                    selectedCategories: widget.selectedCategories,
+
                     state: widget.state,
                   ),
           ),

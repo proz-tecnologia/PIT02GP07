@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:pit02gp07/src/core/theme/app_colors.dart';
 import 'package:pit02gp07/src/core/theme/app_text_style.dart';
 import 'package:pit02gp07/src/model/transaction_model.dart';
+import 'package:pit02gp07/src/pages/home/repository/home_repository_impl.dart';
 
-class FinanceOperationWidget extends StatelessWidget {
+class FinanceOperationWidget extends StatefulWidget {
   final TransactionModel transaction;
 
   const FinanceOperationWidget({
@@ -12,21 +14,29 @@ class FinanceOperationWidget extends StatelessWidget {
     required this.transaction,
   }) : super(key: key);
 
-  String get textType =>
-      transaction.type == TransactionType.expense ? 'Despesa' : 'Receita';
+  @override
+  State<FinanceOperationWidget> createState() => _FinanceOperationWidgetState();
+}
 
-  Color get color => transaction.type == TransactionType.expense
+class _FinanceOperationWidgetState extends State<FinanceOperationWidget> {
+  final cubit = Modular.get<HomeRepositoryImpl>();
+
+  String get textType => widget.transaction.type == TransactionType.expense
+      ? 'Despesa'
+      : 'Receita';
+
+  Color get color => widget.transaction.type == TransactionType.expense
       ? AppColors.lightRed
       : AppColors.lightGreen;
 
   String get value =>
-      'R\$ ${transaction.value.toStringAsFixed(2).replaceFirst('.', ',')}';
+      'R\$ ${widget.transaction.value.toStringAsFixed(2).replaceFirst('.', ',')}';
 
   String get formattedDate =>
-      DateFormat('dd/MM/yyyy').format(transaction.createdAt!.toDate());
+      DateFormat('dd/MM/yyyy').format(widget.transaction.createdAt!.toDate());
 
   String get formattedTime =>
-      DateFormat('h:mm a').format(transaction.createdAt!.toDate());
+      DateFormat('h:mm a').format(widget.transaction.createdAt!.toDate());
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +74,19 @@ class FinanceOperationWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              key: Key('SPACER_DATE_NAME_${transaction.id.toString()}'),
+              key:
+                  Key('SPACER_DATE_NAME_${widget.transaction.id.toString()}'),
               height: 8.0,
             ),
             const Divider(),
             const SizedBox(height: 8.0),
             Text(
-              transaction.name,
+              widget.transaction.name,
               style: AppTextStyle.mediumWhite,
             ),
             const SizedBox(height: 8.0),
             Text(
-              transaction.category,
+              widget.transaction.category,
               style: AppTextStyle.smallWhite,
             ),
             Row(
