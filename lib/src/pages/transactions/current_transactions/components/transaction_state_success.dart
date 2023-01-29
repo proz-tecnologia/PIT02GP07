@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pit02gp07/src/core/theme/app_colors.dart';
 
 import '../../../home/components/financial_operation.dart';
 import '../../../home/state/home_state.dart';
@@ -26,7 +27,10 @@ class TransactionStateSuccessWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               PopupMenuButton(
-                  icon: const Icon(Icons.filter_list),
+                  icon: const Icon(
+                    Icons.filter_list,
+                    color: AppColors.darkGold,
+                  ),
                   itemBuilder: (context) {
                     return [
                       PopupMenuItem(

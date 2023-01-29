@@ -33,7 +33,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          ' Seu saldo é ${Formatters.formatToReal(widget.state.user.balance)}',
+          ' Seu saldo é: ${Formatters.formatToReal(widget.state.user.balance)}',
           style: const TextStyle(color: AppColors.iceWhite),
         ),
       ),

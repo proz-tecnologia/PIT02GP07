@@ -199,33 +199,6 @@ class _AddTransactionsState extends State<AddTransactions> {
                         ),
                       ),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8.0,
-                        horizontal: 32,
-                      ),
-                      child: DropDownTextField(
-                        textFieldDecoration: const InputDecoration(
-                          icon: Icon(Icons.credit_card),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.iceWhite),
-                          ),
-                        ),
-                        listTextStyle:
-                            const TextStyle(color: AppColors.darkGray),
-                        dropDownList: widget.categories
-                            .map(
-                              (e) => DropDownValueModel(name: e, value: e),
-                            )
-                            .toList(),
-                        onChanged: (value) {
-                          if (!widget.categories.contains('Salário')) {
-                            cubit.addCategory(category: 'Salário');
-                          }
-                          category = value.value;
-                        },
-                      ),
-                    ),
-                    Container(
                       padding: const EdgeInsets.all(32.0),
                       child: ElevatedButton(
                         onPressed: () {

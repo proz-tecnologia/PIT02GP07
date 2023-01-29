@@ -25,8 +25,8 @@ class FinanceOperationWidget extends StatelessWidget {
   String get formattedDate =>
       DateFormat('dd/MM/yyyy').format(transaction.createdAt!.toDate());
 
-  String get formattedTime =>
-      DateFormat('h:mm a').format(transaction.createdAt!.toDate());
+  // String get formattedTime =>
+  //     DateFormat('h:mm a').format(transaction.createdAt!.toDate());
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +58,13 @@ class FinanceOperationWidget extends StatelessWidget {
                 Column(
                   children: [
                     Text(formattedDate),
-                    Text(formattedTime),
+                    //Text(formattedTime),
                   ],
                 ),
               ],
             ),
-            SizedBox(
-              key: Key('SPACER_DATE_NAME_${transaction.id.toString()}'),
+            const SizedBox(
+              //key: Key('SPACER_DATE_NAME_${transaction.id.toString()}'),
               height: 8.0,
             ),
             const Divider(),
